@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4CD37E2D4BB31800E681F8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */; };
+		8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A32D4BA43100824509 /* AppDelegate.swift */; };
+		8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A82D4BA43100824509 /* SceneDelegate.swift */; };
+		8E9A40AE2D4BA43100824509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9A40A42D4BA43100824509 /* Assets.xcassets */; };
+		8E9A40B82D4BA71700824509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40B72D4BA71700824509 /* LoginView.swift */; };
+		8E9A40BA2D4BA72500824509 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40B92D4BA72500824509 /* LoginViewModel.swift */; };
+		8E9A40BD2D4BAA4400824509 /* Factory+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40BC2D4BAA4400824509 /* Factory+ViewModel.swift */; };
 		8EECA97B2D4B938F00E48757 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA97A2D4B938F00E48757 /* Alamofire */; };
 		8EECA97E2D4B93E300E48757 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA97D2D4B93E300E48757 /* SnapKit */; };
 		8EECA9812D4B94A700E48757 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9802D4B94A700E48757 /* RxCocoa */; };
@@ -33,30 +40,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8E9A40A32D4BA43100824509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8E9A40A42D4BA43100824509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E9A40A52D4BA43100824509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E9A40A82D4BA43100824509 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8E9A40B72D4BA71700824509 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8E9A40B92D4BA72500824509 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8E9A40BC2D4BAA4400824509 /* Factory+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Factory+ViewModel.swift"; sourceTree = "<group>"; };
 		8EECA92F2D4B760F00E48757 /* Baobab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baobab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA9452D4B761100E48757 /* BaobabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA94F2D4B761100E48757 /* BaobabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8EECA9572D4B761100E48757 /* Exceptions for "Baobab" folder in "Baobab" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 8EECA92E2D4B760F00E48757 /* Baobab */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8EECA9312D4B760F00E48757 /* Baobab */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				8EECA9572D4B761100E48757 /* Exceptions for "Baobab" folder in "Baobab" target */,
-			);
-			path = Baobab;
-			sourceTree = "<group>";
-		};
 		8EECA9482D4B761100E48757 /* BaobabTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BaobabTests;
@@ -100,10 +97,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E9A40AA2D4BA43100824509 /* Baobab */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40BB2D4BAA3300824509 /* Utils */,
+				8E9A40B32D4BA4D100824509 /* Resources */,
+				8E9A40B22D4BA44700824509 /* Application */,
+				8E9A40B12D4BA43600824509 /* Presentation */,
+			);
+			path = Baobab;
+			sourceTree = "<group>";
+		};
+		8E9A40B12D4BA43600824509 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40B42D4BA5EE00824509 /* Login */,
+				8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8E9A40B22D4BA44700824509 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40A52D4BA43100824509 /* Info.plist */,
+				8E9A40A82D4BA43100824509 /* SceneDelegate.swift */,
+				8E9A40A32D4BA43100824509 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8E9A40B32D4BA4D100824509 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40A42D4BA43100824509 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8E9A40B42D4BA5EE00824509 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40B62D4BA5FA00824509 /* ViewModel */,
+				8E9A40B52D4BA5F500824509 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8E9A40B52D4BA5F500824509 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40B72D4BA71700824509 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E9A40B62D4BA5FA00824509 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40B92D4BA72500824509 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8E9A40BB2D4BAA3300824509 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8E9A40BC2D4BAA4400824509 /* Factory+ViewModel.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8EECA9262D4B760F00E48757 = {
 			isa = PBXGroup;
 			children = (
-				8EECA9312D4B760F00E48757 /* Baobab */,
+				8E9A40AA2D4BA43100824509 /* Baobab */,
 				8EECA9482D4B761100E48757 /* BaobabTests */,
 				8EECA9522D4B761100E48757 /* BaobabUITests */,
 				8EECA9302D4B760F00E48757 /* Products */,
@@ -134,9 +202,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				8EECA9312D4B760F00E48757 /* Baobab */,
 			);
 			name = Baobab;
 			packageProductDependencies = (
@@ -253,6 +318,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E4CD37E2D4BB31800E681F8 /* Launch Screen.storyboard in Resources */,
+				8E9A40AE2D4BA43100824509 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +344,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */,
+				8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */,
+				8E9A40B82D4BA71700824509 /* LoginView.swift in Sources */,
+				8E9A40BD2D4BAA4400824509 /* Factory+ViewModel.swift in Sources */,
+				8E9A40BA2D4BA72500824509 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +391,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QHK65XFL8U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Baobab/Info.plist;
+				INFOPLIST_FILE = Baobab/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Baobab;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -353,7 +425,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QHK65XFL8U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Baobab/Info.plist;
+				INFOPLIST_FILE = Baobab/Application/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Baobab;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
