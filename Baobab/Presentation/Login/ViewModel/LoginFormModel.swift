@@ -7,7 +7,7 @@
 
 import Combine
 
-final class LoginViewModel: ObservableObject {
+final class LoginFormModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var isAutoLogin: Bool = false

@@ -9,11 +9,11 @@ import SwiftUI
 import Factory
 import Foundation
 
-struct LoginView: View {
-    @StateObject private var viewModel: LoginViewModel
+struct LoginForm: View {
+    @StateObject private var viewModel: LoginFormModel
     @State private var isKeyboardActive: Bool = false
     
-    init(viewModel: LoginViewModel) {
+    init(viewModel: LoginFormModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -161,6 +161,6 @@ fileprivate struct SectionSeparator: View {
 
 #Preview {
     NavigationStack {
-        LoginView(viewModel: Container.shared.loginViewModel())
+        LoginForm(viewModel: Container.shared.loginViewModel())
     }
 }

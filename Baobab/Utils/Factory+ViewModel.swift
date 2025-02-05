@@ -8,9 +8,9 @@
 import Factory
 
 extension Container {
-    var loginViewModel: Factory<LoginViewModel> {
+    var loginViewModel: Factory<LoginFormModel> {
         Factory(self) {
-            LoginViewModel()
+            LoginFormModel()
         }
     }
 }
