@@ -49,7 +49,7 @@ struct LoginView: View {
                 SectionSeparator()
                     .padding(.top)
                 
-                Button {
+                NavigationLink {
                     
                 } label: {
                     Text("회원가입")
