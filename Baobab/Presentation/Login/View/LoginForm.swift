@@ -12,6 +12,7 @@ import Foundation
 struct LoginForm: View {
     @StateObject private var viewModel: LoginFormModel
     @State private var isKeyboardActive: Bool = false
+    @State private var isShowingSignupForm: Bool = false
     
     init(viewModel: LoginFormModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -49,8 +50,8 @@ struct LoginForm: View {
                 SectionSeparator()
                     .padding(.top)
                 
-                NavigationLink {
-                    
+                Button {
+                    isShowingSignupForm.toggle()
                 } label: {
                     Text("회원가입")
                         .bold()
@@ -71,6 +72,11 @@ struct LoginForm: View {
             isKeyboardActive = false
         }
         .toolbar(.hidden)
+        .fullScreenCover(isPresented: $isShowingSignupForm) {
+            NavigationStack {
+                SignupForm(viewModel: SignupFormViewModel())
+            }
+        }
     }
 }
 
