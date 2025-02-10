@@ -50,6 +50,13 @@ struct SignupForm: View {
                     title: "이름"
                 )
                 
+                TextForm(
+                    text: $viewModel.birthDate,
+                    placeholder: "생년월일 8자리 ex: 19001031",
+                    title: "생년월일",
+                    keyboardType: .numberPad
+                )
+                
                 GenderPicker(genderType: $viewModel.genderType)
                 
                 NationalityPicker(isForeigner: $viewModel.isForeigner)
@@ -169,7 +176,7 @@ fileprivate struct CarrierPicker: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TitleView(title: "통신사 선택", isRequired: true)
+            TitleView(title: "통신사", isRequired: true)
             
             HStack {
                 Text(carrierType.rawValue)
@@ -253,7 +260,7 @@ fileprivate struct GenderPicker: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TitleView(title: "성별선택", isRequired: true)
+            TitleView(title: "성별", isRequired: true)
             
             HStack {
                 Button {
@@ -306,7 +313,7 @@ fileprivate struct NationalityPicker: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TitleView(title: "국적선택", isRequired: true)
+            TitleView(title: "국적", isRequired: true)
             
             HStack {
                 Button {

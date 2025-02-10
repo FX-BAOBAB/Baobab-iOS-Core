@@ -18,7 +18,7 @@ final class SignupFormViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
     @Published var genderType: GenderType? = nil
     @Published var isForeigner: Bool? = nil
-    @Published var birthDate: Date = Date()
+    @Published var birthDate: String = ""
     @Published var postCode: String = ""
     @Published var address: String = ""
     @Published var detailAddress: String = ""
