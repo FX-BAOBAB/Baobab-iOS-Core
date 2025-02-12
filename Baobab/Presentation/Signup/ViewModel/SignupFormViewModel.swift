@@ -22,5 +22,4 @@ final class SignupFormViewModel: ObservableObject {
     @Published var postCode: String = ""
     @Published var address: String = ""
     @Published var detailAddress: String = ""
-    @Published var isBasicAddress: Bool = false
 }

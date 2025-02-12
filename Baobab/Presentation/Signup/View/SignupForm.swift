@@ -11,6 +11,7 @@ struct SignupForm: View {
     @StateObject private var viewModel: SignupFormViewModel
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
+    @State private var isShowingSheet: Bool = false
     
     init(viewModel: SignupFormViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -74,7 +75,7 @@ struct SignupForm: View {
                     postCode: $viewModel.postCode,
                     address: $viewModel.address,
                     detailAddress: $viewModel.detailAddress,
-                    isBasicAddress: $viewModel.isBasicAddress
+                    isShowingSheet: $isShowingSheet
                 )
                 
                 Button {
@@ -103,15 +104,32 @@ struct SignupForm: View {
                 }
             }
         }
+        .sheet(isPresented: $isShowingSheet) {
+            NavigationStack {
+                PostCodeSearchWebView(roadAddress: $viewModel.address, postCode: $viewModel.postCode)
+                    .edgesIgnoringSafeArea(.bottom)
+                    .navigationTitle("주소검색")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button {
+                                isShowingSheet.toggle()
+                            } label: {
+                                Text("닫기")
+                            }
+                        }
+                    }
+            }
+        }
         .fork { this in
             if #available(iOS 17, *) {
                 this.onChange(of: viewModel.phoneNumber) {
                     viewModel.formatPhoneNumber()
                 }
             } else {
-                this.onChange(of: viewModel.phoneNumber, perform: { _ in
+                this.onChange(of: viewModel.phoneNumber) { _ in
                     viewModel.formatPhoneNumber()
-                })
+                }
             }
         }
     }
@@ -140,14 +158,16 @@ fileprivate struct TextForm: View {
     @Binding var text: String
     
     let placeholder: String
-    let title: String
+    let title: String?
     let isSecureText: Bool
     let isRequired: Bool
     let keyboardType: UIKeyboardType
     
     init(
-        text: Binding<String>, placeholder: String,
-        title: String, isSecureText: Bool = false,
+        text: Binding<String>,
+        placeholder: String,
+        title: String? = nil,
+        isSecureText: Bool = false,
         isRequired: Bool = true,
         keyboardType: UIKeyboardType = .default
     ) {
@@ -161,7 +181,9 @@ fileprivate struct TextForm: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TitleView(title: title, isRequired: isRequired)
+            if let title {
+                TitleView(title: title, isRequired: isRequired)
+            }
             
             Group {
                 if isSecureText {
@@ -377,7 +399,7 @@ fileprivate struct AddressForm: View {
     @Binding var postCode: String
     @Binding var address: String
     @Binding var detailAddress: String
-    @Binding var isBasicAddress: Bool
+    @Binding var isShowingSheet: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -391,9 +413,9 @@ fileprivate struct AddressForm: View {
                     .cornerRadius(10)
                 
                 Button {
-                    
+                    isShowingSheet.toggle()
                 } label: {
-                    Text("주소선택")
+                    Text("주소검색")
                         .padding()
                         .background(.background2)
                         .cornerRadius(10)
@@ -406,11 +428,7 @@ fileprivate struct AddressForm: View {
                 .background(.background2)
                 .cornerRadius(10)
             
-            Text(detailAddress)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                .background(.background2)
-                .cornerRadius(10)
+            TextForm(text: $detailAddress, placeholder: "상세주소 입력")
         }
         .font(.subheadline)
     }
