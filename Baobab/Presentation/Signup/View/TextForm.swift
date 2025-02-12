@@ -54,7 +54,7 @@ fileprivate struct TitleModifier: ViewModifier {
 }
 
 extension TextForm {
-    func title(_ title: String, isRequired: Bool = false) -> some View {
+    func title(_ title: String, isRequired: Bool = true) -> some View {
         modifier(TitleModifier(title: title, isRequired: isRequired))
     }
 }
