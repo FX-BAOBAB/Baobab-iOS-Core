@@ -22,41 +22,42 @@ struct SignupForm: View {
             VStack(spacing: 30) {
                 TextForm(
                     text: $viewModel.email,
-                    placeholder: "ex: baobab@baobab.com",
-                    title: "이메일"
+                    placeholder: "ex: baobab@baobab.com"
                 )
+                .title("이메일")
                 
                 TextForm(
                     text: $viewModel.password,
                     placeholder: "대소문자, 특수문자 포함 최소 8자리 이상",
-                    title: "비밀번호",
-                    isSecureText: true)
+                    isSecureText: true
+                )
+                .title("비밀번호")
                 
                 TextForm(
                     text: $viewModel.confirmPassword,
                     placeholder: "비밀번호를 다시 한번 입력해 주세요",
-                    title: "비밀번호 확인",
                     isSecureText: true
                 )
+                .title("비밀번호 확인")
                 
                 TextForm(
                     text: $viewModel.nickName,
-                    placeholder: "닉네임을 입력해 주세요.",
-                    title: "닉네임"
+                    placeholder: "닉네임을 입력해 주세요."
                 )
+                .title("닉네임")
                 
                 TextForm(
                     text: $viewModel.name,
-                    placeholder: "본명을 입력해 주세요.",
-                    title: "이름"
+                    placeholder: "본명을 입력해 주세요."
                 )
+                .title("이름")
                 
                 TextForm(
                     text: $viewModel.birthDate,
-                    placeholder: "생년월일 8자리 ex: 19001031",
-                    title: "생년월일",
-                    keyboardType: .numberPad
+                    placeholder: "생년월일 8자리 ex: 19001031"
                 )
+                .title("생년월일")
+                .keyboardType(.numberPad)
                 
                 GenderPicker(genderType: $viewModel.genderType)
                 
@@ -66,10 +67,10 @@ struct SignupForm: View {
                 
                 TextForm(
                     text: $viewModel.phoneNumber,
-                    placeholder: "전화번호를 입력하세요.",
-                    title: "전화번호",
-                    keyboardType: .numberPad
+                    placeholder: "전화번호를 입력하세요."
                 )
+                .title("전화번호")
+                .keyboardType(.numberPad)
                 
                 AddressForm(
                     postCode: $viewModel.postCode,
@@ -131,75 +132,6 @@ struct SignupForm: View {
                     viewModel.formatPhoneNumber()
                 }
             }
-        }
-    }
-}
-
-fileprivate struct TitleView: View {
-    let title: String
-    let isRequired: Bool
-    
-    var body: some View {
-        HStack(spacing: 2) {
-            Text(title)
-                .foregroundStyle(.gray)
-            
-            if isRequired {
-                Text("*")
-                    .foregroundStyle(.accent)
-            }
-        }
-        .bold()
-        .font(.subheadline)
-    }
-}
-
-fileprivate struct TextForm: View {
-    @Binding var text: String
-    
-    let placeholder: String
-    let title: String?
-    let isSecureText: Bool
-    let isRequired: Bool
-    let keyboardType: UIKeyboardType
-    
-    init(
-        text: Binding<String>,
-        placeholder: String,
-        title: String? = nil,
-        isSecureText: Bool = false,
-        isRequired: Bool = true,
-        keyboardType: UIKeyboardType = .default
-    ) {
-        self._text = text
-        self.placeholder = placeholder
-        self.title = title
-        self.isSecureText = isSecureText
-        self.isRequired = isRequired
-        self.keyboardType = keyboardType
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            if let title {
-                TitleView(title: title, isRequired: isRequired)
-            }
-            
-            Group {
-                if isSecureText {
-                    SecureField(placeholder, text: $text)
-                        .textFieldStyle(.plain)
-                        .keyboardType(keyboardType)
-                } else {
-                    TextField(placeholder, text: $text)
-                        .textFieldStyle(.plain)
-                        .keyboardType(keyboardType)
-                }
-            }
-            .font(.subheadline)
-            .padding()
-            .background(.background2)
-            .cornerRadius(10)
         }
     }
 }
