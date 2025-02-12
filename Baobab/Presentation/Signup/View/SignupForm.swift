@@ -103,6 +103,17 @@ struct SignupForm: View {
                 }
             }
         }
+        .fork { this in
+            if #available(iOS 17, *) {
+                this.onChange(of: viewModel.phoneNumber) {
+                    viewModel.formatPhoneNumber()
+                }
+            } else {
+                this.onChange(of: viewModel.phoneNumber, perform: { _ in
+                    viewModel.formatPhoneNumber()
+                })
+            }
+        }
     }
 }
 
@@ -155,9 +166,11 @@ fileprivate struct TextForm: View {
             Group {
                 if isSecureText {
                     SecureField(placeholder, text: $text)
+                        .textFieldStyle(.plain)
                         .keyboardType(keyboardType)
                 } else {
                     TextField(placeholder, text: $text)
+                        .textFieldStyle(.plain)
                         .keyboardType(keyboardType)
                 }
             }
