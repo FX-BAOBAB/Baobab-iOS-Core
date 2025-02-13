@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class SignupFormViewModel: ObservableObject {
+final class SignupFormViewModel: ObservableObject {    
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
@@ -17,9 +17,12 @@ final class SignupFormViewModel: ObservableObject {
     @Published var carrierType: CarrierType = .none
     @Published var phoneNumber: String = ""
     @Published var genderType: GenderType? = nil
-    @Published var isForeigner: Bool? = nil
+    @Published var nationalityType: NationalityType? = nil
     @Published var birthDate: String = ""
     @Published var postCode: String = ""
     @Published var address: String = ""
     @Published var detailAddress: String = ""
+    @Published var inputStates: [InputState] = Array(repeating: .initial, count: 13)
+    
+    var cancellables: Set<AnyCancellable> = []
 }

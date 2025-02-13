@@ -19,12 +19,13 @@ struct SignupForm: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 30) {
+            VStack(spacing: 20) {
                 TextForm(
                     text: $viewModel.email,
                     placeholder: "ex: baobab@baobab.com"
                 )
                 .title("이메일")
+                .state($viewModel.inputStates[0], message: "올바른 이메일 형식을 입력하세요.")
                 
                 TextForm(
                     text: $viewModel.password,
@@ -32,6 +33,7 @@ struct SignupForm: View {
                     isSecureText: true
                 )
                 .title("비밀번호")
+                .state($viewModel.inputStates[1], message: "대문자, 소문자, 특수문자 포함 8자 이상이어야 해요.")
                 
                 TextForm(
                     text: $viewModel.confirmPassword,
@@ -39,31 +41,40 @@ struct SignupForm: View {
                     isSecureText: true
                 )
                 .title("비밀번호 확인")
+                .state($viewModel.inputStates[2], message: "비밀번호가 일치하지 않아요.")
                 
                 TextForm(
                     text: $viewModel.nickName,
                     placeholder: "닉네임을 입력해 주세요."
                 )
                 .title("닉네임")
+                .state($viewModel.inputStates[3], message: "2자 이상 50자 이하로 입력해 주세요.")
                 
                 TextForm(
                     text: $viewModel.name,
                     placeholder: "본명을 입력해 주세요."
                 )
                 .title("이름")
+                .state($viewModel.inputStates[4], message: "1자 이상, 50자 이하로 입력해 주세요.")
                 
                 TextForm(
                     text: $viewModel.birthDate,
-                    placeholder: "생년월일 8자리 ex: 19001031"
+                    placeholder: "생년월일 8자리 ex: 1900-10-31"
                 )
                 .title("생년월일")
                 .keyboardType(.numberPad)
+                .state($viewModel.inputStates[5], message: "생년월일 8자리로 입력해 주세요.")
                 
-                GenderPicker(genderType: $viewModel.genderType)
+                PickerButton(selected: $viewModel.genderType)
+                    .title("성별")
+                    .state($viewModel.inputStates[6], message: "성별을 선택해 주세요.")
                 
-                NationalityPicker(isForeigner: $viewModel.isForeigner)
+                PickerButton(selected: $viewModel.nationalityType)
+                    .title("국적")
+                    .state($viewModel.inputStates[7], message: "국적을 선택해 주세요.")
                 
                 CarrierPicker(carrierType: $viewModel.carrierType)
+                    .state($viewModel.inputStates[8], message: "통신사를 선택해 주세요.")
                 
                 TextForm(
                     text: $viewModel.phoneNumber,
@@ -71,6 +82,7 @@ struct SignupForm: View {
                 )
                 .title("전화번호")
                 .keyboardType(.numberPad)
+                .state($viewModel.inputStates[9], message: "전화번호 11자리로 입력해 주세요.")
                 
                 AddressForm(
                     postCode: $viewModel.postCode,
@@ -107,7 +119,8 @@ struct SignupForm: View {
         }
         .sheet(isPresented: $isShowingSheet) {
             NavigationStack {
-                PostCodeSearchWebView(roadAddress: $viewModel.address, postCode: $viewModel.postCode)
+                PostCodeSearchWebView(roadAddress: $viewModel.address,
+                                      postCode: $viewModel.postCode)
                     .edgesIgnoringSafeArea(.bottom)
                     .navigationTitle("주소검색")
                     .navigationBarTitleDisplayMode(.inline)
@@ -122,6 +135,9 @@ struct SignupForm: View {
                     }
             }
         }
+        .onAppear {
+            viewModel.bindWithRegex()
+        }
         .fork { this in
             if #available(iOS 17, *) {
                 this.onChange(of: viewModel.phoneNumber) {
@@ -130,6 +146,90 @@ struct SignupForm: View {
             } else {
                 this.onChange(of: viewModel.phoneNumber) { _ in
                     viewModel.formatPhoneNumber()
+                }
+            }
+        }
+    }
+}
+
+struct TitleView: View {
+    let title: String
+    let isRequired: Bool
+    
+    var body: some View {
+        HStack(spacing: 2) {
+            Text(title)
+                .foregroundStyle(.gray)
+            
+            if isRequired {
+                Text("*")
+                    .foregroundStyle(.accent)
+            }
+        }
+        .bold()
+        .font(.subheadline)
+    }
+}
+
+struct TextForm: View {
+    @Binding var text: String
+    
+    let placeholder: String
+    let isSecureText: Bool
+    
+    init(
+        text: Binding<String>,
+        placeholder: String,
+        isSecureText: Bool = false
+    ) {
+        self._text = text
+        self.placeholder = placeholder
+        self.isSecureText = isSecureText
+    }
+    
+    var body: some View {
+        Group {
+            if isSecureText {
+                SecureField(placeholder, text: $text)
+                    .textFieldStyle(.plain)
+                    .textContentType(.oneTimeCode)
+            } else {
+                TextField(placeholder, text: $text)
+                    .textFieldStyle(.plain)
+            }
+        }
+        .font(.subheadline)
+        .padding()
+        .background(.background2)
+        .cornerRadius(10)
+    }
+}
+
+struct PickerButton<T: CaseIterable & Hashable & RawRepresentable>: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @Binding var selected: T?
+    
+    var body: some View {
+        HStack {
+            ForEach(Array(T.allCases), id: \.self) { choice in
+                Button {
+                    withAnimation {
+                        selected = choice
+                    }
+                } label: {
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(height: 60)
+                        .foregroundStyle(.background2)
+                        .overlay {
+                            Text("\(choice.rawValue)")
+                                .font(.subheadline)
+                                .foregroundStyle(colorScheme == .light ? .black : .white)
+                            
+                            if selected == choice {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.accent, lineWidth: 2)
+                            }
+                        }
                 }
             }
         }
@@ -214,112 +314,6 @@ fileprivate struct CarrierPickerSheet: View {
                                 .frame(width: 10, height: 10)
                                 .foregroundStyle(.white)
                                 .bold()
-                        }
-                }
-            }
-        }
-    }
-}
-
-fileprivate struct GenderPicker: View {
-    @Binding var genderType: GenderType?
-    @Environment(\.colorScheme) private var colorScheme
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            TitleView(title: "성별", isRequired: true)
-            
-            HStack {
-                Button {
-                    withAnimation {
-                        genderType = .male
-                    }
-                } label: {
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(height: 60)
-                        .foregroundStyle(.background2)
-                        .overlay {
-                            Text("남성")
-                                .font(.subheadline)
-                                .foregroundStyle(colorScheme == .light ? .black : .white)
-                            
-                            if genderType == .male {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.accent, lineWidth: 2)
-                            }
-                        }
-                }
-                
-                Button {
-                    withAnimation {
-                        genderType = .female
-                    }
-                } label: {
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(height: 60)
-                        .foregroundStyle(.background2)
-                        .overlay {
-                            Text("여성")
-                                .font(.subheadline)
-                                .foregroundStyle(colorScheme == .light ? .black : .white)
-                            
-                            if genderType == .female {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.accent, lineWidth: 2)
-                            }
-                        }
-                }
-            }
-        }
-    }
-}
-
-fileprivate struct NationalityPicker: View {
-    @Binding var isForeigner: Bool?
-    @Environment(\.colorScheme) private var colorScheme
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            TitleView(title: "국적", isRequired: true)
-            
-            HStack {
-                Button {
-                    withAnimation {
-                        isForeigner = false
-                    }
-                } label: {
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(height: 60)
-                        .foregroundStyle(.background2)
-                        .overlay {
-                            Text("내국인")
-                                .font(.subheadline)
-                                .foregroundStyle(colorScheme == .light ? .black : .white)
-                            
-                            if isForeigner == false {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.accent, lineWidth: 2)
-                            }
-                        }
-                }
-                
-                Button {
-                    withAnimation {
-                        isForeigner = true
-                    }
-                } label: {
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(height: 60)
-                        .foregroundStyle(.background2)
-                        .overlay {
-                            Text("외국인")
-                                .font(.subheadline)
-                                .foregroundStyle(colorScheme == .light ? .black : .white)
-                            
-                            if isForeigner == true {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.accent, lineWidth: 2)
-                            }
                         }
                 }
             }
