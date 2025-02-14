@@ -138,15 +138,23 @@ struct SignupForm: View {
         .onAppear {
             viewModel.bindWithRegex()
         }
-        .fork { this in
+        .fork { content in
             if #available(iOS 17, *) {
-                this.onChange(of: viewModel.phoneNumber) {
-                    viewModel.formatPhoneNumber()
-                }
+                content
+                    .onChange(of: viewModel.phoneNumber) {
+                        viewModel.formatPhoneNumber()
+                    }
+                    .onChange(of: viewModel.birthDate) {
+                        viewModel.formatBirthDate()
+                    }
             } else {
-                this.onChange(of: viewModel.phoneNumber) { _ in
-                    viewModel.formatPhoneNumber()
-                }
+                content
+                    .onChange(of: viewModel.phoneNumber) { _ in
+                        viewModel.formatPhoneNumber()
+                    }
+                    .onChange(of: viewModel.birthDate) { _ in
+                        viewModel.formatBirthDate()
+                    }
             }
         }
     }

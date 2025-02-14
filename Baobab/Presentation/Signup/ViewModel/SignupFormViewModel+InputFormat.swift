@@ -9,10 +9,17 @@ import Foundation
 
 extension SignupFormViewModel {
     func formatPhoneNumber() {
-        if phoneNumber.count == 4 && phoneNumber.last != "-" {
-            insertHyphen(to: &phoneNumber, at: 3)
-        } else if phoneNumber.count == 9 && phoneNumber.last != "-" {
-            insertHyphen(to: &phoneNumber, at: 8)
+        guard phoneNumber.last != "-" else { return }
+        if phoneNumber.count == 4 || phoneNumber.count == 9 {
+            insertHyphen(to: &phoneNumber, at: phoneNumber.count - 1)
+        }
+    }
+    
+    func formatBirthDate() {
+        guard birthDate.last != "-" else { return }
+        print(birthDate.count)
+        if birthDate.count == 5 || birthDate.count == 8 {
+            insertHyphen(to: &birthDate, at: birthDate.count - 1)
         }
     }
     
