@@ -17,7 +17,6 @@ extension SignupFormViewModel {
     
     func formatBirthDate() {
         guard birthDate.last != "-" else { return }
-        print(birthDate.count)
         if birthDate.count == 5 || birthDate.count == 8 {
             insertHyphen(to: &birthDate, at: birthDate.count - 1)
         }

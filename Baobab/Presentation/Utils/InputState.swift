@@ -9,6 +9,6 @@ import Foundation
 
 enum InputState {
     case initial
-    case vaild
+    case valid
     case invalid
 }

@@ -14,7 +14,7 @@ extension SignupFormViewModel: RegexValidatable {
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [weak self] newValue -> InputState in
                 if self?.validate(email: newValue) == true {
-                    return .vaild
+                    return .valid
                 }
                 return .invalid
             }
@@ -26,7 +26,7 @@ extension SignupFormViewModel: RegexValidatable {
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [weak self] newValue -> InputState in
                 if self?.validate(password: newValue) == true {
-                    return .vaild
+                    return .valid
                 }
                 return .invalid
             }
@@ -38,7 +38,7 @@ extension SignupFormViewModel: RegexValidatable {
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [weak self] newValue -> InputState in
                 if newValue == self?.password {
-                    return .vaild
+                    return .valid
                 }
                 return .invalid
             }
@@ -50,7 +50,7 @@ extension SignupFormViewModel: RegexValidatable {
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [weak self] newValue -> InputState in
                 if self?.validate(nickName: newValue) == true {
-                    return .vaild
+                    return .valid
                 }
                 return .invalid
             }
@@ -62,7 +62,7 @@ extension SignupFormViewModel: RegexValidatable {
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [weak self] newValue -> InputState in
                 if self?.validate(name: newValue) == true {
-                    return .vaild
+                    return .valid
                 }
                 return .invalid
             }
@@ -74,21 +74,45 @@ extension SignupFormViewModel: RegexValidatable {
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [weak self] newValue -> InputState in
                 if self?.validate(birthDate: newValue) == true {
-                    return .vaild
+                    return .valid
                 }
                 return .invalid
             }
             .assign(to: \.inputStates[5], on: self)
             .store(in: &cancellables)
         
+        $genderType
+            .dropFirst()
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .map { newValue -> InputState in
+                if newValue != nil {
+                    return .valid
+                }
+                return .invalid
+            }
+            .assign(to: \.inputStates[6], on: self)
+            .store(in: &cancellables)
+        
+        $nationalityType
+            .dropFirst()
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .map { newValue -> InputState in
+                if newValue != nil {
+                    return .valid
+                }
+                return .invalid
+            }
+            .assign(to: \.inputStates[7], on: self)
+            .store(in: &cancellables)
+        
         $carrierType
-            .dropFirst(1)
+            .dropFirst()
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { newValue -> InputState in
                 if newValue == .none {
                     return .invalid
                 }
-                return .vaild
+                return .valid
             }
             .assign(to: \.inputStates[8], on: self)
             .store(in: &cancellables)
@@ -98,11 +122,24 @@ extension SignupFormViewModel: RegexValidatable {
             .debounce(for: 1, scheduler: DispatchQueue.main)
             .map { [weak self] newValue -> InputState in
                 if self?.validate(phoneNumber: newValue) == true {
-                    return .vaild
+                    return .valid
                 }
                 return .invalid
             }
             .assign(to: \.inputStates[9], on: self)
+            .store(in: &cancellables)
+        
+        $postCode
+            .combineLatest($address, $detailAddress)
+            .dropFirst(4)
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .map { (postCode, address, detailAddress) -> InputState in
+                if !postCode.isEmpty && !address.isEmpty && !detailAddress.isEmpty {
+                    return .valid
+                }
+                return .invalid
+            }
+            .assign(to: \.inputStates[10], on: self)
             .store(in: &cancellables)
     }
 }

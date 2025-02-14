@@ -22,7 +22,64 @@ final class SignupFormViewModel: ObservableObject {
     @Published var postCode: String = ""
     @Published var address: String = ""
     @Published var detailAddress: String = ""
-    @Published var inputStates: [InputState] = Array(repeating: .initial, count: 13)
+    @Published var inputStates: [InputState] = Array(repeating: .initial, count: 11)
+    @Published var isShowingAlert: Bool = false
     
     var cancellables: Set<AnyCancellable> = []
+    var alertMessage: String = ""
+    
+    func signup() {
+        guard validateRequiredFields() else {
+            isShowingAlert = true
+            return
+        }
+        
+        do {
+            let params = try createParameters()
+        } catch {
+            if let error = error as? SignupInputError {
+                alertMessage = error.rawValue
+            } else {
+                alertMessage = "필수 입력 사항을 정확하게 입력해 주세요."
+            }
+        }
+    }
+    
+    private func validateRequiredFields() -> Bool {
+        var isAllValid: Bool = true
+        for i in inputStates.indices.reversed() where inputStates[i] == .initial || inputStates[i] == .invalid {
+            inputStates[i] = .invalid
+            isAllValid = false
+            alertMessage = SignupInputError.allCases[i].rawValue
+        }
+        
+        return isAllValid
+    }
+    
+    private func createParameters() throws -> [String: Any] {
+        guard let genderType = genderType?.paramValue else {
+            throw SignupInputError.invalidPhoneNumber
+        }
+        
+        guard let nationalityType = nationalityType else {
+            throw SignupInputError.invalidNationalityType
+        }
+        
+        var params = [String: Any]()
+        params["email"] = email
+        params["password"] = password
+        params["nickName"] = nickName
+        params["name"] = name
+        params["carrierType"] = try carrierType.paramValue
+        params["phoneNumber"] = phoneNumber
+        params["genderType"] = genderType
+        params["isForeigner"] = nationalityType == .citizen ? false : true
+        params["birth"] = birthDate
+        params["address"] = address
+        params["detailAddress"] = detailAddress
+        params["post"] = postCode
+        params["basicAddress"] = true
+        
+        return params
+    }
 }

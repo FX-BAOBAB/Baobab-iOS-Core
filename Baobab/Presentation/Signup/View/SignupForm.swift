@@ -25,7 +25,7 @@ struct SignupForm: View {
                     placeholder: "ex: baobab@baobab.com"
                 )
                 .title("이메일")
-                .state($viewModel.inputStates[0], message: "올바른 이메일 형식을 입력하세요.")
+                .state($viewModel.inputStates[0], message: SignupInputError.invalidEmail.rawValue)
                 
                 TextForm(
                     text: $viewModel.password,
@@ -33,7 +33,7 @@ struct SignupForm: View {
                     isSecureText: true
                 )
                 .title("비밀번호")
-                .state($viewModel.inputStates[1], message: "대문자, 소문자, 특수문자 포함 8자 이상이어야 해요.")
+                .state($viewModel.inputStates[1], message: SignupInputError.invalidPassword.rawValue)
                 
                 TextForm(
                     text: $viewModel.confirmPassword,
@@ -41,21 +41,21 @@ struct SignupForm: View {
                     isSecureText: true
                 )
                 .title("비밀번호 확인")
-                .state($viewModel.inputStates[2], message: "비밀번호가 일치하지 않아요.")
+                .state($viewModel.inputStates[2], message: SignupInputError.passwordNotMatch.rawValue)
                 
                 TextForm(
                     text: $viewModel.nickName,
                     placeholder: "닉네임을 입력해 주세요."
                 )
                 .title("닉네임")
-                .state($viewModel.inputStates[3], message: "2자 이상 50자 이하로 입력해 주세요.")
+                .state($viewModel.inputStates[3], message: SignupInputError.invalidNickName.rawValue)
                 
                 TextForm(
                     text: $viewModel.name,
                     placeholder: "본명을 입력해 주세요."
                 )
                 .title("이름")
-                .state($viewModel.inputStates[4], message: "1자 이상, 50자 이하로 입력해 주세요.")
+                .state($viewModel.inputStates[4], message: SignupInputError.invalidName.rawValue)
                 
                 TextForm(
                     text: $viewModel.birthDate,
@@ -63,18 +63,18 @@ struct SignupForm: View {
                 )
                 .title("생년월일")
                 .keyboardType(.numberPad)
-                .state($viewModel.inputStates[5], message: "생년월일 8자리로 입력해 주세요.")
+                .state($viewModel.inputStates[5], message: SignupInputError.invalidBirthDate.rawValue)
                 
                 PickerButton(selected: $viewModel.genderType)
                     .title("성별")
-                    .state($viewModel.inputStates[6], message: "성별을 선택해 주세요.")
+                    .state($viewModel.inputStates[6], message: SignupInputError.invalidGenderType.rawValue)
                 
                 PickerButton(selected: $viewModel.nationalityType)
                     .title("국적")
-                    .state($viewModel.inputStates[7], message: "국적을 선택해 주세요.")
+                    .state($viewModel.inputStates[7], message: SignupInputError.invalidNationalityType.rawValue)
                 
                 CarrierPicker(carrierType: $viewModel.carrierType)
-                    .state($viewModel.inputStates[8], message: "통신사를 선택해 주세요.")
+                    .state($viewModel.inputStates[8], message: SignupInputError.invalidCarrierType.rawValue)
                 
                 TextForm(
                     text: $viewModel.phoneNumber,
@@ -82,7 +82,7 @@ struct SignupForm: View {
                 )
                 .title("전화번호")
                 .keyboardType(.numberPad)
-                .state($viewModel.inputStates[9], message: "전화번호 11자리로 입력해 주세요.")
+                .state($viewModel.inputStates[9], message: SignupInputError.invalidPhoneNumber.rawValue)
                 
                 AddressForm(
                     postCode: $viewModel.postCode,
@@ -90,9 +90,10 @@ struct SignupForm: View {
                     detailAddress: $viewModel.detailAddress,
                     isShowingSheet: $isShowingSheet
                 )
+                .state($viewModel.inputStates[10], message: SignupInputError.invalidAddress.rawValue)
                 
                 Button {
-                    
+                    viewModel.signup()
                 } label: {
                     Text("회원가입")
                         .padding()
@@ -101,6 +102,7 @@ struct SignupForm: View {
                         .background(.accent)
                         .cornerRadius(10)
                 }
+                .padding(.top)
             }
             .padding()
         }
@@ -155,6 +157,13 @@ struct SignupForm: View {
                     .onChange(of: viewModel.birthDate) { _ in
                         viewModel.formatBirthDate()
                     }
+            }
+        }
+        .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
+            Button {
+                
+            } label: {
+                Text("확인")
             }
         }
     }

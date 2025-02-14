@@ -28,4 +28,25 @@ enum CarrierType: String, CaseIterable {
             return nil
         }
     }
+    
+    var paramValue: String {
+        get throws {
+            switch self {
+            case .kt:
+                return "KT"
+            case .ktMVNO:
+                return "KT_MVNO"
+            case .skt:
+                return "SKT"
+            case .sktMVNO:
+                return "SKT_MVNO"
+            case .lgUPlus:
+                return "LGU_PLUS"
+            case .lgUPlusMVNO:
+                return "LGU_PLUS_MVNO"
+            default:
+                throw SignupInputError.invalidCarrierType
+            }
+        }
+    }
 }

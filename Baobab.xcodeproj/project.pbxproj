@@ -13,6 +13,7 @@
 		8E77427E2D5EBB1E003FE8E0 /* NationalityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77427D2D5EBB1E003FE8E0 /* NationalityType.swift */; };
 		8E7742802D5EBB32003FE8E0 /* CarrierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77427F2D5EBB32003FE8E0 /* CarrierType.swift */; };
 		8E7742822D5EBBE4003FE8E0 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7742812D5EBBE4003FE8E0 /* ViewModifier.swift */; };
+		8E7742852D5ECAEA003FE8E0 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7742842D5ECAEA003FE8E0 /* Errors.swift */; };
 		8E82B28E2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82B28D2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift */; };
 		8E82B2912D5C221D002A6BB2 /* PostCodeSearchWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82B2902D5C221D002A6BB2 /* PostCodeSearchWebView.swift */; };
 		8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A32D4BA43100824509 /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		8E77427D2D5EBB1E003FE8E0 /* NationalityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalityType.swift; sourceTree = "<group>"; };
 		8E77427F2D5EBB32003FE8E0 /* CarrierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierType.swift; sourceTree = "<group>"; };
 		8E7742812D5EBBE4003FE8E0 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
+		8E7742842D5ECAEA003FE8E0 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8E82B28D2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupFormViewModel+InputFormat.swift"; sourceTree = "<group>"; };
 		8E82B2902D5C221D002A6BB2 /* PostCodeSearchWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeSearchWebView.swift; sourceTree = "<group>"; };
 		8E9A40A32D4BA43100824509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				8E9A40BC2D4BAA4400824509 /* Factory+ViewModel.swift */,
+				8E7742842D5ECAEA003FE8E0 /* Errors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */,
 				8E9A40B82D4BA71700824509 /* LoginForm.swift in Sources */,
 				8E9A40BD2D4BAA4400824509 /* Factory+ViewModel.swift in Sources */,
+				8E7742852D5ECAEA003FE8E0 /* Errors.swift in Sources */,
 				8E9A40BA2D4BA72500824509 /* LoginFormModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
