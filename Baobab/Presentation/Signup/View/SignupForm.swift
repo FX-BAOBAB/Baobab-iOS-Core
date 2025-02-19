@@ -36,7 +36,7 @@ struct SignupForm: View {
                 .state($viewModel.inputStates[1], message: SignupInputError.invalidPassword.rawValue)
                 
                 TextForm(
-                    text: $viewModel.confirmPassword,
+                    text: $viewModel.passwordConfirmation,
                     placeholder: "비밀번호를 다시 한번 입력해 주세요",
                     isSecureText: true
                 )

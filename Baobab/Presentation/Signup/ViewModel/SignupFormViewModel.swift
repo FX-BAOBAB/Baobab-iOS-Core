@@ -11,7 +11,7 @@ import Foundation
 final class SignupFormViewModel: ObservableObject {    
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var confirmPassword: String = ""
+    @Published var passwordConfirmation: String = ""
     @Published var name: String = ""
     @Published var nickName: String = ""
     @Published var carrierType: CarrierType = .none
@@ -47,6 +47,7 @@ final class SignupFormViewModel: ObservableObject {
     
     private func validateRequiredFields() -> Bool {
         var isAllValid: Bool = true
+        // 입력 상태는 거꾸로 확인하고 alert은 가장 상단 항목부터 표시
         for i in inputStates.indices.reversed() where inputStates[i] == .initial || inputStates[i] == .invalid {
             inputStates[i] = .invalid
             isAllValid = false
