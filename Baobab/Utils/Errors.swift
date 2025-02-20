@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum NetworkError: Error {
+    case invalidEndpoint
+    case serverError(code: Int, message: String)
+}
+
 enum SignupInputError: String, Error, CaseIterable {
     case invalidEmail = "올바른 이메일 형식을 입력하세요."
     case invalidPassword = "대문자, 소문자, 특수문자 포함 8자 이상이어야 해요."

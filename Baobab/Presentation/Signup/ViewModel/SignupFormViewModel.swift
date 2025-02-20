@@ -6,9 +6,11 @@
 //
 
 import Combine
+import Factory
 import Foundation
 
-final class SignupFormViewModel: ObservableObject {    
+@MainActor
+final class SignupFormViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var passwordConfirmation: String = ""
@@ -25,6 +27,7 @@ final class SignupFormViewModel: ObservableObject {
     @Published var inputStates: [InputState] = Array(repeating: .initial, count: 11)
     @Published var isShowingAlert: Bool = false
     
+    @Injected(\.userRepository) private var repository: UserRepositoryProtocol
     var cancellables: Set<AnyCancellable> = []
     var alertMessage: String = ""
     
@@ -36,6 +39,20 @@ final class SignupFormViewModel: ObservableObject {
         
         do {
             let params = try createParameters()
+            Task {
+                let result = await repository.signup(params: params)
+                switch result {
+                case .success:
+                    alertMessage = "회원가입에 성공했어요!"
+                case .failure(let error):
+                    if let error = error as? NetworkError, case .serverError(let errorCode, let message) = error {
+                        alertMessage = "\(errorCode): \(message)"
+                    } else {
+                        alertMessage = error.localizedDescription
+                    }
+                }
+                isShowingAlert.toggle()
+            }
         } catch {
             if let error = error as? SignupInputError {
                 alertMessage = error.rawValue
@@ -66,20 +83,28 @@ final class SignupFormViewModel: ObservableObject {
             throw SignupInputError.invalidNationalityType
         }
         
-        var params = [String: Any]()
-        params["email"] = email
-        params["password"] = password
-        params["nickName"] = nickName
-        params["name"] = name
-        params["carrierType"] = try carrierType.paramValue
-        params["phoneNumber"] = phoneNumber
-        params["genderType"] = genderType
-        params["isForeigner"] = nationalityType == .citizen ? false : true
-        params["birth"] = birthDate
-        params["address"] = address
-        params["detailAddress"] = detailAddress
-        params["post"] = postCode
-        params["basicAddress"] = true
+        let params: [String: [String: Any]] = [
+            "result": [
+                "resultCode": 0,
+                "resultMessage": "string",
+                "resultDescription": "string"
+            ],
+            "body": [
+                "email": email,
+                "password": password,
+                "name": name,
+                "nickName": nickName,
+                "carrierType": try carrierType.paramValue,
+                "phoneNumber": phoneNumber,
+                "genderType": genderType,
+                "isForeigner": nationalityType == .citizen ? false : true,
+                "birth" : birthDate,
+                "address": address,
+                "detailAddress": detailAddress,
+                "post": postCode,
+                "basicAddress": true
+            ]
+        ]
         
         return params
     }
