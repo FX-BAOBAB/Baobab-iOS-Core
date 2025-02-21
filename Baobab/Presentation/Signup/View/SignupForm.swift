@@ -95,13 +95,21 @@ struct SignupForm: View {
                 Button {
                     viewModel.signup()
                 } label: {
-                    Text("회원가입")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .foregroundStyle(.white)
-                        .background(.accent)
-                        .cornerRadius(10)
+                    Group {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .tint(.white)
+                        } else {
+                            Text("회원가입")
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.accent)
+                    .cornerRadius(10)
                 }
+                .disabled(viewModel.isLoading)
                 .padding(.top)
             }
             .padding()

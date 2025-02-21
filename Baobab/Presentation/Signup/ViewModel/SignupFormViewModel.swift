@@ -26,6 +26,7 @@ final class SignupFormViewModel: ObservableObject {
     @Published var detailAddress: String = ""
     @Published var inputStates: [InputState] = Array(repeating: .initial, count: 11)
     @Published var isShowingAlert: Bool = false
+    @Published var isLoading: Bool = false
     
     @Injected(\.userRepository) private var repository: UserRepositoryProtocol
     var signupTask: Task<Void, Never>?
@@ -42,6 +43,7 @@ final class SignupFormViewModel: ObservableObject {
         do {
             let params = try createParameters()
             signupTask = Task {
+                isLoading = true
                 let result = await repository.signup(params: params)
                 
                 guard !Task.isCancelled else { return }    //Task 취소 후 더 이상 진행하지 않음
@@ -58,6 +60,7 @@ final class SignupFormViewModel: ObservableObject {
                     alertType = .failure
                 }
                 
+                isLoading = false
                 isShowingAlert.toggle()
             }
         } catch {
