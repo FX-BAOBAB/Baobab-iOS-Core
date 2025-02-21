@@ -20,7 +20,9 @@ extension SignupFormViewModel: RegexValidatable {
                 return .invalid
             }
             .receive(on: DispatchQueue.main)
-            .assign(to: \.inputStates[0], on: self)
+            .sink { [weak self] in
+                self?.inputStates[0] = $0
+            }
             .store(in: &cancellables)
         
         $password
@@ -33,7 +35,9 @@ extension SignupFormViewModel: RegexValidatable {
                 return .invalid
             }
             .receive(on: DispatchQueue.main)
-            .assign(to: \.inputStates[1], on: self)
+            .sink { [weak self] in
+                self?.inputStates[1] = $0
+            }
             .store(in: &cancellables)
         
         $passwordConfirmation
@@ -46,7 +50,9 @@ extension SignupFormViewModel: RegexValidatable {
                 return .invalid
             }
             .receive(on: DispatchQueue.main)
-            .assign(to: \.inputStates[2], on: self)
+            .sink { [weak self] in
+                self?.inputStates[2] = $0
+            }
             .store(in: &cancellables)
         
         $nickName
@@ -59,7 +65,9 @@ extension SignupFormViewModel: RegexValidatable {
                 return .invalid
             }
             .receive(on: DispatchQueue.main)
-            .assign(to: \.inputStates[3], on: self)
+            .sink { [weak self] in
+                self?.inputStates[3] = $0
+            }
             .store(in: &cancellables)
         
         $name
@@ -72,7 +80,9 @@ extension SignupFormViewModel: RegexValidatable {
                 return .invalid
             }
             .receive(on: DispatchQueue.main)
-            .assign(to: \.inputStates[4], on: self)
+            .sink { [weak self] in
+                self?.inputStates[4] = $0
+            }
             .store(in: &cancellables)
         
         $birthDate
@@ -85,7 +95,9 @@ extension SignupFormViewModel: RegexValidatable {
                 return .invalid
             }
             .receive(on: DispatchQueue.main)
-            .assign(to: \.inputStates[5], on: self)
+            .sink { [weak self] in
+                self?.inputStates[5] = $0
+            }
             .store(in: &cancellables)
         
         $genderType
@@ -97,7 +109,9 @@ extension SignupFormViewModel: RegexValidatable {
                 }
                 return .invalid
             }
-            .assign(to: \.inputStates[6], on: self)
+            .sink { [weak self] in
+                self?.inputStates[6] = $0
+            }
             .store(in: &cancellables)
         
         $nationalityType
@@ -109,7 +123,9 @@ extension SignupFormViewModel: RegexValidatable {
                 }
                 return .invalid
             }
-            .assign(to: \.inputStates[7], on: self)
+            .sink { [weak self] in
+                self?.inputStates[7] = $0
+            }
             .store(in: &cancellables)
         
         $carrierType
@@ -121,7 +137,9 @@ extension SignupFormViewModel: RegexValidatable {
                 }
                 return .valid
             }
-            .assign(to: \.inputStates[8], on: self)
+            .sink { [weak self] in
+                self?.inputStates[8] = $0
+            }
             .store(in: &cancellables)
         
         $phoneNumber
@@ -134,7 +152,9 @@ extension SignupFormViewModel: RegexValidatable {
                 return .invalid
             }
             .receive(on: DispatchQueue.main)
-            .assign(to: \.inputStates[9], on: self)
+            .sink { [weak self] in
+                self?.inputStates[9] = $0
+            }
             .store(in: &cancellables)
         
         $detailAddress
@@ -146,7 +166,9 @@ extension SignupFormViewModel: RegexValidatable {
                 }
                 return .invalid
             }
-            .assign(to: \.inputStates[10], on: self)
+            .sink { [weak self] in
+                self?.inputStates[10] = $0
+            }
             .store(in: &cancellables)
         
         $address
@@ -159,7 +181,9 @@ extension SignupFormViewModel: RegexValidatable {
                 }
                 return .invalid
             }
-            .assign(to: \.inputStates[10], on: self)
+            .sink { [weak self] in
+                self?.inputStates[10] = $0
+            }
             .store(in: &cancellables)
     }
 }
