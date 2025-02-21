@@ -28,6 +28,7 @@ final class SignupFormViewModel: ObservableObject {
     @Published var isShowingAlert: Bool = false
     
     @Injected(\.userRepository) private var repository: UserRepositoryProtocol
+    var signupTask: Task<Void, Never>?
     var cancellables: Set<AnyCancellable> = []
     var alertMessage: String = ""
     
@@ -39,8 +40,10 @@ final class SignupFormViewModel: ObservableObject {
         
         do {
             let params = try createParameters()
-            Task {
+            signupTask = Task {
                 let result = await repository.signup(params: params)
+                
+                guard !Task.isCancelled else { return }    //Task 취소 후 더 이상 진행하지 않음
                 switch result {
                 case .success:
                     alertMessage = "회원가입에 성공했어요!"
@@ -51,6 +54,7 @@ final class SignupFormViewModel: ObservableObject {
                         alertMessage = error.localizedDescription
                     }
                 }
+                
                 isShowingAlert.toggle()
             }
         } catch {

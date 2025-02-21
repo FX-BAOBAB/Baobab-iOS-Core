@@ -121,8 +121,7 @@ struct SignupForm: View {
         }
         .sheet(isPresented: $isShowingSheet) {
             NavigationStack {
-                PostCodeSearchWebView(roadAddress: $viewModel.address,
-                                      postCode: $viewModel.postCode)
+                PostCodeSearchWebView(roadAddress: $viewModel.address, postCode: $viewModel.postCode)
                     .edgesIgnoringSafeArea(.bottom)
                     .navigationTitle("주소검색")
                     .navigationBarTitleDisplayMode(.inline)
@@ -139,6 +138,10 @@ struct SignupForm: View {
         }
         .onAppear {
             viewModel.bindWithRegex()
+        }
+        .onDisappear {
+            //View가 사라질 때 진행 중인 Task 취소
+            viewModel.signupTask?.cancel()
         }
         .fork { content in
             if #available(iOS 17, *) {
