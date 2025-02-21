@@ -163,10 +163,15 @@ struct SignupForm: View {
             }
         }
         .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
-            Button {
-                
-            } label: {
-                Text("확인")
+            switch viewModel.alertType {
+            case .none:
+                Button("확인") {}
+            case .success:
+                Button("확인") {
+                    dismiss()
+                }
+            case .failure:
+                Button("확인") {}
             }
         }
     }

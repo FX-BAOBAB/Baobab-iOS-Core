@@ -31,6 +31,7 @@ final class SignupFormViewModel: ObservableObject {
     var signupTask: Task<Void, Never>?
     var cancellables: Set<AnyCancellable> = []
     var alertMessage: String = ""
+    var alertType: AlertType = .none
     
     func signup() {
         guard validateRequiredFields() else {
@@ -47,12 +48,14 @@ final class SignupFormViewModel: ObservableObject {
                 switch result {
                 case .success:
                     alertMessage = "회원가입에 성공했어요!"
+                    alertType = .success
                 case .failure(let error):
                     if let error = error as? NetworkError, case .serverError(let errorCode, let message) = error {
                         alertMessage = "\(errorCode): \(message)"
                     } else {
                         alertMessage = error.localizedDescription
                     }
+                    alertType = .failure
                 }
                 
                 isShowingAlert.toggle()
