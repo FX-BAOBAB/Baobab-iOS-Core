@@ -8,7 +8,8 @@
 import Combine
 import Factory
 
-final class LoginFormModel: ObservableObject {
+@MainActor
+final class LoginFormViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var isAutoLogin: Bool = false

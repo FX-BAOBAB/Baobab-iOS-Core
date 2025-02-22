@@ -10,11 +10,11 @@ import Factory
 import Foundation
 
 struct LoginForm: View {
-    @StateObject private var viewModel: LoginFormModel
+    @StateObject private var viewModel: LoginFormViewModel
     @State private var isKeyboardActive: Bool = false
     @State private var isShowingSignupForm: Bool = false
     
-    init(viewModel: LoginFormModel) {
+    init(viewModel: LoginFormViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -178,6 +178,6 @@ fileprivate struct SectionSeparator: View {
 
 #Preview {
     NavigationStack {
-        LoginForm(viewModel: LoginFormModel())
+        LoginForm(viewModel: LoginFormViewModel())
     }
 }
