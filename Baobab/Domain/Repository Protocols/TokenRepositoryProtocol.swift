@@ -10,6 +10,9 @@ import Foundation
 protocol TokenRepositoryProtocol {
     @discardableResult
     func save(_ token: String, for tokenType: TokenType) async -> Bool
+    
     func load(_ tokenType: TokenType) async -> String?
+    
+    @discardableResult
     func delete(_ tokenType: TokenType) async -> Bool
 }

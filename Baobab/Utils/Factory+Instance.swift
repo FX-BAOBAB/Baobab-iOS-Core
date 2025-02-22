@@ -34,10 +34,4 @@ extension Container {
             LoginUseCase()
         }
     }
-    
-    var loginViewModel: Factory<LoginFormModel> {
-        Factory(self) {
-            LoginFormModel()
-        }
-    }
 }

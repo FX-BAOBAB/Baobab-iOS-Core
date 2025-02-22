@@ -22,11 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         //ViewController
-        let rootViewController = UIHostingController(rootView: LoginForm(viewModel: Container.shared.loginViewModel()))
-        let viewController = UINavigationController(rootViewController: rootViewController)
+        let loginFormViewController = UIHostingController(rootView: LoginForm(viewModel: LoginFormViewModel()))
         
         //window attribute setting
-        self.window?.rootViewController = viewController
+        self.window?.rootViewController = loginFormViewController
         self.window?.makeKeyAndVisible()
     }
 

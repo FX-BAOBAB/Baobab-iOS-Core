@@ -35,7 +35,7 @@ final class TokenRepository: TokenRepositoryProtocol {
         
         if loadStatus == errSecSuccess {
             guard let loadedData = loadedData,
-                  let token = loadedData[kSecValueData] as? Data else {
+                  let token = loadedData as? Data else {
                 return nil
             }
             
@@ -44,6 +44,7 @@ final class TokenRepository: TokenRepositoryProtocol {
         return nil
     }
     
+    @discardableResult
     func delete(_ tokenType: TokenType) async -> Bool {
         let deleteQuery: NSDictionary = [
             kSecClass: kSecClassKey,

@@ -19,6 +19,11 @@ final class LoginUseCase: LoginUseCaseProtocol {
     func execute(params: [String: Any]) async -> Result<Void, Error> {
         do {
             let (accessToken, refreshToken) = try await authRepository.login(params: params)
+            //기존 토큰 값 삭제
+            await tokenRepository.delete(.accessToken)
+            await tokenRepository.delete(.refreshToken)
+            
+            //새로운 토큰 저장
             await tokenRepository.save(accessToken, for: .accessToken)
             await tokenRepository.save(refreshToken, for: .refreshToken)
             return .success(())
