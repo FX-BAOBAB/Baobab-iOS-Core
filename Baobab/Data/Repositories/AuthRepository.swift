@@ -8,7 +8,7 @@
 import Factory
 import Foundation
 
-final class UserRepository: UserRepositoryProtocol {
+final class AuthRepository: AuthRepositoryProtocol {
     @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDatasourceProtocol
     
     func signup(params: [String : Any]) async -> Result<Void, Error> {
@@ -31,5 +31,18 @@ final class UserRepository: UserRepositoryProtocol {
         } catch {
             return .failure(error)
         }
+    }
+    
+    func login(params: [String: Any]) async throws -> (accessToken: String, refreshToken: String) {
+        guard let endpoint = Bundle.main.loginEndPoint else {
+            throw NetworkError.invalidEndpoint
+        }
+        
+        let dto = try await remoteDataSource.post(to: endpoint, params: params, decoding: LoginResponseDTO.self)
+        guard let body = dto.body, dto.result.resultCode == 200 else {
+            throw NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage)
+        }
+        
+        return (body.accessToken, body.refreshToken)
     }
 }

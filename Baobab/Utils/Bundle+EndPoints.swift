@@ -24,4 +24,12 @@ extension Bundle {
         
         return url
     }
+    
+    var loginEndPoint: String? {
+        guard let resource, let url = resource["Login_URL"] as? String else {
+            return nil
+        }
+        
+        return url
+    }
 }

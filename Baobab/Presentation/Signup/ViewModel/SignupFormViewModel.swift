@@ -28,7 +28,7 @@ final class SignupFormViewModel: ObservableObject {
     @Published var isShowingAlert: Bool = false
     @Published var isLoading: Bool = false
     
-    @Injected(\.userRepository) private var repository: UserRepositoryProtocol
+    @Injected(\.authRepository) private var repository: AuthRepositoryProtocol
     var signupTask: Task<Void, Never>?
     var cancellables: Set<AnyCancellable> = []
     var alertMessage: String = ""

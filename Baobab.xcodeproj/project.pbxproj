@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2029A42D6964A80037AF3F /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029A32D6964A80037AF3F /* LoginResponseDTO.swift */; };
+		8E2029A72D696AB40037AF3F /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029A62D696AB40037AF3F /* LoginUseCase.swift */; };
+		8E2029A92D696C170037AF3F /* TokenRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029A82D696C170037AF3F /* TokenRepositoryProtocol.swift */; };
+		8E2029AB2D696CA30037AF3F /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029AA2D696CA30037AF3F /* TokenType.swift */; };
+		8E2029AD2D696CDE0037AF3F /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029AC2D696CDE0037AF3F /* TokenRepository.swift */; };
 		8E4CD37E2D4BB31800E681F8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */; };
 		8E5F28332D53319B00C05055 /* SignupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */; };
 		8E77427C2D5EBB0C003FE8E0 /* GenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E77427B2D5EBB0C003FE8E0 /* GenderType.swift */; };
@@ -27,8 +32,8 @@
 		8EADF3032D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EADF3022D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift */; };
 		8EADF3052D5D785E009EAC2B /* InputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EADF3042D5D785E009EAC2B /* InputState.swift */; };
 		8EC547992D66A25700191E3B /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC547982D66A25700191E3B /* RemoteDataSource.swift */; };
-		8EC5479C2D66A7D700191E3B /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC5479B2D66A7D700191E3B /* UserRepositoryProtocol.swift */; };
-		8EC5479F2D66A83400191E3B /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC5479E2D66A83400191E3B /* UserRepository.swift */; };
+		8EC5479C2D66A7D700191E3B /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC5479B2D66A7D700191E3B /* AuthRepositoryProtocol.swift */; };
+		8EC5479F2D66A83400191E3B /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC5479E2D66A83400191E3B /* AuthRepository.swift */; };
 		8EC547A42D66AA3400191E3B /* SignupResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC547A32D66AA3400191E3B /* SignupResponseDTO.swift */; };
 		8EC547A62D66AA6900191E3B /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC547A52D66AA6900191E3B /* RequestResult.swift */; };
 		8EC547A82D66AAC600191E3B /* Bundle+EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC547A72D66AAC600191E3B /* Bundle+EndPoints.swift */; };
@@ -61,6 +66,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E2029A32D6964A80037AF3F /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
+		8E2029A62D696AB40037AF3F /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		8E2029A82D696C170037AF3F /* TokenRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepositoryProtocol.swift; sourceTree = "<group>"; };
+		8E2029AA2D696CA30037AF3F /* TokenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
+		8E2029AC2D696CDE0037AF3F /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormViewModel.swift; sourceTree = "<group>"; };
 		8E77427B2D5EBB0C003FE8E0 /* GenderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderType.swift; sourceTree = "<group>"; };
@@ -82,8 +92,8 @@
 		8EADF3022D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupFormViewModel+Regex.swift"; sourceTree = "<group>"; };
 		8EADF3042D5D785E009EAC2B /* InputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputState.swift; sourceTree = "<group>"; };
 		8EC547982D66A25700191E3B /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
-		8EC5479B2D66A7D700191E3B /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
-		8EC5479E2D66A83400191E3B /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		8EC5479B2D66A7D700191E3B /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
+		8EC5479E2D66A83400191E3B /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		8EC547A32D66AA3400191E3B /* SignupResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponseDTO.swift; sourceTree = "<group>"; };
 		8EC547A52D66AA6900191E3B /* RequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		8EC547A72D66AAC600191E3B /* Bundle+EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+EndPoints.swift"; sourceTree = "<group>"; };
@@ -139,6 +149,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E2029A52D696A960037AF3F /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				8E2029A62D696AB40037AF3F /* LoginUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		8E5F282F2D53297200C05055 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +187,7 @@
 		8E7742772D5EB4AC003FE8E0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				8E2029A52D696A960037AF3F /* UseCases */,
 				8EC5479A2D66A7B800191E3B /* Repository Protocols */,
 				8E7742782D5EB4B7003FE8E0 /* Models */,
 			);
@@ -277,6 +296,7 @@
 				8E9A40BC2D4BAA4400824509 /* Factory+Instance.swift */,
 				8E7742842D5ECAEA003FE8E0 /* Errors.swift */,
 				8EC547A72D66AAC600191E3B /* Bundle+EndPoints.swift */,
+				8E2029AA2D696CA30037AF3F /* TokenType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -310,7 +330,8 @@
 		8EC5479A2D66A7B800191E3B /* Repository Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				8EC5479B2D66A7D700191E3B /* UserRepositoryProtocol.swift */,
+				8EC5479B2D66A7D700191E3B /* AuthRepositoryProtocol.swift */,
+				8E2029A82D696C170037AF3F /* TokenRepositoryProtocol.swift */,
 			);
 			path = "Repository Protocols";
 			sourceTree = "<group>";
@@ -318,7 +339,8 @@
 		8EC5479D2D66A82300191E3B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				8EC5479E2D66A83400191E3B /* UserRepository.swift */,
+				8EC5479E2D66A83400191E3B /* AuthRepository.swift */,
+				8E2029AC2D696CDE0037AF3F /* TokenRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -328,6 +350,7 @@
 			children = (
 				8EC547A52D66AA6900191E3B /* RequestResult.swift */,
 				8EC547A32D66AA3400191E3B /* SignupResponseDTO.swift */,
+				8E2029A32D6964A80037AF3F /* LoginResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -523,11 +546,13 @@
 				8E5F28332D53319B00C05055 /* SignupFormViewModel.swift in Sources */,
 				8EADF3032D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift in Sources */,
 				8EC547A82D66AAC600191E3B /* Bundle+EndPoints.swift in Sources */,
+				8E2029A92D696C170037AF3F /* TokenRepositoryProtocol.swift in Sources */,
 				8E77427C2D5EBB0C003FE8E0 /* GenderType.swift in Sources */,
 				8E7742822D5EBBE4003FE8E0 /* ViewModifier.swift in Sources */,
 				8EADF3052D5D785E009EAC2B /* InputState.swift in Sources */,
 				8E9D8BED2D680CA100510B4F /* AlertType.swift in Sources */,
 				8E77427E2D5EBB1E003FE8E0 /* NationalityType.swift in Sources */,
+				8E2029AD2D696CDE0037AF3F /* TokenRepository.swift in Sources */,
 				8EC547A62D66AA6900191E3B /* RequestResult.swift in Sources */,
 				8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */,
 				8ECD91482D58CA0900D6F315 /* View+Fork.swift in Sources */,
@@ -541,10 +566,13 @@
 				8E9A40B82D4BA71700824509 /* LoginForm.swift in Sources */,
 				8EC547992D66A25700191E3B /* RemoteDataSource.swift in Sources */,
 				8E9A40BD2D4BAA4400824509 /* Factory+Instance.swift in Sources */,
-				8EC5479F2D66A83400191E3B /* UserRepository.swift in Sources */,
+				8EC5479F2D66A83400191E3B /* AuthRepository.swift in Sources */,
 				8E7742852D5ECAEA003FE8E0 /* Errors.swift in Sources */,
-				8EC5479C2D66A7D700191E3B /* UserRepositoryProtocol.swift in Sources */,
+				8EC5479C2D66A7D700191E3B /* AuthRepositoryProtocol.swift in Sources */,
+				8E2029A42D6964A80037AF3F /* LoginResponseDTO.swift in Sources */,
 				8E9A40BA2D4BA72500824509 /* LoginFormModel.swift in Sources */,
+				8E2029AB2D696CA30037AF3F /* TokenType.swift in Sources */,
+				8E2029A72D696AB40037AF3F /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

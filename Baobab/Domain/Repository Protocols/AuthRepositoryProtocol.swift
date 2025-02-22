@@ -7,6 +7,7 @@
 
 import Foundation
 
-protocol UserRepositoryProtocol {
+protocol AuthRepositoryProtocol {
     func signup(params: [String: Any]) async -> Result<Void, Error>
+    func login(params: [String: Any]) async throws -> (accessToken: String, refreshToken: String)
 }

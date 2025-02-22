@@ -77,6 +77,9 @@ struct LoginForm: View {
                 SignupForm(viewModel: SignupFormViewModel())
             }
         }
+        .onDisappear {
+            viewModel.loginTask?.cancel()
+        }
     }
 }
 

@@ -16,9 +16,22 @@ extension Container {
     }
     
     //MARK: - Repository
-    var userRepository: Factory<UserRepositoryProtocol> {
+    var authRepository: Factory<AuthRepositoryProtocol> {
         Factory(self) {
-            UserRepository()
+            AuthRepository()
+        }
+    }
+    
+    var tokenRepository: Factory<TokenRepositoryProtocol> {
+        Factory(self) {
+            TokenRepository()
+        }
+    }
+    
+    //MARK: - UseCase
+    var loginUseCase: Factory<LoginUseCaseProtocol> {
+        Factory(self) {
+            LoginUseCase()
         }
     }
     
