@@ -20,72 +20,78 @@ struct LoginForm: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical) {
-                VStack(spacing: 20) {
-                    LogoView()
-                        .padding(.bottom, 20)
-                    
-                    BorderedTextField(input: $viewModel.email,
-                                      placeholder: "이메일을 입력하세요.",
-                                      isSecureText: false)
-                    
-                    BorderedTextField(input: $viewModel.password,
-                                      placeholder: "비밀번호를 입력하세요.",
-                                      isSecureText: true)
-                    
-                    AutoLoginBtn(isAutoLogin: $viewModel.isAutoLogin)
-                    
-                    Button {
-                        viewModel.login()
-                    } label: {
-                        Text("로그인")
-                            .bold()
-                            .foregroundStyle(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.accent)
-                    }
-                    .cornerRadius(30)
-                    .padding(.top)
-                    
-                    SectionSeparator()
+            ZStack {
+                ScrollView(.vertical) {
+                    VStack(spacing: 20) {
+                        LogoView()
+                            .padding(.bottom, 20)
+                        
+                        BorderedTextField(input: $viewModel.email,
+                                          placeholder: "이메일을 입력하세요.",
+                                          isSecureText: false)
+                        
+                        BorderedTextField(input: $viewModel.password,
+                                          placeholder: "비밀번호를 입력하세요.",
+                                          isSecureText: true)
+                        
+                        AutoLoginBtn(isAutoLogin: $viewModel.isAutoLogin)
+                        
+                        Button {
+                            viewModel.login()
+                        } label: {
+                            Text("로그인")
+                                .bold()
+                                .foregroundStyle(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(.accent)
+                        }
+                        .cornerRadius(30)
                         .padding(.top)
-                    
-                    Button {
-                        isShowingSignupForm.toggle()
-                    } label: {
-                        Text("회원가입")
-                            .bold()
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
+                        
+                        SectionSeparator()
+                            .padding(.top)
+                        
+                        Button {
+                            isShowingSignupForm.toggle()
+                        } label: {
+                            Text("회원가입")
+                                .bold()
+                                .font(.subheadline)
+                                .foregroundStyle(.gray)
+                        }
+                        
+                        Spacer()
                     }
-                    
-                    Spacer()
+                    .padding([.leading, .trailing, .bottom])
+                    .padding(.top, UIScreen.main.bounds.width * 0.2)
                 }
-                .padding([.leading, .trailing, .bottom])
-                .padding(.top, UIScreen.main.bounds.width * 0.2)
-            }
-            .scrollDisabled(!isKeyboardActive)
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-                isKeyboardActive = true
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                isKeyboardActive = false
-            }
-            .toolbar(.hidden)
-            .fullScreenCover(isPresented: $isShowingSignupForm) {
-                NavigationStack {
-                    SignupForm(viewModel: SignupFormViewModel())
+                .scrollDisabled(!isKeyboardActive)
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    isKeyboardActive = true
                 }
-            }
-            .onDisappear {
-                viewModel.loginTask?.cancel()
-            }
-            .navigationDestination(isPresented: $viewModel.isLoginComplete) {
-                EmptyView()
-            }
-            .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
-                Button("확인") {}
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    isKeyboardActive = false
+                }
+                .toolbar(.hidden)
+                .fullScreenCover(isPresented: $isShowingSignupForm) {
+                    NavigationStack {
+                        SignupForm(viewModel: SignupFormViewModel())
+                    }
+                }
+                .onDisappear {
+                    viewModel.loginTask?.cancel()
+                }
+                .navigationDestination(isPresented: $viewModel.isLoginComplete) {
+                    EmptyView()
+                }
+                .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
+                    Button("확인") {}
+                }
+                
+                if viewModel.isLoading {
+                    SpinningIndicator()
+                }
             }
         }
     }

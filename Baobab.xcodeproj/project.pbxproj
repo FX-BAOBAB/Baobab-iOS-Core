@@ -31,6 +31,7 @@
 		8EADF3012D5D65C8009EAC2B /* RegexValidatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EADF3002D5D65C8009EAC2B /* RegexValidatable.swift */; };
 		8EADF3032D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EADF3022D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift */; };
 		8EADF3052D5D785E009EAC2B /* InputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EADF3042D5D785E009EAC2B /* InputState.swift */; };
+		8EC0102F2D6E8E190059360D /* SpinningIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0102E2D6E8E190059360D /* SpinningIndicator.swift */; };
 		8EC547992D66A25700191E3B /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC547982D66A25700191E3B /* RemoteDataSource.swift */; };
 		8EC5479C2D66A7D700191E3B /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC5479B2D66A7D700191E3B /* AuthRepositoryProtocol.swift */; };
 		8EC5479F2D66A83400191E3B /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC5479E2D66A83400191E3B /* AuthRepository.swift */; };
@@ -91,6 +92,7 @@
 		8EADF3002D5D65C8009EAC2B /* RegexValidatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexValidatable.swift; sourceTree = "<group>"; };
 		8EADF3022D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupFormViewModel+Regex.swift"; sourceTree = "<group>"; };
 		8EADF3042D5D785E009EAC2B /* InputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputState.swift; sourceTree = "<group>"; };
+		8EC0102E2D6E8E190059360D /* SpinningIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningIndicator.swift; sourceTree = "<group>"; };
 		8EC547982D66A25700191E3B /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		8EC5479B2D66A7D700191E3B /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8EC5479E2D66A83400191E3B /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		8E82B28F2D5C2169002A6BB2 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				8EC0102D2D6E8E0A0059360D /* SpinningIndicator */,
 				8EADF2FF2D5D658C009EAC2B /* Regex */,
 				8E82B2942D5C2A75002A6BB2 /* Address */,
 			);
@@ -307,6 +310,14 @@
 				8EADF3002D5D65C8009EAC2B /* RegexValidatable.swift */,
 			);
 			path = Regex;
+			sourceTree = "<group>";
+		};
+		8EC0102D2D6E8E0A0059360D /* SpinningIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				8EC0102E2D6E8E190059360D /* SpinningIndicator.swift */,
+			);
+			path = SpinningIndicator;
 			sourceTree = "<group>";
 		};
 		8EC547962D66A1A100191E3B /* Data */ = {
@@ -555,6 +566,7 @@
 				8E2029AD2D696CDE0037AF3F /* TokenRepository.swift in Sources */,
 				8EC547A62D66AA6900191E3B /* RequestResult.swift in Sources */,
 				8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */,
+				8EC0102F2D6E8E190059360D /* SpinningIndicator.swift in Sources */,
 				8ECD91482D58CA0900D6F315 /* View+Fork.swift in Sources */,
 				8E82B28E2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift in Sources */,
 				8EADF3012D5D65C8009EAC2B /* RegexValidatable.swift in Sources */,
