@@ -83,7 +83,9 @@ struct LoginForm: View {
                     viewModel.loginTask?.cancel()
                 }
                 .navigationDestination(isPresented: $viewModel.isLoginComplete) {
-                    EmptyView()
+                    TabBarView()
+                        .navigationBarBackButtonHidden()
+                        .edgesIgnoringSafeArea(.bottom)
                 }
                 .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
                     Button("확인") {}
