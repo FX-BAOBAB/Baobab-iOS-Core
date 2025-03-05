@@ -69,7 +69,7 @@ actor TokenInterceptor: RequestInterceptor {
                 } else {
                     //Refresh Token 만료
                     completion(.doNotRetry)
-                    //TODO: Refresh Token 만료 알림
+                    NotificationCenter.default.post(name: .refreshTokenExpired, object: nil)
                 }
             } catch {
                 completion(.doNotRetryWithError(error))
