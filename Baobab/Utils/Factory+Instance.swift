@@ -5,13 +5,18 @@
 //  Created by 이정훈 on 1/30/25.
 //
 
+import Alamofire
 import Factory
 
 extension Container {
     //MARK: - DataSource
-    var remoteDataSource: Factory<RemoteDatasourceProtocol> {
+    var remoteDataSource: Factory<RemoteDataSourceProtocol> {
         Factory(self) {
-            RemoteDataSource.shared
+            let dataSource = RemoteDataSource()
+            let tokenInterceptor = TokenInterceptor(remoteDataSource: dataSource)
+            dataSource.tokenInterceptor = tokenInterceptor
+            
+            return dataSource
         }
     }
     

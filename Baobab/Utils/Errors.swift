@@ -9,6 +9,8 @@ import Foundation
 
 enum NetworkError: Error {
     case invalidEndpoint
+    case interceptorNotFound
+    case noTokenValue
     case serverError(code: Int, message: String)
 }
 
