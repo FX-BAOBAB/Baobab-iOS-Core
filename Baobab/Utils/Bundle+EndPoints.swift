@@ -32,4 +32,20 @@ extension Bundle {
         
         return url
     }
+    
+    var tradeArticleEndPoint: String? {
+        guard let resource, let url = resource["TradeArticle_URL"] as? String else {
+            return nil
+        }
+        
+        return url
+    }
+    
+    var reissueEndPoint: String? {
+        guard let resource, let url = resource["Reissue_URL"] as? String else {
+            return nil
+        }
+        
+        return url
+    }
 }
