@@ -9,7 +9,7 @@ import Factory
 import Foundation
 
 final class AuthRepository: AuthRepositoryProtocol {
-    @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDatasourceProtocol
+    @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDataSourceProtocol
     
     func signup(params: [String : Any]) async -> Result<Void, Error> {
         guard let endpoint = Bundle.main.signupEndPoint else {

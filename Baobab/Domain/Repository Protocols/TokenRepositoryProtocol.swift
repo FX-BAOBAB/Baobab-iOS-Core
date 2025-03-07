@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TokenRepositoryProtocol {
+protocol TokenRepositoryProtocol: Sendable {
     @discardableResult
     func save(_ token: String, for tokenType: TokenType) async -> Bool
     
