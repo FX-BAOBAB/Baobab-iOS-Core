@@ -33,6 +33,12 @@ extension Container {
         }
     }
     
+    var tradeArticleRepository: Factory<TradeArticleRepositoryProtocol> {
+        Factory(self) {
+            TradeArticleRepository()
+        }
+    }
+    
     //MARK: - UseCase
     var loginUseCase: Factory<LoginUseCaseProtocol> {
         Factory(self) {
