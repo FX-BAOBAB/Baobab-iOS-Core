@@ -7,21 +7,21 @@
 
 import Foundation
 
-// MARK: - TradeArticleListResponseDTO
+// MARK: - TradeArticlesResponseDTO
 struct TradeArticlesResponseDTO: Decodable {
     let result: RequestResult
     let body: [TradeArticlesResponseBody]
 }
 
 // MARK: - Body
-struct TradeArticlesResponseBody: Decodable {
+struct TradeArticlesResponseBody: Codable {
     let id, title, content, category: String
     let price: Int
     let registeredAt, status: String
     let imageList: [ImageList]
     let nickname: String
-    let profileImageURL: String?
-    
+    let profileImageURL: String
+
     enum CodingKeys: String, CodingKey {
         case id, title, content, category, price, registeredAt, status, imageList, nickname
         case profileImageURL = "profileImageUrl"
@@ -29,10 +29,10 @@ struct TradeArticlesResponseBody: Decodable {
 }
 
 // MARK: - ImageList
-struct ImageList: Decodable {
+struct ImageList: Codable {
     let imageID: String
     let imageURL: String
-    
+
     enum CodingKeys: String, CodingKey {
         case imageID = "imageId"
         case imageURL = "imageUrl"
