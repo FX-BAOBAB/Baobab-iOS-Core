@@ -1,0 +1,60 @@
+{
+    "result": {
+        "resultCode": 200,
+        "resultMessage": "성공",
+        "resultDescription": "성공"
+    },
+    "body": [
+        {
+            "id": "67c701896ea977024a7d60ba",
+            "title": "iPhone 15 pro ",
+            "content": "아이폰 팔아여",
+            "category": "DIGITAL_DEVICES",
+            "price": 1500000,
+            "registeredAt": "2025-03-04T13:35:05.196",
+            "status": "ON_SALE",
+            "imageList": [
+                {
+                    "imageId": "nx3X2lzjMmsFumg0iaPoizhHT+eOvNn0EOuASvKgHCOKpuvFvQZP2W7KOpiww1P/LKyL3N4baXeXhU0ksWSUUg==",
+                    "imageUrl": "https://baobab.run/article-service/open-api/images/53edc0be-e824-4b38-8c10-7556e6b4f557.png"
+                }
+            ],
+            "nickname": "exampl",
+            "profileImageUrl": "https://baobab.run/user-service/open-api/images/5ff8b365-aa0c-42a6-a7cf-ea1901b65232.png"
+        },
+        {
+            "id": "67c2ef0b63f25926a9359c4b",
+            "title": "제목",
+            "content": "내용",
+            "category": "DIGITAL_DEVICES",
+            "price": 10000,
+            "registeredAt": "2025-03-01T11:27:07.705",
+            "status": "ON_SALE",
+            "imageList": [
+                {
+                    "imageId": "JkSBgJQUoZBJSj7tyg70n8MySm2LA4sAnSAVtapAcIV1AirTKlOISSeSAgxDvjlcLKyL3N4baXeXhU0ksWSUUg==",
+                    "imageUrl": "https://baobab.run/article-service/open-api/images/57138977-2d76-4c06-8a35-fe6d1aace991.png"
+                }
+            ],
+            "nickname": "dsadsadas",
+            "profileImageUrl": ""
+        },
+        {
+            "id": "67c2eef263f25926a9359c4a",
+            "title": "제목",
+            "content": "내용",
+            "category": "DIGITAL_DEVICES",
+            "price": 10000,
+            "registeredAt": "2025-03-01T11:26:42.431",
+            "status": "ON_SALE",
+            "imageList": [
+                {
+                    "imageId": "JkSBgJQUoZBJSj7tyg70n8MySm2LA4sAnSAVtapAcIWMk44RNAcNFKQ+guB1ihkzhsepXmIOQl8i3o+LgSUPwQ==",
+                    "imageUrl": "https://baobab.run/article-service/open-api/images/75df4d96-c528-4d17-ad63-98bdef748860.png"
+                }
+            ],
+            "nickname": "dsadsadas",
+            "profileImageUrl": ""
+        }
+    ]
+}
