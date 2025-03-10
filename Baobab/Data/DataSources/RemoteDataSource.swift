@@ -24,14 +24,19 @@ protocol RemoteDataSourceProtocol: AnyObject {
 }
 
 final class RemoteDataSource: RemoteDataSourceProtocol {
+    private let session: Session
     weak var tokenInterceptor: TokenInterceptor?
+    
+    init(session: Session = Session.default) {
+        self.session = session
+    }
     
     func get<T: Decodable>(to endpoint: String, decoding type: T.Type) async throws -> T {
         guard let interceptor = tokenInterceptor else {
             throw NetworkError.interceptorNotFound
         }
         
-        return try await AF.request(endpoint, interceptor: interceptor)
+        return try await session.request(endpoint, interceptor: interceptor)
                             .serializingDecodable(type)
                             .value
     }
@@ -42,7 +47,7 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
                             token: String,
                             decoding type: T.Type) async throws -> T {
         let headers: HTTPHeaders = [.authorization(bearerToken: token)]
-        return try await AF.request(endpoint,
+        return try await session.request(endpoint,
                                     method: .post,
                                     parameters: params,
                                     encoding: JSONEncoding.default,
@@ -52,7 +57,7 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
     }
     
     func post<T: Decodable>(to endpoint: String, params: Parameters, decoding type: T.Type) async throws -> T {
-        return try await AF.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
+        return try await session.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
                             .serializingDecodable(type)
                             .value
     }

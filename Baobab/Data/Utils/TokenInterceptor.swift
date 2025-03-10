@@ -13,7 +13,7 @@ actor TokenInterceptor: RequestInterceptor {
     @Injected(\.tokenRepository) private var tokenRepository: TokenRepositoryProtocol
     private weak var remoteDataSource: RemoteDataSourceProtocol?
     
-    init(remoteDataSource: RemoteDataSource) {
+    init(remoteDataSource: RemoteDataSourceProtocol) {
         self.remoteDataSource = remoteDataSource
     }
     
