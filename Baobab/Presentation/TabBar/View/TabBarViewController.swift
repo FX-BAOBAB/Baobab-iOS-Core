@@ -9,7 +9,9 @@ import UIKit
 import SwiftUI
 
 final class TabBarViewController: UITabBarController {
-    private let tradeArticleTableViewController: TradeArticleTableViewController = .init()
+    private let tradeArticleTableViewController: TradeArticleTableViewController = .init(
+        viewModel: TradeArticleTableViewModel()
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()

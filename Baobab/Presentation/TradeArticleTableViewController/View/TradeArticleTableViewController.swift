@@ -7,8 +7,9 @@
 
 import UIKit
 import SwiftUI
+import RxSwift
 
-class TradeArticleTableViewController: UIViewController {
+final class TradeArticleTableViewController: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +25,17 @@ class TradeArticleTableViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         return label
     }()
+    let viewModel: TradeArticleTableViewModel
+    let disposeBag: DisposeBag = DisposeBag()
+    
+    init(viewModel: TradeArticleTableViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +47,13 @@ class TradeArticleTableViewController: UIViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         setupLayout()
+        bind()
+        viewModel.fetchArticles()
     }
 
-  
+    override func viewDidDisappear(_ animated: Bool) {
+        viewModel.task?.cancel()
+    }
 }
 
 extension TradeArticleTableViewController: UITableViewDelegate {
@@ -45,6 +61,6 @@ extension TradeArticleTableViewController: UITableViewDelegate {
 }
 
 #Preview {
-    TradeArticleTableViewController()
+    TradeArticleTableViewController(viewModel: TradeArticleTableViewModel())
         .makePreview()
 }
