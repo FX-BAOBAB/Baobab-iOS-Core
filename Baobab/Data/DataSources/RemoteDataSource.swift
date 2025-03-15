@@ -24,19 +24,14 @@ protocol RemoteDataSourceProtocol: AnyObject {
 }
 
 final class RemoteDataSource: RemoteDataSourceProtocol {
-    private let session: Session
-    weak var tokenInterceptor: TokenInterceptor?
+    @Injected(\.session) private var session: Session
     
-    init(session: Session = Session.default) {
-        self.session = session
-    }
+    static let shared: RemoteDataSource = .init()
+    
+    private init() {}
     
     func get<T: Decodable>(to endpoint: String, decoding type: T.Type) async throws -> T {
-        guard let interceptor = tokenInterceptor else {
-            throw NetworkError.interceptorNotFound
-        }
-        
-        return try await session.request(endpoint, interceptor: interceptor)
+        return try await session.request(endpoint, interceptor: TokenInterceptor.shared)
                             .serializingDecodable(type)
                             .value
     }
