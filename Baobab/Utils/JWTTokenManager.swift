@@ -1,5 +1,5 @@
 //
-//  TokenRepository.swift
+//  JWTTokenManager.swift
 //  Baobab
 //
 //  Created by 이정훈 on 2/22/25.
@@ -8,9 +8,19 @@
 import Foundation
 import Security
 
-final class TokenRepository: TokenRepositoryProtocol {
+struct JWTTokenManager {
+    static let shared: JWTTokenManager = .init()
+    var accessToken: String? {
+        load(.accessToken)
+    }
+    var refreshToken: String? {
+        load(.refreshToken)
+    }
+    
+    private init() {}
+    
     @discardableResult
-    func save(_ token: String, for tokenType: TokenType) async -> Bool {
+    func save(_ token: String, for tokenType: TokenType) -> Bool {
         let saveQuery: NSDictionary = [
             kSecClass: kSecClassKey,    //키체임 암호화 클래스: 암호화 키
             kSecAttrType: tokenType.rawValue,
@@ -24,7 +34,7 @@ final class TokenRepository: TokenRepositoryProtocol {
         return false
     }
     
-    func load(_ tokenType: TokenType) async -> String? {
+    private func load(_ tokenType: TokenType) -> String? {
         let loadQuery: NSDictionary = [
             kSecClass: kSecClassKey,
             kSecAttrType: tokenType.rawValue,
@@ -45,7 +55,7 @@ final class TokenRepository: TokenRepositoryProtocol {
     }
     
     @discardableResult
-    func delete(_ tokenType: TokenType) async -> Bool {
+    func delete(_ tokenType: TokenType) -> Bool {
         let deleteQuery: NSDictionary = [
             kSecClass: kSecClassKey,
             kSecAttrType: tokenType.rawValue,
@@ -56,5 +66,23 @@ final class TokenRepository: TokenRepositoryProtocol {
             return true
         }
         return false
+    }
+    
+    func fetchNewAccessToken(from refreshToken: String) async throws -> String {
+        guard let endpoint = Bundle.main.reissueEndPoint else {
+            throw NetworkError.invalidEndpoint
+        }
+        
+        let params: [String: Any?] = [
+            "result": [
+                "resultCode": 0,
+                "resultMessage": "string",
+                "resultDescription": "string"
+            ],
+            "body": nil
+        ]
+        
+        let dto = try await RemoteDataSource.shared.post(to: endpoint, params: params, token: refreshToken, decoding: TokenReissueResponseDTO.self)
+        return dto.body.token
     }
 }
