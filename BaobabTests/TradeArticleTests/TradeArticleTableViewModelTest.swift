@@ -19,11 +19,14 @@ final class TradeArticleTableViewModelTest: XCTestCase {
     @MainActor
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [MockTradeArticleListURLProtocol.self]
-        let session = Session(configuration: configuration)
+        Container.shared.session.register {
+            let configuration = URLSessionConfiguration.default
+            configuration.protocolClasses = [MockTradeArticleListURLProtocol.self]
+            let session = Session(configuration: configuration)
+            return session
+        }
         Container.shared.remoteDataSource.register {
-            let dataSource = RemoteDataSource(session: session)
+            let dataSource = RemoteDataSource()
             self.interceptor = TokenInterceptor(remoteDataSource: dataSource)
             dataSource.tokenInterceptor = self.interceptor
             return dataSource

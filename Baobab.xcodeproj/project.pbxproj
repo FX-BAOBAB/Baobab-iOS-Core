@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		8E2029A42D6964A80037AF3F /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029A32D6964A80037AF3F /* LoginResponseDTO.swift */; };
 		8E2029A72D696AB40037AF3F /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029A62D696AB40037AF3F /* LoginUseCase.swift */; };
-		8E2029A92D696C170037AF3F /* TokenRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029A82D696C170037AF3F /* TokenRepositoryProtocol.swift */; };
 		8E2029AB2D696CA30037AF3F /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029AA2D696CA30037AF3F /* TokenType.swift */; };
-		8E2029AD2D696CDE0037AF3F /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029AC2D696CDE0037AF3F /* TokenRepository.swift */; };
+		8E2029AD2D696CDE0037AF3F /* JWTTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2029AC2D696CDE0037AF3F /* JWTTokenManager.swift */; };
 		8E4CD37E2D4BB31800E681F8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */; };
 		8E505DB82D77D780007CC7E8 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E505DB72D77D780007CC7E8 /* Notification+Name.swift */; };
 		8E5F28332D53319B00C05055 /* SignupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */; };
@@ -29,6 +28,8 @@
 		8E7742852D5ECAEA003FE8E0 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7742842D5ECAEA003FE8E0 /* Errors.swift */; };
 		8E82B28E2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82B28D2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift */; };
 		8E82B2912D5C221D002A6BB2 /* PostCodeSearchWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82B2902D5C221D002A6BB2 /* PostCodeSearchWebView.swift */; };
+		8E84FCDF2D8254D4002186F3 /* TradeArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E84FCDE2D8254D4002186F3 /* TradeArticleTableViewCell.swift */; };
+		8E84FCE12D825C41002186F3 /* TradeArticleTableViewController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E84FCE02D825C41002186F3 /* TradeArticleTableViewController+Binding.swift */; };
 		8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A32D4BA43100824509 /* AppDelegate.swift */; };
 		8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A82D4BA43100824509 /* SceneDelegate.swift */; };
 		8E9A40AE2D4BA43100824509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9A40A42D4BA43100824509 /* Assets.xcassets */; };
@@ -92,9 +93,8 @@
 /* Begin PBXFileReference section */
 		8E2029A32D6964A80037AF3F /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
 		8E2029A62D696AB40037AF3F /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
-		8E2029A82D696C170037AF3F /* TokenRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8E2029AA2D696CA30037AF3F /* TokenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
-		8E2029AC2D696CDE0037AF3F /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
+		8E2029AC2D696CDE0037AF3F /* JWTTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTTokenManager.swift; sourceTree = "<group>"; };
 		8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8E505DB72D77D780007CC7E8 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormViewModel.swift; sourceTree = "<group>"; };
@@ -111,6 +111,8 @@
 		8E7742842D5ECAEA003FE8E0 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8E82B28D2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupFormViewModel+InputFormat.swift"; sourceTree = "<group>"; };
 		8E82B2902D5C221D002A6BB2 /* PostCodeSearchWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeSearchWebView.swift; sourceTree = "<group>"; };
+		8E84FCDE2D8254D4002186F3 /* TradeArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleTableViewCell.swift; sourceTree = "<group>"; };
+		8E84FCE02D825C41002186F3 /* TradeArticleTableViewController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TradeArticleTableViewController+Binding.swift"; sourceTree = "<group>"; };
 		8E9A40A32D4BA43100824509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E9A40A42D4BA43100824509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E9A40A52D4BA43100824509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		8E9A40BB2D4BAA3300824509 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8E2029AC2D696CDE0037AF3F /* JWTTokenManager.swift */,
 				8E9A40BC2D4BAA4400824509 /* Factory+Instance.swift */,
 				8E7742842D5ECAEA003FE8E0 /* Errors.swift */,
 				8EC547A72D66AAC600191E3B /* Bundle+EndPoints.swift */,
@@ -451,6 +454,8 @@
 			children = (
 				8EC010482D6E99560059360D /* TradeArticleTableViewController.swift */,
 				8EC0104C2D6EA1650059360D /* TradeArticleTableViewController+Layout.swift */,
+				8E84FCDE2D8254D4002186F3 /* TradeArticleTableViewCell.swift */,
+				8E84FCE02D825C41002186F3 /* TradeArticleTableViewController+Binding.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,7 +483,6 @@
 			isa = PBXGroup;
 			children = (
 				8EC5479B2D66A7D700191E3B /* AuthRepositoryProtocol.swift */,
-				8E2029A82D696C170037AF3F /* TokenRepositoryProtocol.swift */,
 				8EA956392D76719C000F894E /* TradeArticleRepositoryProtocol.swift */,
 			);
 			path = "Repository Protocols";
@@ -488,7 +492,6 @@
 			isa = PBXGroup;
 			children = (
 				8EC5479E2D66A83400191E3B /* AuthRepository.swift */,
-				8E2029AC2D696CDE0037AF3F /* TokenRepository.swift */,
 				8EA9563B2D7671FB000F894E /* TradeArticleRepository.swift */,
 			);
 			path = Repositories;
@@ -700,7 +703,6 @@
 				8EC010552D6EB00A0059360D /* ImageData.swift in Sources */,
 				8EADF3032D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift in Sources */,
 				8EC547A82D66AAC600191E3B /* Bundle+EndPoints.swift in Sources */,
-				8E2029A92D696C170037AF3F /* TokenRepositoryProtocol.swift in Sources */,
 				8E75B45E2D7A7608009D710E /* TradeArticleTableViewModel.swift in Sources */,
 				8E77427C2D5EBB0C003FE8E0 /* GenderType.swift in Sources */,
 				8E7742822D5EBBE4003FE8E0 /* ViewModifier.swift in Sources */,
@@ -709,12 +711,13 @@
 				8E77427E2D5EBB1E003FE8E0 /* NationalityType.swift in Sources */,
 				8EA956402D7683E1000F894E /* TokenInterceptor.swift in Sources */,
 				8EC0104F2D6EA93A0059360D /* TabBarView.swift in Sources */,
-				8E2029AD2D696CDE0037AF3F /* TokenRepository.swift in Sources */,
+				8E2029AD2D696CDE0037AF3F /* JWTTokenManager.swift in Sources */,
 				8EA956422D769DA1000F894E /* TokenReissueResponseDTO.swift in Sources */,
 				8EC010532D6EAE970059360D /* ItemCategory.swift in Sources */,
 				8EC010572D6EB0430059360D /* ItemStatus.swift in Sources */,
 				8EC547A62D66AA6900191E3B /* RequestResult.swift in Sources */,
 				8EA9563A2D76719C000F894E /* TradeArticleRepositoryProtocol.swift in Sources */,
+				8E84FCDF2D8254D4002186F3 /* TradeArticleTableViewCell.swift in Sources */,
 				8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */,
 				8EC0102F2D6E8E190059360D /* SpinningIndicator.swift in Sources */,
 				8ECD91482D58CA0900D6F315 /* View+Fork.swift in Sources */,
@@ -727,6 +730,7 @@
 				8ECD91452D58C51800D6F315 /* SignupForm.swift in Sources */,
 				8E82B2912D5C221D002A6BB2 /* PostCodeSearchWebView.swift in Sources */,
 				8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */,
+				8E84FCE12D825C41002186F3 /* TradeArticleTableViewController+Binding.swift in Sources */,
 				8E9A40B82D4BA71700824509 /* LoginForm.swift in Sources */,
 				8EA9563E2D7673C4000F894E /* TradeArticlesResponseDTO.swift in Sources */,
 				8EC547992D66A25700191E3B /* RemoteDataSource.swift in Sources */,

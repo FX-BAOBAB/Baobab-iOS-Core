@@ -9,14 +9,17 @@ import Alamofire
 import Factory
 
 extension Container {
+    //MARK: - Session
+    var session: Factory<Session> {
+        Factory(self) {
+            return Session.default
+        }
+    }
+    
     //MARK: - DataSource
     var remoteDataSource: Factory<RemoteDataSourceProtocol> {
         Factory(self) {
-            let dataSource = RemoteDataSource()
-            let tokenInterceptor = TokenInterceptor(remoteDataSource: dataSource)
-            dataSource.tokenInterceptor = tokenInterceptor
-            
-            return dataSource
+            return RemoteDataSource.shared
         }
     }
     
@@ -24,12 +27,6 @@ extension Container {
     var authRepository: Factory<AuthRepositoryProtocol> {
         Factory(self) {
             AuthRepository()
-        }
-    }
-    
-    var tokenRepository: Factory<TokenRepositoryProtocol> {
-        Factory(self) {
-            TokenRepository()
         }
     }
     
