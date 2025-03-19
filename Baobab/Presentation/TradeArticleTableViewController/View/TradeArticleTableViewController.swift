@@ -11,10 +11,11 @@ import RxSwift
 
 final class TradeArticleTableViewController: UIViewController {
     let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.estimatedRowHeight = 100    //Cell height가 결정되기 전 임시 height
         tableView.rowHeight = UITableView.automaticDimension    //동적 height 설정
+        tableView.separatorStyle = .none
         tableView.register(TradeArticleTableViewCell.self, forCellReuseIdentifier: TradeArticleTableViewCell.reuseIdentifier)
         return tableView
     }()
