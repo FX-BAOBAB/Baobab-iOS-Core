@@ -201,14 +201,6 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		8E505DB62D77C9F0007CC7E8 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				8EA9563F2D7683E1000F894E /* TokenInterceptor.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		8E5F282F2D53297200C05055 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +389,7 @@
 		8E9A40BB2D4BAA3300824509 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9563F2D7683E1000F894E /* TokenInterceptor.swift */,
 				8E2029AC2D696CDE0037AF3F /* JWTTokenManager.swift */,
 				8E9A40BC2D4BAA4400824509 /* Factory+Instance.swift */,
 				8E7742842D5ECAEA003FE8E0 /* Errors.swift */,
@@ -463,7 +456,6 @@
 		8EC547962D66A1A100191E3B /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8E505DB62D77C9F0007CC7E8 /* Utils */,
 				8EC547A02D66A9D200191E3B /* DTO */,
 				8EC5479D2D66A82300191E3B /* Repositories */,
 				8EC547972D66A1BD00191E3B /* DataSources */,

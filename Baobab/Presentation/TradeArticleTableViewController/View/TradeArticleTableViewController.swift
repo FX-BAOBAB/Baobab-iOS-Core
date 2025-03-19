@@ -15,6 +15,7 @@ final class TradeArticleTableViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.estimatedRowHeight = 100    //Cell height가 결정되기 전 임시 height
         tableView.rowHeight = UITableView.automaticDimension    //동적 height 설정
+        tableView.register(TradeArticleTableViewCell.self, forCellReuseIdentifier: TradeArticleTableViewCell.reuseIdentifier)
         return tableView
     }()
     let navigationBar: UIView = UIView(frame: .zero)
