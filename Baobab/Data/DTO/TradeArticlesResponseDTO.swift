@@ -20,7 +20,7 @@ struct TradeArticlesResponseBody: Codable {
     let registeredAt, status: String
     let imageList: [ImageList]
     let nickname: String
-    let profileImageURL: String
+    let profileImageURL: String?
 
     enum CodingKeys: String, CodingKey {
         case id, title, content, category, price, registeredAt, status, imageList, nickname
