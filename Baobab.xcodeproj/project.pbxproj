@@ -71,6 +71,7 @@
 		8EECA9832D4B94A700E48757 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9822D4B94A700E48757 /* RxRelay */; };
 		8EECA9862D4B954800E48757 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9852D4B954800E48757 /* Kingfisher */; };
 		8EECA9892D4B968A00E48757 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9882D4B968A00E48757 /* Factory */; };
+		8EFF1C142D8B90F000F48D32 /* UIFont+DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		8EECA92F2D4B760F00E48757 /* Baobab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baobab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA9452D4B761100E48757 /* BaobabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA94F2D4B761100E48757 /* BaobabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+DynamicFont.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -509,6 +511,7 @@
 				8E7742812D5EBBE4003FE8E0 /* ViewModifier.swift */,
 				8E9D8BEC2D680CA100510B4F /* AlertType.swift */,
 				8EC0104A2D6E9FE10059360D /* UIViewController+Preview.swift */,
+				8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				8EA9563A2D76719C000F894E /* TradeArticleRepositoryProtocol.swift in Sources */,
 				8E84FCDF2D8254D4002186F3 /* TradeArticleTableViewCell.swift in Sources */,
 				8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */,
+				8EFF1C142D8B90F000F48D32 /* UIFont+DynamicFont.swift in Sources */,
 				8EC0102F2D6E8E190059360D /* SpinningIndicator.swift in Sources */,
 				8ECD91482D58CA0900D6F315 /* View+Fork.swift in Sources */,
 				8E82B28E2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift in Sources */,

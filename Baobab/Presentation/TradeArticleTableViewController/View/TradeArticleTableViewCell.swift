@@ -6,21 +6,44 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TradeArticleTableViewCell: UITableViewCell {
     static let reuseIdentifier = "TradeArticleTableViewCell"
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
-    let priceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .subheadline)
+        label.font = UIFont.font(for: .subheadline, weight: .bold)
+        label.textColor = .accent
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
+    private let currencyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "원"
+        label.font = UIFont.font(for: .subheadline, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    private let thumbnail: UIImageView = .init()
+    private var imageURL: URL? {
+        willSet {
+            if let url = newValue {
+                thumbnail.kf.indicatorType = .activity
+                thumbnail.kf.setImage(with: url)
+                thumbnail.layer.cornerRadius = 10
+                thumbnail.clipsToBounds = true
+            }
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,25 +67,37 @@ final class TradeArticleTableViewCell: UITableViewCell {
     }
     
     private func setLayout() {
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(priceLabel)
-        
-        titleLabel.snp.makeConstraints { make in
+        contentView.addSubview(thumbnail)
+        thumbnail.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(16)
+            make.width.height.equalTo(UIScreen.main.bounds.width * 0.25)
+            make.bottom.equalToSuperview().offset(-16)
+        }
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalTo(thumbnail.snp.trailing).offset(10)
             make.trailing.equalToSuperview().offset(-16)
         }
         
+        contentView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-16)
+            make.leading.equalTo(thumbnail.snp.trailing).offset(10)
+        }
+        
+        contentView.addSubview(currencyLabel)
+        currencyLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.leading.equalTo(priceLabel.snp.trailing).offset(1)
         }
     }
     
     func configure(with item: TradeArticle) {
         titleLabel.text = item.title
         priceLabel.text = String(item.price)
+        imageURL = item.imageList.first?.imageURL
     }
 
 }
