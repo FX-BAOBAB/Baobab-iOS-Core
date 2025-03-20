@@ -333,7 +333,7 @@
 		8E9A40B12D4BA43600824509 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8EC010462D6E99220059360D /* TradeArticleTableViewController */,
+				8EC010462D6E99220059360D /* TradeArticleTableView */,
 				8EC010422D6E961D0059360D /* TabBar */,
 				8E82B28F2D5C2169002A6BB2 /* Commons */,
 				8ECD91462D58C9F800D6F315 /* Utils */,
@@ -435,13 +435,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8EC010462D6E99220059360D /* TradeArticleTableViewController */ = {
+		8EC010462D6E99220059360D /* TradeArticleTableView */ = {
 			isa = PBXGroup;
 			children = (
 				8E75B45C2D7A75BD009D710E /* ViewModel */,
 				8EC010472D6E99370059360D /* View */,
 			);
-			path = TradeArticleTableViewController;
+			path = TradeArticleTableView;
 			sourceTree = "<group>";
 		};
 		8EC010472D6E99370059360D /* View */ = {
