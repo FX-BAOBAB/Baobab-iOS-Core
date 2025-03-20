@@ -33,7 +33,20 @@ final class TradeArticleTableViewCell: UITableViewCell {
         
         return label
     }()
-    private let thumbnail: UIImageView = .init()
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.font(for: .caption1, weight: .regular)
+        label.textColor = .gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    private let thumbnail: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
     private var imageURL: URL? {
         willSet {
             if let url = newValue {
@@ -81,15 +94,22 @@ final class TradeArticleTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-16)
         }
         
+        contentView.addSubview(dateLabel)
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.leading.equalTo(thumbnail.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
         contentView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(dateLabel.snp.bottom).offset(10)
             make.leading.equalTo(thumbnail.snp.trailing).offset(10)
         }
         
         contentView.addSubview(currencyLabel)
         currencyLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(dateLabel.snp.bottom).offset(10)
             make.leading.equalTo(priceLabel.snp.trailing).offset(1)
         }
     }
@@ -97,6 +117,7 @@ final class TradeArticleTableViewCell: UITableViewCell {
     func configure(with item: TradeArticle) {
         titleLabel.text = item.title
         priceLabel.text = String(item.price)
+        dateLabel.text = item.registeredAt ?? ""
         imageURL = item.imageList.first?.imageURL
     }
 
