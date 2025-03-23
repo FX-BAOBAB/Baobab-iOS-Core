@@ -61,6 +61,11 @@ final class TradeArticleTableViewController: UIViewController {
 
 extension TradeArticleTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = UIHostingController(
+            rootView: TradeArticleContentView(viewModel: TradeArticleContentViewModel(),
+                                              article: viewModel.articles.value[indexPath.row])
+        )
+        navigationController?.pushViewController(viewController, animated: true)
         //Cell 선택 후 선택 해제
         tableView.deselectRow(at: indexPath, animated: true)
     }
