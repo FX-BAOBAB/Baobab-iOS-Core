@@ -16,7 +16,7 @@ struct TradeArticle: Identifiable {
     let registeredAt: String?    //게시글 등록 날짜
     let status: ItemStatus?    //중고 물품 상태
     let simpleUserInfo: SimpleUserInfo    //게시글 작성자 정보
-    let imageList: [ImageData]    //이미지 데이터
+    let imageMetadata: [ImageMetadata]    //이미지 데이터
 }
 
 #if DEBUG
@@ -31,12 +31,12 @@ extension TradeArticle {
             registeredAt: "2025년 03월 04일 13:35",
             status: .onSale,
             simpleUserInfo: .init(nickName: "닉네임", profileURL: URL(string: "https://baobab.run/article-service/open-api/images/53edc0be-e824-4b38-8c10-7556e6b4f557.png")),
-            imageList: [
-                ImageData.sample,
-                ImageData.sample,
-                ImageData.sample,
-                ImageData.sample,
-                ImageData.sample
+            imageMetadata: [
+                ImageMetadata.sample,
+                ImageMetadata.sample,
+                ImageMetadata.sample,
+                ImageMetadata.sample,
+                ImageMetadata.sample
             ])
     }
 }

@@ -118,7 +118,7 @@ final class TradeArticleTableViewCell: UITableViewCell {
         titleLabel.text = item.title
         priceLabel.text = String(item.price)
         dateLabel.text = item.registeredAt ?? ""
-        imageURL = item.imageList.first?.imageURL
+        imageURL = item.imageMetadata.first?.imageURL
     }
 
 }

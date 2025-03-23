@@ -36,10 +36,22 @@ extension Container {
         }
     }
     
+    var fileDownloadRepository: Factory<FileDownloadRepositoryProtocol> {
+        Factory(self) {
+            FileDownloadRepository()
+        }
+    }
+    
     //MARK: - UseCase
     var loginUseCase: Factory<LoginUseCaseProtocol> {
         Factory(self) {
             LoginUseCase()
+        }
+    }
+    
+    var fileDownloadUseCase: Factory<FileDownloadUseCaseProtocol> {
+        Factory(self) {
+            FileDownloadUseCase()
         }
     }
 }

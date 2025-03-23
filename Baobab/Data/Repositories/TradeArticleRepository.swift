@@ -36,8 +36,8 @@ final class TradeArticleRepository: TradeArticleRepositoryProtocol {
                 registeredAt: $0.registeredAt.toDate?.korFormattedString,
                 status: ItemStatus(rawValue: $0.status),
                 simpleUserInfo: createSimpleUserInfo(nickName: $0.nickname, profileURL: $0.profileImageURL),
-                imageList: $0.imageList.map { data in
-                    ImageData(id: data.imageID, imageURL: URL(string: data.imageURL))
+                imageMetadata: $0.imageList.map { data in
+                    ImageMetadata(id: data.imageID, imageURL: URL(string: data.imageURL))
                 }
             )
         }

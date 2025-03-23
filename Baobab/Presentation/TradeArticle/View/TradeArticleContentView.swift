@@ -68,6 +68,9 @@ struct TradeArticleContentView: View {
                 .padding()
             }
         }
+        .task {
+            await viewModel.fetchImages(from: article.imageMetadata)
+        }
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -111,7 +114,11 @@ fileprivate struct ImageTabView: View {
     var body: some View {
         TabView {
             if let imagesData = imagesData {
-                
+                ForEach(imagesData.indices, id: \.self) { idx in
+                    Image(uiImage: UIImage(data: imagesData[idx]))
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+                }
             } else {
                 ForEach(0..<6) { _ in
                     Color.clear
