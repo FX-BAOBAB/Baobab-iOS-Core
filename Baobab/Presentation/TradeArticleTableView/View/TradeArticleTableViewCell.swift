@@ -116,7 +116,7 @@ final class TradeArticleTableViewCell: UITableViewCell {
     
     func configure(with item: TradeArticle) {
         titleLabel.text = item.title
-        priceLabel.text = String(item.price)
+        priceLabel.text = item.price.commaFormatted
         dateLabel.text = item.registeredAt ?? ""
         imageURL = item.imageMetadata.first?.imageURL
     }

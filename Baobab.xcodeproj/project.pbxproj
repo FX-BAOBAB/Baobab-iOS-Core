@@ -20,6 +20,7 @@
 		8E4CD37E2D4BB31800E681F8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */; };
 		8E505DB82D77D780007CC7E8 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E505DB72D77D780007CC7E8 /* Notification+Name.swift */; };
 		8E5F28332D53319B00C05055 /* SignupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */; };
+		8E74370C2D910C77000C6DF1 /* Int+DecimalFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E74370B2D910C77000C6DF1 /* Int+DecimalFormat.swift */; };
 		8E75B45B2D7A723A009D710E /* SimpleUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75B45A2D7A723A009D710E /* SimpleUserInfo.swift */; };
 		8E75B45E2D7A7608009D710E /* TradeArticleTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75B45D2D7A7608009D710E /* TradeArticleTableViewModel.swift */; };
 		8E75B4622D7A8369009D710E /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E75B4612D7A8369009D710E /* MockURLProtocol.swift */; };
@@ -112,6 +113,7 @@
 		8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8E505DB72D77D780007CC7E8 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormViewModel.swift; sourceTree = "<group>"; };
+		8E74370B2D910C77000C6DF1 /* Int+DecimalFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+DecimalFormat.swift"; sourceTree = "<group>"; };
 		8E75B45A2D7A723A009D710E /* SimpleUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUserInfo.swift; sourceTree = "<group>"; };
 		8E75B45D2D7A7608009D710E /* TradeArticleTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleTableViewModel.swift; sourceTree = "<group>"; };
 		8E75B4612D7A8369009D710E /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				8EC547A72D66AAC600191E3B /* Bundle+EndPoints.swift */,
 				8E2029AA2D696CA30037AF3F /* TokenType.swift */,
 				8E505DB72D77D780007CC7E8 /* Notification+Name.swift */,
+				8E74370B2D910C77000C6DF1 /* Int+DecimalFormat.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				8E7742822D5EBBE4003FE8E0 /* ViewModifier.swift in Sources */,
 				8EFF1C1A2D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
 				8EADF3052D5D785E009EAC2B /* InputState.swift in Sources */,
+				8E74370C2D910C77000C6DF1 /* Int+DecimalFormat.swift in Sources */,
 				8E9D8BED2D680CA100510B4F /* AlertType.swift in Sources */,
 				8E125BF32D8FD3EC0009D14D /* FileDownloadUseCase.swift in Sources */,
 				8E77427E2D5EBB1E003FE8E0 /* NationalityType.swift in Sources */,
