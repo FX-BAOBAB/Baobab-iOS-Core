@@ -84,7 +84,7 @@ final class TradeArticleTableViewCell: UITableViewCell {
         thumbnail.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(16)
             make.width.height.equalTo(UIScreen.main.bounds.width * 0.25)
-            make.bottom.equalToSuperview().offset(-16)
+            make.bottom.lessThanOrEqualToSuperview().offset(-16)
         }
         
         contentView.addSubview(titleLabel)

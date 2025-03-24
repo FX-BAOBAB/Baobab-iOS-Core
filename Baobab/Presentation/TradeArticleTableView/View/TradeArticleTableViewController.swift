@@ -29,11 +29,6 @@ final class TradeArticleTableViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         return label
     }()
-    let footerView: UIView = {
-       let uiView = UIView(frame: .zero)
-        uiView.translatesAutoresizingMaskIntoConstraints = false
-        return uiView
-    }()
     let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
