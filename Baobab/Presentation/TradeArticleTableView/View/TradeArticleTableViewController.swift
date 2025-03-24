@@ -18,6 +18,7 @@ final class TradeArticleTableViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.register(TradeArticleTableViewCell.self, forCellReuseIdentifier: TradeArticleTableViewCell.reuseIdentifier)
         tableView.delegate = self
+        tableView.tableFooterView = activityIndicator
         return tableView
     }()
     let navigationBar: UIView = UIView(frame: .zero)
@@ -27,6 +28,17 @@ final class TradeArticleTableViewController: UIViewController {
         label.text = "Baobab"
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         return label
+    }()
+    let footerView: UIView = {
+       let uiView = UIView(frame: .zero)
+        uiView.translatesAutoresizingMaskIntoConstraints = false
+        return uiView
+    }()
+    let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        return activityIndicator
     }()
     let viewModel: TradeArticleTableViewModel
     let disposeBag: DisposeBag = DisposeBag()

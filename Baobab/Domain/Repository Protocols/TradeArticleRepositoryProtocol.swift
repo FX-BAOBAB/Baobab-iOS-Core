@@ -8,5 +8,11 @@
 import Foundation
 
 protocol TradeArticleRepositoryProtocol {
-    func fetchArticles() async -> Result<[TradeArticle], Error>
+    func fetchArticles(page: Int, size: Int) async -> Result<[TradeArticle], Error>
+}
+
+extension TradeArticleRepositoryProtocol {
+    func fetchArticles(page: Int, size: Int = 20) async -> Result<[TradeArticle], Error> {
+        return await self.fetchArticles(page: page, size: size)
+    }
 }

@@ -11,13 +11,13 @@ import Foundation
 final class TradeArticleRepository: TradeArticleRepositoryProtocol {
     @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDataSourceProtocol
     
-    func fetchArticles() async -> Result<[TradeArticle], any Error> {
+    func fetchArticles(page: Int, size: Int) async -> Result<[TradeArticle], any Error> {
         guard var endPoint = Bundle.main.tradeArticleEndPoint else {
             return .failure(NetworkError.invalidEndpoint)
         }
         
         do {
-            endPoint += "?page=0&size=20&sort=registeredAt,desc"
+            endPoint += "?page=\(page)&size=\(size)&sort=registeredAt,desc"
             let dto = try await remoteDataSource.get(to: endPoint, decoding: TradeArticlesResponseDTO.self)
             return .success(createArticles(from: dto))
         } catch {
