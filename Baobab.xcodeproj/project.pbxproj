@@ -40,6 +40,7 @@
 		8E82B2912D5C221D002A6BB2 /* PostCodeSearchWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82B2902D5C221D002A6BB2 /* PostCodeSearchWebView.swift */; };
 		8E84FCDF2D8254D4002186F3 /* TradeArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E84FCDE2D8254D4002186F3 /* TradeArticleTableViewCell.swift */; };
 		8E84FCE12D825C41002186F3 /* TradeArticleTableViewController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E84FCE02D825C41002186F3 /* TradeArticleTableViewController+Binding.swift */; };
+		8E8DD0402D9508E1000EE726 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8DD03F2D9508E1000EE726 /* TabBarViewController.swift */; };
 		8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A32D4BA43100824509 /* AppDelegate.swift */; };
 		8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A82D4BA43100824509 /* SceneDelegate.swift */; };
 		8E9A40AE2D4BA43100824509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9A40A42D4BA43100824509 /* Assets.xcassets */; };
@@ -57,7 +58,6 @@
 		8EADF3032D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EADF3022D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift */; };
 		8EADF3052D5D785E009EAC2B /* InputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EADF3042D5D785E009EAC2B /* InputState.swift */; };
 		8EC0102F2D6E8E190059360D /* SpinningIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0102E2D6E8E190059360D /* SpinningIndicator.swift */; };
-		8EC010452D6E965B0059360D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC010442D6E965B0059360D /* TabBarViewController.swift */; };
 		8EC010492D6E99560059360D /* TradeArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC010482D6E99560059360D /* TradeArticleTableViewController.swift */; };
 		8EC0104B2D6E9FE10059360D /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0104A2D6E9FE10059360D /* UIViewController+Preview.swift */; };
 		8EC0104D2D6EA1650059360D /* TradeArticleTableViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0104C2D6EA1650059360D /* TradeArticleTableViewController+Layout.swift */; };
@@ -137,6 +137,7 @@
 		8E82B2902D5C221D002A6BB2 /* PostCodeSearchWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeSearchWebView.swift; sourceTree = "<group>"; };
 		8E84FCDE2D8254D4002186F3 /* TradeArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleTableViewCell.swift; sourceTree = "<group>"; };
 		8E84FCE02D825C41002186F3 /* TradeArticleTableViewController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TradeArticleTableViewController+Binding.swift"; sourceTree = "<group>"; };
+		8E8DD03F2D9508E1000EE726 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8E9A40A32D4BA43100824509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E9A40A42D4BA43100824509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E9A40A52D4BA43100824509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -155,7 +156,6 @@
 		8EADF3022D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupFormViewModel+Regex.swift"; sourceTree = "<group>"; };
 		8EADF3042D5D785E009EAC2B /* InputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputState.swift; sourceTree = "<group>"; };
 		8EC0102E2D6E8E190059360D /* SpinningIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningIndicator.swift; sourceTree = "<group>"; };
-		8EC010442D6E965B0059360D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8EC010482D6E99560059360D /* TradeArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleTableViewController.swift; sourceTree = "<group>"; };
 		8EC0104A2D6E9FE10059360D /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		8EC0104C2D6EA1650059360D /* TradeArticleTableViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TradeArticleTableViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -504,7 +504,7 @@
 		8EC010432D6E962F0059360D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8EC010442D6E965B0059360D /* TabBarViewController.swift */,
+				8E8DD03F2D9508E1000EE726 /* TabBarViewController.swift */,
 				8EC0104E2D6EA93A0059360D /* TabBarView.swift */,
 			);
 			path = View;
@@ -792,7 +792,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EC010452D6E965B0059360D /* TabBarViewController.swift in Sources */,
 				8E5F28332D53319B00C05055 /* SignupFormViewModel.swift in Sources */,
 				8EC010552D6EB00A0059360D /* ImageMetadata.swift in Sources */,
 				8EADF3032D5D72CB009EAC2B /* SignupFormViewModel+Regex.swift in Sources */,
@@ -825,6 +824,7 @@
 				8ECD91482D58CA0900D6F315 /* View+Fork.swift in Sources */,
 				8E82B28E2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift in Sources */,
 				8EC010512D6EAE510059360D /* TradeArticle.swift in Sources */,
+				8E8DD0402D9508E1000EE726 /* TabBarViewController.swift in Sources */,
 				8EADF3012D5D65C8009EAC2B /* RegexValidatable.swift in Sources */,
 				8E7437112D912620000C6DF1 /* TradeArticleForm.swift in Sources */,
 				8ED083D62D93B1FE007D7A2F /* PHPicker.swift in Sources */,

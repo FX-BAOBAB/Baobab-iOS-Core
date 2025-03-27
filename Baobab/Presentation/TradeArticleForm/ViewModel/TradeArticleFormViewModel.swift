@@ -10,4 +10,8 @@ import Foundation
 
 final class TradeArticleFormViewModel: ObservableObject {
     @Published var selectedImageDataList: [Data] = []
+    @Published var title: String = ""
+    @Published var itemCategory: ItemCategory? = nil
+    @Published var price: String = ""
+    @Published var content: String = ""
 }

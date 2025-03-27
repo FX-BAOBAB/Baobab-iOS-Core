@@ -19,6 +19,18 @@ struct TradeArticleForm: View {
         NavigationStack {
             ScrollView {
                 MultiImagePickerView(selectedImageDataList: $viewModel.selectedImageDataList)
+                
+                TitleTextField(text: $viewModel.title)
+                    .padding([.horizontal, .bottom])
+                
+                CategoryPicker(selectedCategory: $viewModel.itemCategory)
+                    .padding([.horizontal, .bottom])
+                
+                PriceTextField(price: $viewModel.price)
+                    .padding([.horizontal, .bottom])
+                
+                contentTextField(content: $viewModel.content)
+                    .padding([.horizontal, .bottom])
             }
             .navigationTitle("중고물품 등록")
             .navigationBarTitleDisplayMode(.inline)
@@ -37,6 +49,9 @@ struct TradeArticleForm: View {
                         
                     }
                 }
+            }
+            .onAppear {
+                UIScrollView.appearance().keyboardDismissMode = .onDrag
             }
         }
     }
@@ -61,7 +76,6 @@ fileprivate struct MultiImagePickerView: View {
                 }
             }
         }
-        .padding([.top, .bottom])
     }
 }
 
@@ -148,6 +162,84 @@ fileprivate struct SelectedImage: View {
             .frame(maxHeight: .infinity, alignment: .top)
             .offset(x: 5, y: -5)
         }
+    }
+}
+
+fileprivate struct TitleTextField: View {
+    @Binding var text: String
+    
+    var body: some View {
+        TextField("제목을 입력해 주세요.", text: $text)
+            .grayBorder()
+    }
+}
+
+fileprivate struct CategoryPicker: View {
+    @State private var isShowingPicker: Bool = false
+    @Binding var selectedCategory: ItemCategory?
+    
+    var body: some View {
+        Button {
+            isShowingPicker.toggle()
+        } label: {
+            HStack {
+                Text(selectedCategory == nil ? "카테고리 선택" : selectedCategory?.korString)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.footnote)
+            }
+            .foregroundStyle(.black)
+        }
+        .grayBorder()
+        .sheet(isPresented: $isShowingPicker) {
+            VStack(spacing: 0) {
+                Button("완료") {
+                    isShowingPicker.toggle()
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding(.trailing)
+                
+                Picker("", selection: $selectedCategory) {
+                    Text("카테고리 선택")
+                        .tag(nil as ItemCategory?)
+                    
+                    ForEach(ItemCategory.allCases, id: \.self) {
+                        Text($0.korString)
+                            .tag($0)
+                    }
+                }
+                .pickerStyle(.inline)
+            }
+            .presentationDetents([.height(UIScreen.main.bounds.height * 0.3)])
+        }
+    }
+}
+
+fileprivate struct PriceTextField: View {
+    @Binding var price: String
+    
+    var body: some View {
+        HStack(spacing: 3) {
+            Text("₩")
+            
+            TextField("물건의 가격을 입력해 주세요.", text: $price)
+                .keyboardType(.numberPad)
+                .foregroundStyle(.accent)
+        }
+        .bold()
+        .grayBorder()
+    }
+}
+
+fileprivate struct contentTextField: View {
+    @Binding var content: String
+    
+    var body: some View {
+        TextField("게시글 내용을 작성해 주세요.", text: $content, axis: .vertical)
+            .lineLimit(10...14)
+            .grayBorder()
     }
 }
 

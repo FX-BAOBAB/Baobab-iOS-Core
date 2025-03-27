@@ -45,6 +45,18 @@ fileprivate struct StateModifier: ViewModifier {
     }
 }
 
+fileprivate struct GrayBorderModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 0.5)
+                    .foregroundStyle(.gray)
+            }
+    }
+}
+
 extension View {
     func title(_ title: String, isRequired: Bool = true) -> some View {
         modifier(TitleModifier(title: title, isRequired: isRequired))
@@ -52,5 +64,9 @@ extension View {
     
     func state(_ inputState: Binding<InputState>, message: String) -> some View {
         modifier(StateModifier(inputState: inputState, message: message))
+    }
+    
+    func grayBorder() -> some View {
+        modifier(GrayBorderModifier())
     }
 }
