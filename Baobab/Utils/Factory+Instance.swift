@@ -19,7 +19,7 @@ extension Container {
     //MARK: - DataSource
     var remoteDataSource: Factory<RemoteDataSourceProtocol> {
         Factory(self) {
-            return RemoteDataSource.shared
+            return RemoteDataSource()
         }
     }
     

@@ -5,17 +5,19 @@
 //  Created by 이정훈 on 2/22/25.
 //
 
+import Factory
 import Foundation
 import Security
 
 struct JWTTokenManager {
-    static let shared: JWTTokenManager = .init()
+    @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDataSourceProtocol
     var accessToken: String? {
         load(.accessToken)
     }
     var refreshToken: String? {
         load(.refreshToken)
     }
+    static let shared: JWTTokenManager = .init()
     
     private init() {}
     
@@ -82,7 +84,7 @@ struct JWTTokenManager {
             "body": nil
         ]
         
-        let dto = try await RemoteDataSource.shared.post(to: endpoint, params: params, token: refreshToken, decoding: TokenReissueResponseDTO.self)
+        let dto = try await remoteDataSource.post(to: endpoint, params: params, token: refreshToken, decoding: TokenReissueResponseDTO.self)
         return dto.body.token
     }
 }
