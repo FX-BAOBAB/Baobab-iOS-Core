@@ -46,12 +46,25 @@ struct TradeArticleForm: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("완료") {
-                        
+                        viewModel.uploadArticle()
                     }
                 }
             }
             .onAppear {
                 UIScrollView.appearance().keyboardDismissMode = .onDrag
+            }
+            .onDisappear {
+                viewModel.task?.cancel()
+            }
+            .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
+                switch viewModel.alertType {
+                case .none, .failure:
+                    Button("확인") {}
+                case .success:
+                    Button("확인") {
+                        dismiss()
+                    }
+                }
             }
         }
     }
