@@ -17,9 +17,28 @@ final class TradeArticleRepository: TradeArticleRepositoryProtocol {
         }
         
         do {
-            endPoint += "?page=\(page)&size=\(size)&sort=registeredAt,desc"
+            endPoint += "/list?page=\(page)&size=\(size)&sort=registeredAt,desc"
             let dto = try await remoteDataSource.get(to: endPoint, decoding: TradeArticlesResponseDTO.self)
             return .success(createArticles(from: dto))
+        } catch {
+            return .failure(error)
+        }
+    }
+    
+    func upload(_ params: [String: Any]) async -> Result<String, any Error> {
+        guard var endPoint = Bundle.main.tradeArticleEndPoint else {
+            return .failure(NetworkError.invalidEndpoint)
+        }
+        
+        do {
+            endPoint += "/save"
+            let dto = try await remoteDataSource.upload(to: endPoint, params: params, decoding: PostResponseDTO.self)
+            
+            if dto.result.resultCode == 200 {
+                return .success(dto.result.resultMessage)
+            }
+            
+            return .failure(NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage))
         } catch {
             return .failure(error)
         }

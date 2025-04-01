@@ -67,7 +67,7 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
                 for (key, value) in params {
                     if let data = value as? [(Data, String, MimeType)] {
                         data.forEach { (file: Data, fileName: String, mimeType: MimeType) in
-                            multipartFormData.append(file, withName: "\(key)[]", fileName: fileName, mimeType: mimeType.rawValue)
+                            multipartFormData.append(file, withName: "\(key)", fileName: fileName, mimeType: mimeType.rawValue)
                         }
                     } else if let data = value as? String, let data = "\(data)".data(using: .utf8) {
                         multipartFormData.append(data, withName: key)
