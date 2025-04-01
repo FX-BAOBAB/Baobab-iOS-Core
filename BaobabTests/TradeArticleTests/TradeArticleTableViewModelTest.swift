@@ -12,7 +12,6 @@ import XCTest
 @testable import Baobab
 
 final class TradeArticleTableViewModelTest: XCTestCase {
-    private var interceptor: TokenInterceptor!
     private var viewModel: TradeArticleTableViewModel!
     private var disposeBag: DisposeBag!
 
@@ -25,19 +24,12 @@ final class TradeArticleTableViewModelTest: XCTestCase {
             let session = Session(configuration: configuration)
             return session
         }
-        Container.shared.remoteDataSource.register {
-            let dataSource = RemoteDataSource()
-            self.interceptor = TokenInterceptor(remoteDataSource: dataSource)
-            dataSource.tokenInterceptor = self.interceptor
-            return dataSource
-        }
         viewModel = TradeArticleTableViewModel()
         disposeBag = DisposeBag()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        interceptor = nil
         viewModel = nil
         disposeBag = nil
     }

@@ -8,12 +8,7 @@
 import Foundation
 
 final class MockTradeArticleListURLProtocol: MockURLProtocol {
-    override func createMockData() -> Data? {
-        let fileName = "TradeArticleList"
-        guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            return nil
-        }
-        
-        return try? Data(contentsOf: fileURL)
+    override var mockDataFileName: String {
+        return "TradeArticleList"
     }
 }
