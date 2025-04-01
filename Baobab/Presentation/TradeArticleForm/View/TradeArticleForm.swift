@@ -17,53 +17,59 @@ struct TradeArticleForm: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                MultiImagePickerView(selectedImageDataList: $viewModel.selectedImageDataList)
-                
-                TitleTextField(text: $viewModel.title)
-                    .padding([.horizontal, .bottom])
-                
-                CategoryPicker(selectedCategory: $viewModel.itemCategory)
-                    .padding([.horizontal, .bottom])
-                
-                PriceTextField(price: $viewModel.price)
-                    .padding([.horizontal, .bottom])
-                
-                contentTextField(content: $viewModel.content)
-                    .padding([.horizontal, .bottom])
-            }
-            .navigationTitle("중고물품 등록")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(.black)
+            ZStack {
+                ScrollView {
+                    MultiImagePickerView(selectedImageDataList: $viewModel.selectedImageDataList)
+                    
+                    TitleTextField(text: $viewModel.title)
+                        .padding([.horizontal, .bottom])
+                    
+                    CategoryPicker(selectedCategory: $viewModel.itemCategory)
+                        .padding([.horizontal, .bottom])
+                    
+                    PriceTextField(price: $viewModel.price)
+                        .padding([.horizontal, .bottom])
+                    
+                    contentTextField(content: $viewModel.content)
+                        .padding([.horizontal, .bottom])
+                }
+                .navigationTitle("중고물품 등록")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .foregroundStyle(.black)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("완료") {
+                            viewModel.uploadArticle()
+                        }
+                    }
+                }
+                .onAppear {
+                    UIScrollView.appearance().keyboardDismissMode = .onDrag
+                }
+                .onDisappear {
+                    viewModel.task?.cancel()
+                }
+                .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
+                    switch viewModel.alertType {
+                    case .none, .failure:
+                        Button("확인") {}
+                    case .success:
+                        Button("확인") {
+                            dismiss()
+                        }
                     }
                 }
                 
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("완료") {
-                        viewModel.uploadArticle()
-                    }
-                }
-            }
-            .onAppear {
-                UIScrollView.appearance().keyboardDismissMode = .onDrag
-            }
-            .onDisappear {
-                viewModel.task?.cancel()
-            }
-            .alert(viewModel.alertMessage, isPresented: $viewModel.isShowingAlert) {
-                switch viewModel.alertType {
-                case .none, .failure:
-                    Button("확인") {}
-                case .success:
-                    Button("확인") {
-                        dismiss()
-                    }
+                if viewModel.isLoading {
+                    SpinningIndicator()
                 }
             }
         }
