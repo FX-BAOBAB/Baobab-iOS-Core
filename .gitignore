@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode
 
 Baobab/Application/ServiceInfo.plist
+GoogleService-Info.plist
 
 ### Xcode ###
 ## User settings
