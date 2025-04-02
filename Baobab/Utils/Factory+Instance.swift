@@ -42,6 +42,18 @@ extension Container {
         }
     }
     
+    var chatMessagingRepository: Factory<ChatMessagingRepositoryProtocol> {
+        Factory(self) {
+            ChatMessagingRepository()
+        }
+    }
+    
+    var chatSSERepository: Factory<ChatSSERepositoryProtocol> {
+        Factory(self) {
+            ChatSSERepository()
+        }
+    }
+    
     //MARK: - UseCase
     var loginUseCase: Factory<LoginUseCaseProtocol> {
         Factory(self) {

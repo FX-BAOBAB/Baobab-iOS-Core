@@ -48,4 +48,12 @@ extension Bundle {
         
         return url
     }
+    
+    var chatEndPoint: String? {
+        guard let resource, let url = resource["Chat_URL"] as? String else {
+            return nil
+        }
+        
+        return url
+    }
 }
