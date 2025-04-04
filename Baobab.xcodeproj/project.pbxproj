@@ -30,6 +30,10 @@
 		8E5AF17D2D9F96B8007A4E4D /* ChatRoomsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AF17C2D9F96B8007A4E4D /* ChatRoomsResponseDTO.swift */; };
 		8E5AF17F2D9F96EF007A4E4D /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AF17E2D9F96EF007A4E4D /* ChatRoom.swift */; };
 		8E5AF1812D9F9743007A4E4D /* ChatRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AF1802D9F9743007A4E4D /* ChatRoomRepository.swift */; };
+		8E5AF1842D9F9D20007A4E4D /* ChatRoomsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E5AF1832D9F9D20007A4E4D /* ChatRoomsResponse.json */; };
+		8E5AF1852D9F9D20007A4E4D /* ChatRoomsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E5AF1832D9F9D20007A4E4D /* ChatRoomsResponse.json */; };
+		8E5AF1872D9F9D56007A4E4D /* MockChatRoomsURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AF1862D9F9D56007A4E4D /* MockChatRoomsURLProtocol.swift */; };
+		8E5AF18B2D9F9DE1007A4E4D /* FetchChatRoomsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AF18A2D9F9DE1007A4E4D /* FetchChatRoomsTest.swift */; };
 		8E5F28332D53319B00C05055 /* SignupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */; };
 		8E607AF82D9D16CA00FC0EF7 /* ChatMessagingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AF72D9D16CA00FC0EF7 /* ChatMessagingUseCase.swift */; };
 		8E607AFA2D9D22A400FC0EF7 /* ChatMessagingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AF92D9D22A400FC0EF7 /* ChatMessagingRepository.swift */; };
@@ -148,6 +152,9 @@
 		8E5AF17C2D9F96B8007A4E4D /* ChatRoomsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsResponseDTO.swift; sourceTree = "<group>"; };
 		8E5AF17E2D9F96EF007A4E4D /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		8E5AF1802D9F9743007A4E4D /* ChatRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomRepository.swift; sourceTree = "<group>"; };
+		8E5AF1832D9F9D20007A4E4D /* ChatRoomsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChatRoomsResponse.json; sourceTree = "<group>"; };
+		8E5AF1862D9F9D56007A4E4D /* MockChatRoomsURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatRoomsURLProtocol.swift; sourceTree = "<group>"; };
+		8E5AF18A2D9F9DE1007A4E4D /* FetchChatRoomsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChatRoomsTest.swift; sourceTree = "<group>"; };
 		8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormViewModel.swift; sourceTree = "<group>"; };
 		8E607AF72D9D16CA00FC0EF7 /* ChatMessagingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagingUseCase.swift; sourceTree = "<group>"; };
 		8E607AF92D9D22A400FC0EF7 /* ChatMessagingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagingRepository.swift; sourceTree = "<group>"; };
@@ -292,6 +299,15 @@
 			path = TradeArticleUploadTests;
 			sourceTree = "<group>";
 		};
+		8E5AF1822D9F9CDF007A4E4D /* ChatRoomListTest */ = {
+			isa = PBXGroup;
+			children = (
+				8E5AF1862D9F9D56007A4E4D /* MockChatRoomsURLProtocol.swift */,
+				8E5AF18A2D9F9DE1007A4E4D /* FetchChatRoomsTest.swift */,
+			);
+			path = ChatRoomListTest;
+			sourceTree = "<group>";
+		};
 		8E5F282F2D53297200C05055 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +380,7 @@
 		8E75B45F2D7A8336009D710E /* BaobabTests */ = {
 			isa = PBXGroup;
 			children = (
+				8E5AF1822D9F9CDF007A4E4D /* ChatRoomListTest */,
 				8E75B4662D7A84DA009D710E /* JSON */,
 				8E75B4632D7A8462009D710E /* TradeArticleTests */,
 				8E48BFEC2D96276B008D2459 /* TradeArticleUploadTests */,
@@ -395,6 +412,7 @@
 			children = (
 				8E75B4692D7A8515009D710E /* TradeArticleList.json */,
 				8E48BFE92D962725008D2459 /* PostSuccessResponse.json */,
+				8E5AF1832D9F9D20007A4E4D /* ChatRoomsResponse.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -849,6 +867,7 @@
 				8E9A40AE2D4BA43100824509 /* Assets.xcassets in Resources */,
 				8E48BFEA2D962725008D2459 /* PostSuccessResponse.json in Resources */,
 				8EDF11CF2D9BC60D00263474 /* GoogleService-Info.plist in Resources */,
+				8E5AF1842D9F9D20007A4E4D /* ChatRoomsResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +877,7 @@
 			files = (
 				8E48BFEB2D962725008D2459 /* PostSuccessResponse.json in Resources */,
 				8E75B46A2D7A8515009D710E /* TradeArticleList.json in Resources */,
+				8E5AF1852D9F9D20007A4E4D /* ChatRoomsResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +980,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E5AF1872D9F9D56007A4E4D /* MockChatRoomsURLProtocol.swift in Sources */,
+				8E5AF18B2D9F9DE1007A4E4D /* FetchChatRoomsTest.swift in Sources */,
 				8E48BFF02D962895008D2459 /* MockTradeArticleUploadURLProtocol.swift in Sources */,
 				8E75B4622D7A8369009D710E /* MockURLProtocol.swift in Sources */,
 				8E75B4652D7A849D009D710E /* TradeArticleTests.swift in Sources */,

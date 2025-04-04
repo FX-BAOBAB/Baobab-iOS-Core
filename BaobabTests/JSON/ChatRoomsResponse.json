@@ -1,0 +1,30 @@
+{
+    "result": {
+        "resultCode": 200,
+        "resultMessage": "성공",
+        "resultDescription": "성공"
+    },
+    "body": [
+        {
+            "chatRoomId": "string",
+            "title": "nickname1, nickname2의 채팅방",
+            "articleId": "string",
+            "thumbnailId": "string",
+            "lastChatAt": "2025-03-18T22:03:41.416"
+        },
+        {
+            "chatRoomId": "string",
+            "title": "nickname1, nickname2의 채팅방",
+            "articleId": "string",
+            "thumbnailId": "string",
+            "lastChatAt": "2025-03-18T22:03:41.416"
+        },
+        {
+            "chatRoomId": "string",
+            "title": "nickname1, nickname2의 채팅방",
+            "articleId": "string",
+            "thumbnailId": "string",
+            "lastChatAt": "2025-03-18T22:03:41.416"
+        }
+    ]
+}
