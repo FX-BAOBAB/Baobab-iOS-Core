@@ -35,8 +35,8 @@ final class ChatRoomRepository: ChatRoomRepositoryProtocol {
                 id: $0.chatRoomID,
                 title: $0.title,
                 articleId: $0.articleID,
-                thumbnailId: $0.thumbnailID,
-                lastChatAt: $0.lastChatAt
+                thumbnailURL: URL(string: $0.thumbnailURL),
+                lastChatAt: $0.lastChatAt.toDate?.dotFormattedString
             )
         }
     }

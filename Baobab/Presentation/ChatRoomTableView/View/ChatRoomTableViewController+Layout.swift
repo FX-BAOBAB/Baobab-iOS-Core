@@ -1,14 +1,13 @@
 //
-//  TradeArticleTableViewController+Layout.swift
+//  ChatRoomTableViewController+Layout.swift
 //  Baobab
 //
-//  Created by 이정훈 on 2/26/25.
+//  Created by 이정훈 on 4/4/25.
 //
 
 import Foundation
-import SnapKit
 
-extension TradeArticleTableViewController {
+extension ChatRoomTableViewController {
     func setupLayout() {
         view.addSubview(navigationBar)
         navigationBar.snp.makeConstraints { make in
@@ -26,10 +25,6 @@ extension TradeArticleTableViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        activityIndicator.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
         }
     }
 }

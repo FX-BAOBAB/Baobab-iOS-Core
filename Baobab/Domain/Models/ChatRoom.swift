@@ -8,5 +8,7 @@
 import Foundation
 
 struct ChatRoom: Identifiable {
-    let id, title, articleId, thumbnailId, lastChatAt: String
+    let id, title, articleId: String
+    let thumbnailURL: URL?
+    let lastChatAt: String?
 }

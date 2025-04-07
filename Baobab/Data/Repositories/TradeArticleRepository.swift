@@ -69,21 +69,3 @@ final class TradeArticleRepository: TradeArticleRepositoryProtocol {
         )
     }
 }
-
-fileprivate extension String {
-    var toDate: Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        return dateFormatter.date(from: self)
-    }
-}
-
-fileprivate extension Date {
-    var korFormattedString: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH:mm"
-        return dateFormatter.string(from: self)
-    }
-}

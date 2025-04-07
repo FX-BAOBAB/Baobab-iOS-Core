@@ -12,6 +12,7 @@ final class TabBarViewController: UITabBarController {
     private let tradeArticleTableViewController: TradeArticleTableViewController = .init(
         viewModel: TradeArticleTableViewModel()
     )
+    private let chatRoomTableViewController: ChatRoomTableViewController = .init(viewModel: ChatRoomTableViewModel())
     private lazy var plusButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +35,7 @@ final class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setViewControllers([tradeArticleTableViewController], animated: true)
+        setViewControllers([tradeArticleTableViewController, chatRoomTableViewController], animated: true)
         setupTabBar()
         setupLayout()
     }
@@ -43,6 +44,11 @@ final class TabBarViewController: UITabBarController {
         tradeArticleTableViewController.tabBarItem.image = UIImage(systemName: "house")
         tradeArticleTableViewController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
         tradeArticleTableViewController.tabBarItem.title = "홈"
+        tradeArticleTableViewController.tabBarItem.tag = 0
+        
+        chatRoomTableViewController.tabBarItem.image = UIImage(systemName: "message.fill")
+        chatRoomTableViewController.tabBarItem.title = "채팅"
+        chatRoomTableViewController.tabBarItem.tag = 1
         
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()
@@ -75,7 +81,12 @@ final class TabBarViewController: UITabBarController {
 
 extension TabBarViewController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
+        switch item.tag {
+        case 0:
+            plusButton.isHidden = false
+        default:
+            plusButton.isHidden = true
+        }
     }
 }
 

@@ -54,6 +54,12 @@ extension Container {
         }
     }
     
+    var chatRoomRepository: Factory<ChatRoomRepositoryProtocol> {
+        Factory(self) {
+            ChatRoomRepository()
+        }
+    }
+    
     //MARK: - UseCase
     var loginUseCase: Factory<LoginUseCaseProtocol> {
         Factory(self) {

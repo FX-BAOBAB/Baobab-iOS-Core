@@ -15,14 +15,14 @@ struct ChatRoomsResponseDTO: Decodable {
 
 // MARK: - Body
 struct ChatRoomsResponseBody: Decodable {
-    let chatRoomID, title, articleID, thumbnailID: String
+    let chatRoomID, title, articleID, thumbnailURL: String
     let lastChatAt: String
 
     enum CodingKeys: String, CodingKey {
         case chatRoomID = "chatRoomId"
         case title
         case articleID = "articleId"
-        case thumbnailID = "thumbnailId"
+        case thumbnailURL = "thumbnailUrl"
         case lastChatAt
     }
 }
