@@ -13,7 +13,7 @@ extension ChatRoomViewController {
         view.addSubview(sendButton)
         sendButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-13)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
             make.width.height.equalTo(30)
         }
         

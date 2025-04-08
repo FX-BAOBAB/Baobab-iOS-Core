@@ -10,16 +10,6 @@ import SwiftUI
 import RxSwift
 
 final class ChatRoomViewController: UIViewController {
-//    let stackView: UIStackView = {
-//        let stackView = UIStackView(frame: .zero)
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.axis = .vertical
-//        stackView.distribution = .fill
-//        
-////        stackView.frame.height = UIScreen.main.bounds.height
-//        
-//        return stackView
-//    }()
     let inputContainer: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +26,7 @@ final class ChatRoomViewController: UIViewController {
         
         return tableView
     }()
-    let inputTextView: UITextView = {
+    lazy var inputTextView: UITextView = {
         let textView = UITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .gray1
@@ -44,6 +34,10 @@ final class ChatRoomViewController: UIViewController {
         textView.layer.cornerRadius = 10
         textView.isEditable = true
         textView.isScrollEnabled = false    //높이 설정을 위해 스크롤 방지
+        textView.font = .preferredFont(forTextStyle: .body)
+        textView.text = placeholder
+        textView.textColor = .lightGray
+        textView.delegate = self
         
         return textView
     }()
@@ -61,6 +55,7 @@ final class ChatRoomViewController: UIViewController {
         return button
     }()
     let disposeBag: DisposeBag = .init()
+    private let placeholder: String = "메시지 입력"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +79,22 @@ final class ChatRoomViewController: UIViewController {
     }
     */
 
+}
+
+extension ChatRoomViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholder {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = placeholder
+            textView.textColor = .lightGray
+        }
+    }
 }
 
 extension ChatRoomViewController {
@@ -115,13 +126,6 @@ extension ChatRoomViewController {
     @objc private func didSendButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = .accent
     }
-}
-
-extension ChatRoomViewController: UITextViewDelegate {
-//    func textViewDidChange(_ textView: UITextView) {
-//        let size = CGSize(width: view.frame - 32, height: .infinity)
-//        let estimatedSize = textView.sizeThatFits(size)
-//    }
 }
 
 #Preview {
