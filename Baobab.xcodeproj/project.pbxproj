@@ -103,6 +103,9 @@
 		8EC547A62D66AA6900191E3B /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC547A52D66AA6900191E3B /* RequestResult.swift */; };
 		8EC547A82D66AAC600191E3B /* Bundle+EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC547A72D66AAC600191E3B /* Bundle+EndPoints.swift */; };
 		8EC547AA2D66AB0100191E3B /* ServiceInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EC547A92D66AB0100191E3B /* ServiceInfo.plist */; };
+		8ECC0ECB2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC0ECA2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift */; };
+		8ECC0ECD2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC0ECC2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift */; };
+		8ECC0ED12DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC0ED02DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift */; };
 		8ECD91452D58C51800D6F315 /* SignupForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECD91442D58C51800D6F315 /* SignupForm.swift */; };
 		8ECD91482D58CA0900D6F315 /* View+Fork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECD91472D58CA0900D6F315 /* View+Fork.swift */; };
 		8ED083D62D93B1FE007D7A2F /* PHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED083D52D93B1FD007D7A2F /* PHPicker.swift */; };
@@ -231,6 +234,9 @@
 		8EC547A52D66AA6900191E3B /* RequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		8EC547A72D66AAC600191E3B /* Bundle+EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+EndPoints.swift"; sourceTree = "<group>"; };
 		8EC547A92D66AB0100191E3B /* ServiceInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ServiceInfo.plist; sourceTree = "<group>"; };
+		8ECC0ECA2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		8ECC0ECC2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomVIewController+Layout.swift"; sourceTree = "<group>"; };
+		8ECC0ED02DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomViewController+Binding.swift"; sourceTree = "<group>"; };
 		8ECD91442D58C51800D6F315 /* SignupForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupForm.swift; sourceTree = "<group>"; };
 		8ECD91472D58CA0900D6F315 /* View+Fork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Fork.swift"; sourceTree = "<group>"; };
 		8ED083D52D93B1FD007D7A2F /* PHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPicker.swift; sourceTree = "<group>"; };
@@ -523,6 +529,7 @@
 		8E9A40B12D4BA43600824509 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8ECC0EC72DA49ECA00F0A6F3 /* ChatRoom */,
 				8E5AF18C2D9FA24B007A4E4D /* ChatRoomTableView */,
 				8E74370D2D912603000C6DF1 /* TradeArticleForm */,
 				8EFF1C152D8BA98400F48D32 /* TradeArticle */,
@@ -712,6 +719,32 @@
 				8E5AF17C2D9F96B8007A4E4D /* ChatRoomsResponseDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		8ECC0EC72DA49ECA00F0A6F3 /* ChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				8ECC0EC92DA49FD000F0A6F3 /* ViewModel */,
+				8ECC0EC82DA49FCA00F0A6F3 /* View */,
+			);
+			path = ChatRoom;
+			sourceTree = "<group>";
+		};
+		8ECC0EC82DA49FCA00F0A6F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8ECC0ECA2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift */,
+				8ECC0ECC2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift */,
+				8ECC0ED02DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8ECC0EC92DA49FD000F0A6F3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8ECD91462D58C9F800D6F315 /* Utils */ = {
@@ -973,6 +1006,7 @@
 				8E48BFE82D962240008D2459 /* MimeType.swift in Sources */,
 				8E125BF52D8FD69B0009D14D /* FileDownloadDataSource.swift in Sources */,
 				8EC010572D6EB0430059360D /* ItemStatus.swift in Sources */,
+				8ECC0ECB2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift in Sources */,
 				8EC547A62D66AA6900191E3B /* RequestResult.swift in Sources */,
 				8EA9563A2D76719C000F894E /* TradeArticleRepositoryProtocol.swift in Sources */,
 				8E84FCDF2D8254D4002186F3 /* TradeArticleTableViewCell.swift in Sources */,
@@ -981,6 +1015,7 @@
 				8E1D543A2DA02AB600F261B5 /* String+toDate.swift in Sources */,
 				8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */,
 				8EFF1C142D8B90F000F48D32 /* UIFont+DynamicFont.swift in Sources */,
+				8ECC0ED12DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift in Sources */,
 				8E1D54382D9FBF1F00F261B5 /* ChatRoomTableViewCell.swift in Sources */,
 				8E125BF12D8FD3CD0009D14D /* FileDownloadRepository.swift in Sources */,
 				8E5AF1902D9FA267007A4E4D /* ChatRoomTableViewModel.swift in Sources */,
@@ -1011,6 +1046,7 @@
 				8EC010492D6E99560059360D /* TradeArticleTableViewController.swift in Sources */,
 				8EC5479F2D66A83400191E3B /* AuthRepository.swift in Sources */,
 				8E607B082D9D434200FC0EF7 /* ChatSSERepository.swift in Sources */,
+				8ECC0ECD2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift in Sources */,
 				8E505DB82D77D780007CC7E8 /* Notification+Name.swift in Sources */,
 				8E7742852D5ECAEA003FE8E0 /* Errors.swift in Sources */,
 				8E125BEF2D8F9CB60009D14D /* TradeArticleContentViewModel.swift in Sources */,
