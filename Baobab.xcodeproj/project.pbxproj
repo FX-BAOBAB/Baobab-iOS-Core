@@ -120,6 +120,7 @@
 		8EF324162DA5F9E8007C24D7 /* ParentViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */; };
 		8EF324182DA62B5E007C24D7 /* ChatRoomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */; };
 		8EF3241A2DA63818007C24D7 /* ChatRoomMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */; };
+		8EF324212DA64699007C24D7 /* ChatRoomMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324202DA64699007C24D7 /* ChatRoomMenuViewModel.swift */; };
 		8EFF1C142D8B90F000F48D32 /* UIFont+DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */; };
 		8EFF1C182D8BA9D400F48D32 /* TradeArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C172D8BA9D400F48D32 /* TradeArticleContentView.swift */; };
 		8EFF1C1A2D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C192D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift */; };
@@ -250,6 +251,7 @@
 		8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewViewController.swift; sourceTree = "<group>"; };
 		8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenu.swift; sourceTree = "<group>"; };
 		8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenuViewController.swift; sourceTree = "<group>"; };
+		8EF324202DA64699007C24D7 /* ChatRoomMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenuViewModel.swift; sourceTree = "<group>"; };
 		8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+DynamicFont.swift"; sourceTree = "<group>"; };
 		8EFF1C172D8BA9D400F48D32 /* TradeArticleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleContentView.swift; sourceTree = "<group>"; };
 		8EFF1C192D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 		8E9A40B12D4BA43600824509 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8EF3241D2DA64677007C24D7 /* ChatRoomMenu */,
 				8ECC0EC72DA49ECA00F0A6F3 /* ChatRoom */,
 				8E5AF18C2D9FA24B007A4E4D /* ChatRoomTableView */,
 				8E74370D2D912603000C6DF1 /* TradeArticleForm */,
@@ -732,8 +735,6 @@
 				8ECC0ECA2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift */,
 				8ECC0ECC2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift */,
 				8ECC0ED02DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift */,
-				8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */,
-				8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -794,6 +795,32 @@
 				8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */,
 			);
 			path = ParentView;
+			sourceTree = "<group>";
+		};
+		8EF3241D2DA64677007C24D7 /* ChatRoomMenu */ = {
+			isa = PBXGroup;
+			children = (
+				8EF3241F2DA64685007C24D7 /* ViewModel */,
+				8EF3241E2DA6467E007C24D7 /* View */,
+			);
+			path = ChatRoomMenu;
+			sourceTree = "<group>";
+		};
+		8EF3241E2DA6467E007C24D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */,
+				8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8EF3241F2DA64685007C24D7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8EF324202DA64699007C24D7 /* ChatRoomMenuViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8EFF1C152D8BA98400F48D32 /* TradeArticle */ = {
@@ -990,6 +1017,7 @@
 				8E5AF1942D9FB9FF007A4E4D /* ChatRoomTableViewController+Layout.swift in Sources */,
 				8E7742822D5EBBE4003FE8E0 /* ViewModifier.swift in Sources */,
 				8E48BFEE2D9627F6008D2459 /* PostResponseDTO.swift in Sources */,
+				8EF324212DA64699007C24D7 /* ChatRoomMenuViewModel.swift in Sources */,
 				8EFF1C1A2D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
 				8E607B002D9D2E8200FC0EF7 /* ChatMessagesResponseDTO.swift in Sources */,
 				8E1D543C2DA02AD000F261B5 /* Date+korFormattedString.swift in Sources */,

@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import RxCocoa
+import RxSwift
 
 extension ChatRoomTableViewController {
     func bind() {
         viewModel.chatRooms
             .bind(to: tableView.rx.items) { tableView, index, item in
-                print(item)
                 let cell = tableView.dequeueReusableCell(withIdentifier: ChatRoomTableViewCell.reuseIdentifier, for: IndexPath(row: index, section: 0)) as! ChatRoomTableViewCell
                 cell.configure(with: item)
                 

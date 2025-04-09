@@ -40,4 +40,21 @@ final class ChatRoomRepository: ChatRoomRepositoryProtocol {
             )
         }
     }
+    
+    func exitChatRoom(of chatRoomId: String) async -> Result<Void, any Error> {
+        guard let endpoint = Bundle.main.chatEndPoint else {
+            return .failure(NetworkError.invalidEndpoint)
+        }
+        
+        do {
+            let dto = try await remoteDataSource.get(to: endpoint + "/exit/\(chatRoomId)", decoding: PostResponseDTO.self)
+            if dto.result.resultCode == 200 {
+                return .success(())
+            }
+            
+            return .failure(NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage))
+        } catch {
+            return .failure(error)
+        }
+    }
 }

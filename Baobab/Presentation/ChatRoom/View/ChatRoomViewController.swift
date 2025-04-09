@@ -47,10 +47,12 @@ final class ChatRoomViewController: UIViewController {
     }()
     let disposeBag: DisposeBag = .init()
     private let placeholder: String = "메시지 입력"
+    let chatRoomId: String
     let navigationTitle: String
     
-    init(navigationTitle: String) {
+    init(navigationTitle: String, chatRoomId: String) {
         self.navigationTitle = navigationTitle
+        self.chatRoomId = chatRoomId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -133,6 +135,6 @@ extension ChatRoomViewController {
 }
 
 #Preview {
-    ChatRoomViewController(navigationTitle: "테스트")
+    ChatRoomViewController(navigationTitle: "테스트", chatRoomId: "12345")
         .makePreview()
 }

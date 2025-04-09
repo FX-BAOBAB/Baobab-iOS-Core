@@ -9,4 +9,5 @@ import Foundation
 
 protocol ChatRoomRepositoryProtocol {
     func fetchChatRooms() async -> Result<[ChatRoom], any Error>
+    func exitChatRoom(of chatRoomId: String) async -> Result<Void, any Error>
 }
