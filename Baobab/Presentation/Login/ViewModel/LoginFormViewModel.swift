@@ -7,6 +7,7 @@
 
 import Combine
 import Factory
+import Foundation
 
 @MainActor
 final class LoginFormViewModel: ObservableObject {
@@ -14,7 +15,6 @@ final class LoginFormViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var isAutoLogin: Bool = false
     @Published var isLoading: Bool = false
-    @Published var isLoginComplete: Bool = false
     @Published var isShowingAlert: Bool = false
     
     @Injected(\.loginUseCase) private var loginUseCase: LoginUseCaseProtocol
@@ -39,7 +39,8 @@ final class LoginFormViewModel: ObservableObject {
             isLoading = false
             switch result {
             case .success:
-                isLoginComplete = true
+//                isLoginComplete = true
+                NotificationCenter.default.post(name: .loginSuccess, object: nil)
             case .failure(let error):
                 if let error = error as? NetworkError, case .serverError(let errorCode, let message) = error {
                     alertMessage = "\(errorCode): \(message)"

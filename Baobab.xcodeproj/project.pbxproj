@@ -91,7 +91,6 @@
 		8EC010492D6E99560059360D /* TradeArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC010482D6E99560059360D /* TradeArticleTableViewController.swift */; };
 		8EC0104B2D6E9FE10059360D /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0104A2D6E9FE10059360D /* UIViewController+Preview.swift */; };
 		8EC0104D2D6EA1650059360D /* TradeArticleTableViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0104C2D6EA1650059360D /* TradeArticleTableViewController+Layout.swift */; };
-		8EC0104F2D6EA93A0059360D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0104E2D6EA93A0059360D /* TabBarView.swift */; };
 		8EC010512D6EAE510059360D /* TradeArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC010502D6EAE510059360D /* TradeArticle.swift */; };
 		8EC010532D6EAE970059360D /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC010522D6EAE970059360D /* ItemCategory.swift */; };
 		8EC010552D6EB00A0059360D /* ImageMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC010542D6EB00A0059360D /* ImageMetadata.swift */; };
@@ -118,6 +117,7 @@
 		8EECA9832D4B94A700E48757 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9822D4B94A700E48757 /* RxRelay */; };
 		8EECA9862D4B954800E48757 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9852D4B954800E48757 /* Kingfisher */; };
 		8EECA9892D4B968A00E48757 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9882D4B968A00E48757 /* Factory */; };
+		8EF324162DA5F9E8007C24D7 /* ParentViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */; };
 		8EFF1C142D8B90F000F48D32 /* UIFont+DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */; };
 		8EFF1C182D8BA9D400F48D32 /* TradeArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C172D8BA9D400F48D32 /* TradeArticleContentView.swift */; };
 		8EFF1C1A2D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C192D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift */; };
@@ -222,7 +222,6 @@
 		8EC010482D6E99560059360D /* TradeArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleTableViewController.swift; sourceTree = "<group>"; };
 		8EC0104A2D6E9FE10059360D /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		8EC0104C2D6EA1650059360D /* TradeArticleTableViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TradeArticleTableViewController+Layout.swift"; sourceTree = "<group>"; };
-		8EC0104E2D6EA93A0059360D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		8EC010502D6EAE510059360D /* TradeArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticle.swift; sourceTree = "<group>"; };
 		8EC010522D6EAE970059360D /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		8EC010542D6EB00A0059360D /* ImageMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMetadata.swift; sourceTree = "<group>"; };
@@ -246,6 +245,7 @@
 		8EECA92F2D4B760F00E48757 /* Baobab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baobab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA9452D4B761100E48757 /* BaobabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA94F2D4B761100E48757 /* BaobabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewViewController.swift; sourceTree = "<group>"; };
 		8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+DynamicFont.swift"; sourceTree = "<group>"; };
 		8EFF1C172D8BA9D400F48D32 /* TradeArticleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleContentView.swift; sourceTree = "<group>"; };
 		8EFF1C192D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
@@ -539,6 +539,7 @@
 				8ECD91462D58C9F800D6F315 /* Utils */,
 				8E5F282F2D53297200C05055 /* Signup */,
 				8E9A40B42D4BA5EE00824509 /* Login */,
+				8EF324132DA5F86B007C24D7 /* ParentView */,
 				8E4CD37D2D4BB31800E681F8 /* Launch Screen.storyboard */,
 			);
 			path = Presentation;
@@ -626,18 +627,9 @@
 		8EC010422D6E961D0059360D /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				8EC010432D6E962F0059360D /* View */,
+				8E8DD03F2D9508E1000EE726 /* TabBarViewController.swift */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		8EC010432D6E962F0059360D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8E8DD03F2D9508E1000EE726 /* TabBarViewController.swift */,
-				8EC0104E2D6EA93A0059360D /* TabBarView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		8EC010462D6E99220059360D /* TradeArticleTableView */ = {
@@ -788,6 +780,14 @@
 				8EECA94F2D4B761100E48757 /* BaobabUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8EF324132DA5F86B007C24D7 /* ParentView */ = {
+			isa = PBXGroup;
+			children = (
+				8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */,
+			);
+			path = ParentView;
 			sourceTree = "<group>";
 		};
 		8EFF1C152D8BA98400F48D32 /* TradeArticle */ = {
@@ -998,7 +998,6 @@
 				8EA956402D7683E1000F894E /* TokenInterceptor.swift in Sources */,
 				8E607B042D9D414E00FC0EF7 /* Dictionary+BaseParam.swift in Sources */,
 				8E5AF17D2D9F96B8007A4E4D /* ChatRoomsResponseDTO.swift in Sources */,
-				8EC0104F2D6EA93A0059360D /* TabBarView.swift in Sources */,
 				8E607AFC2D9D22B200FC0EF7 /* ChatMessagingRepositoryProtocol.swift in Sources */,
 				8E2029AD2D696CDE0037AF3F /* JWTTokenManager.swift in Sources */,
 				8EA956422D769DA1000F894E /* TokenReissueResponseDTO.swift in Sources */,
@@ -1016,6 +1015,7 @@
 				8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */,
 				8EFF1C142D8B90F000F48D32 /* UIFont+DynamicFont.swift in Sources */,
 				8ECC0ED12DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift in Sources */,
+				8EF324162DA5F9E8007C24D7 /* ParentViewViewController.swift in Sources */,
 				8E1D54382D9FBF1F00F261B5 /* ChatRoomTableViewCell.swift in Sources */,
 				8E125BF12D8FD3CD0009D14D /* FileDownloadRepository.swift in Sources */,
 				8E5AF1902D9FA267007A4E4D /* ChatRoomTableViewModel.swift in Sources */,

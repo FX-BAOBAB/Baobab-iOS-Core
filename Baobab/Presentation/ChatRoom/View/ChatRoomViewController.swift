@@ -56,7 +56,17 @@ final class ChatRoomViewController: UIViewController {
     }()
     let disposeBag: DisposeBag = .init()
     private let placeholder: String = "메시지 입력"
-
+    let navigationTitle: String
+    
+    init(navigationTitle: String) {
+        self.navigationTitle = navigationTitle
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,6 +76,7 @@ final class ChatRoomViewController: UIViewController {
         setupLayout()
         bind()
         adjustForKeyboard()
+        setupNavigationBar()
     }
     
 
@@ -129,6 +140,6 @@ extension ChatRoomViewController {
 }
 
 #Preview {
-    ChatRoomViewController()
+    ChatRoomViewController(navigationTitle: "테스트")
         .makePreview()
 }

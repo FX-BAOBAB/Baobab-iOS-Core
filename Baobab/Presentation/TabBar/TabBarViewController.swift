@@ -30,6 +30,11 @@ final class TabBarViewController: UITabBarController {
         
         return button
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,11 @@ final class TabBarViewController: UITabBarController {
         setViewControllers([tradeArticleTableViewController, chatRoomTableViewController], animated: true)
         setupTabBar()
         setupLayout()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     private func setupTabBar() {

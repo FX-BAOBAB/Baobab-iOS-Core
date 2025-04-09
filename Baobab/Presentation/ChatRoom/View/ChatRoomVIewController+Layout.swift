@@ -31,4 +31,9 @@ extension ChatRoomViewController {
             make.bottom.equalTo(inputTextView.snp.top).offset(-10)
         }
     }
+    
+    func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = navigationTitle
+    }
 }

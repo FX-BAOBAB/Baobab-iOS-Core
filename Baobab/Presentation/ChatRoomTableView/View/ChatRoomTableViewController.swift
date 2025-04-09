@@ -67,7 +67,7 @@ final class ChatRoomTableViewController: UIViewController {
 extension ChatRoomTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let viewController = ChatRoomViewController()
+        let viewController = ChatRoomViewController(navigationTitle: viewModel.chatRooms.value[indexPath.row].title)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

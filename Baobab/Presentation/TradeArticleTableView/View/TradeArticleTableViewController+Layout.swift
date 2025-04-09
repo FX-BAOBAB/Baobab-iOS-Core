@@ -12,7 +12,8 @@ extension TradeArticleTableViewController {
     func setupLayout() {
         view.addSubview(navigationBar)
         navigationBar.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(44)
         }
         
