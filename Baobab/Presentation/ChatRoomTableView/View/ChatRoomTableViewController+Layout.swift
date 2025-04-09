@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension ChatRoomTableViewController {
     func setupLayout() {
@@ -28,4 +29,10 @@ extension ChatRoomTableViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
+    
+//    func setupNavigationItem() {
+//        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+//        backBarButtonItem.tintColor = .black
+//        navigationItem.backBarButtonItem = backBarButtonItem
+//    }
 }

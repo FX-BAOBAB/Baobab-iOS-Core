@@ -55,6 +55,7 @@ final class ChatRoomTableViewController: UIViewController {
         
         setupLayout()
         bind()
+//        setupNavigationItem()
         viewModel.fetchChatRooms()
     }
     

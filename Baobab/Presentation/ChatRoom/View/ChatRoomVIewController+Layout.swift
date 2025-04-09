@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import SwiftUI
 
 extension ChatRoomViewController {
     func setupLayout() {
@@ -33,7 +35,35 @@ extension ChatRoomViewController {
     }
     
     func setupNavigationBar() {
+        //Title
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = navigationTitle
+        
+        //LeftNavigationItem
+        let backButton = UIBarButtonItem(
+            image: UIImage(systemName: "chevron.left"),
+            style: .plain,
+            target: self,
+            action: #selector(backButtonDidTap)
+        )
+        navigationItem.leftBarButtonItem = backButton
+        
+        //RightNavigationItem
+        let menuButton = UIBarButtonItem(
+            image: UIImage(systemName: "line.3.horizontal"),
+            style: .plain,
+            target: self,
+            action: #selector(menuButtonDidTap)
+        )
+        navigationItem.rightBarButtonItem = menuButton
+    }
+    
+    @objc func backButtonDidTap() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func menuButtonDidTap() {
+        let viewController = ChatRoomMenuViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

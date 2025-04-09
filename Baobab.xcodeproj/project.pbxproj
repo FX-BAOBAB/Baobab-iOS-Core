@@ -118,6 +118,8 @@
 		8EECA9862D4B954800E48757 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9852D4B954800E48757 /* Kingfisher */; };
 		8EECA9892D4B968A00E48757 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9882D4B968A00E48757 /* Factory */; };
 		8EF324162DA5F9E8007C24D7 /* ParentViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */; };
+		8EF324182DA62B5E007C24D7 /* ChatRoomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */; };
+		8EF3241A2DA63818007C24D7 /* ChatRoomMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */; };
 		8EFF1C142D8B90F000F48D32 /* UIFont+DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */; };
 		8EFF1C182D8BA9D400F48D32 /* TradeArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C172D8BA9D400F48D32 /* TradeArticleContentView.swift */; };
 		8EFF1C1A2D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFF1C192D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift */; };
@@ -246,6 +248,8 @@
 		8EECA9452D4B761100E48757 /* BaobabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA94F2D4B761100E48757 /* BaobabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewViewController.swift; sourceTree = "<group>"; };
+		8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenu.swift; sourceTree = "<group>"; };
+		8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenuViewController.swift; sourceTree = "<group>"; };
 		8EFF1C132D8B90F000F48D32 /* UIFont+DynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+DynamicFont.swift"; sourceTree = "<group>"; };
 		8EFF1C172D8BA9D400F48D32 /* TradeArticleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeArticleContentView.swift; sourceTree = "<group>"; };
 		8EFF1C192D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
@@ -728,6 +732,8 @@
 				8ECC0ECA2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift */,
 				8ECC0ECC2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift */,
 				8ECC0ED02DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift */,
+				8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */,
+				8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1003,6 +1009,7 @@
 				8EA956422D769DA1000F894E /* TokenReissueResponseDTO.swift in Sources */,
 				8EC010532D6EAE970059360D /* ItemCategory.swift in Sources */,
 				8E48BFE82D962240008D2459 /* MimeType.swift in Sources */,
+				8EF3241A2DA63818007C24D7 /* ChatRoomMenuViewController.swift in Sources */,
 				8E125BF52D8FD69B0009D14D /* FileDownloadDataSource.swift in Sources */,
 				8EC010572D6EB0430059360D /* ItemStatus.swift in Sources */,
 				8ECC0ECB2DA4A2AF00F0A6F3 /* ChatRoomViewController.swift in Sources */,
@@ -1017,6 +1024,7 @@
 				8ECC0ED12DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift in Sources */,
 				8EF324162DA5F9E8007C24D7 /* ParentViewViewController.swift in Sources */,
 				8E1D54382D9FBF1F00F261B5 /* ChatRoomTableViewCell.swift in Sources */,
+				8EF324182DA62B5E007C24D7 /* ChatRoomMenu.swift in Sources */,
 				8E125BF12D8FD3CD0009D14D /* FileDownloadRepository.swift in Sources */,
 				8E5AF1902D9FA267007A4E4D /* ChatRoomTableViewModel.swift in Sources */,
 				8EC0102F2D6E8E190059360D /* SpinningIndicator.swift in Sources */,

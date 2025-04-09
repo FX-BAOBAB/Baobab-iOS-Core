@@ -10,15 +10,6 @@ import SwiftUI
 import RxSwift
 
 final class ChatRoomViewController: UIViewController {
-    let inputContainer: UIStackView = {
-        let stackView = UIStackView(frame: .zero)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 10
-        
-        return stackView
-    }()
     let messageTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +64,8 @@ final class ChatRoomViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         view.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.hidesBackButton = true
         setupLayout()
         bind()
         adjustForKeyboard()
