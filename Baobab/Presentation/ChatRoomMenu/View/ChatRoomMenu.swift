@@ -10,14 +10,9 @@ import SwiftUI
 struct ChatRoomMenu: View {
     @StateObject private var viewModel: ChatRoomMenuViewModel
     @Environment(\.dismiss) private var dismiss
-    private let chatRoomId: String
     
-    init(
-        viewModel: ChatRoomMenuViewModel,
-        chatRoomId: String
-    ) {
+    init(viewModel: ChatRoomMenuViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.chatRoomId = chatRoomId
     }
     
     var body: some View {
@@ -41,6 +36,6 @@ struct ChatRoomMenu: View {
 
 #Preview {
     NavigationStack {
-        ChatRoomMenu(viewModel: ChatRoomMenuViewModel(), chatRoomId: "12345")
+        ChatRoomMenu(viewModel: ChatRoomMenuViewModel(chatRoomId: "12345"))
     }
 }

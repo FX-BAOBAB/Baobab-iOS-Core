@@ -9,10 +9,11 @@ import Foundation
 
 struct ChatMessage {
     let id, message: String
-    let messageType: MessageType
+    let messageType: MessageType?
     let sentAt: String
     let isRead: Bool
-    let chatRoomId: String
+    let chatRoomId, nickname, profileImageURL: String
+    let isMine: Bool
 }
 
 enum MessageType: String {

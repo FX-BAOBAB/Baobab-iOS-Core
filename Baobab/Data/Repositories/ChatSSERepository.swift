@@ -6,18 +6,36 @@
 //
 
 import Combine
+import Factory
 import Foundation
 
 final class ChatSSERepository: ChatSSERepositoryProtocol {
-    func startStreaming(from articleId: String) -> AnyPublisher<String?, any Error> {
+    @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDataSourceProtocol
+    
+    func startStreaming(from articleId: String) -> AnyPublisher<ChatMessage, any Error> {
         guard let endPoint = Bundle.main.chatEndPoint else {
             return Fail(error: NetworkError.invalidEndpoint)
                 .eraseToAnyPublisher()
         }
         
-        return ChatSSEManager.shared.connect(to: endPoint + "/chat-room/\(articleId)")
-            .map { $0 }
-            .setFailureType(to: Error.self)
+        return remoteDataSource.connectSSE(from: endPoint + "/chat-room/\(articleId)", decoding: ChatMessageResponseDTO.self)
+            .compactMap { [weak self] in
+                self?.createChatMessage($0)
+            }
             .eraseToAnyPublisher()
+    }
+    
+    private func createChatMessage(_ dto: ChatMessageResponseDTO) -> ChatMessage {
+        ChatMessage(
+            id: dto.id,
+            message: dto.message,
+            messageType: MessageType(rawValue: dto.messageType),
+            sentAt: dto.sentAt,
+            isRead: dto.isRead,
+            chatRoomId: dto.chatRoomID,
+            nickname: dto.nickname,
+            profileImageURL: dto.profileImageURL,
+            isMine: false
+        )
     }
 }

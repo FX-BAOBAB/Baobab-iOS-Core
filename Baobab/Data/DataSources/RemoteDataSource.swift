@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import Combine
 import Factory
 import Foundation
 
@@ -25,6 +26,9 @@ protocol RemoteDataSourceProtocol: AnyObject {
     func upload<T: Decodable>(to endpoint: String,
                               params: Parameters,
                               decoding type: T.Type) async throws -> T
+    
+    func connectSSE<T: Decodable>(from url: String,
+                                  decoding type: T.Type) -> AnyPublisher<T, any Error>
 }
 
 final class RemoteDataSource: RemoteDataSourceProtocol {
@@ -81,5 +85,33 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
         )
         .serializingDecodable(type)
         .value
+    }
+    
+    func connectSSE<T: Decodable>(
+        from url: String,
+        decoding type: T.Type
+    ) -> AnyPublisher<T, any Error> {
+        session.streamRequest(url, interceptor: TokenInterceptor.shared)
+            .publishStream(using: .string)
+            .dropFirst()    //첫 번째 연결 확인 메시지는 버림
+            .tryMap { stream -> String in
+                if case .stream(let result) = stream.event {
+                    return try result.get()
+                }
+                
+                throw URLError(.badServerResponse)
+            }
+            .compactMap { result in
+                result.split(separator: "data:")
+                    .last?
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            .tryMap { jsonString in
+                guard let jsonData = jsonString.data(using: .utf8) else {
+                    throw URLError(.badServerResponse)
+                }
+                return try JSONDecoder().decode(T.self, from: jsonData)
+            }
+            .eraseToAnyPublisher()
     }
 }

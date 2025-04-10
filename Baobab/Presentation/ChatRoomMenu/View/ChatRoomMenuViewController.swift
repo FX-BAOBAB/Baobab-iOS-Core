@@ -9,16 +9,6 @@ import UIKit
 import SwiftUI
 
 final class ChatRoomMenuViewController: UIViewController {
-    private let chatRoomId: String
-    
-    init(chatRoomId: String) {
-        self.chatRoomId = chatRoomId
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +19,7 @@ final class ChatRoomMenuViewController: UIViewController {
         setupLayout()
         
         let viewController = UIHostingController(
-            rootView: ChatRoomMenu(viewModel: ChatRoomMenuViewModel(), chatRoomId: chatRoomId)
+            rootView: ChatRoomMenu(viewModel: ChatRoomMenuViewModel(chatRoomId: ""))
         )
         addChild(viewController)
         viewController.view.frame = view.bounds
@@ -69,7 +59,7 @@ extension ChatRoomMenuViewController {
 
 #Preview {
     NavigationStack {
-        ChatRoomMenuViewController(chatRoomId: "12345")
+        ChatRoomMenuViewController()
             .makePreview()
     }
 }

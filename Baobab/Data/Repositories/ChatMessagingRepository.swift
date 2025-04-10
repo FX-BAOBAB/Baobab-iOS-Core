@@ -48,10 +48,13 @@ final class ChatMessagingRepository: ChatMessagingRepositoryProtocol {
             ChatMessage(
                 id: $0.id,
                 message: $0.message,
-                messageType: MessageType(rawValue: $0.messageType)!,
+                messageType: MessageType(rawValue: $0.messageType),
                 sentAt: $0.sentAt,
                 isRead: $0.isRead,
-                chatRoomId: $0.chatRoomID
+                chatRoomId: $0.chatRoomID,
+                nickname: $0.nickname,
+                profileImageURL: $0.profileImageURL,
+                isMine: $0.isMine
             )
         }
     }

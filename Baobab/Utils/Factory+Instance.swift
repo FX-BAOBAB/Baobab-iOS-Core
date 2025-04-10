@@ -72,4 +72,10 @@ extension Container {
             FileDownloadUseCase()
         }
     }
+    
+    var chatUseCase: Factory<ChatUseCaseProtocol> {
+        Factory(self) {
+            ChatUseCase()
+        }
+    }
 }

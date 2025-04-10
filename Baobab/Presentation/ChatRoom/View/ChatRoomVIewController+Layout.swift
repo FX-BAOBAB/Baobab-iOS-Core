@@ -63,7 +63,7 @@ extension ChatRoomViewController {
     }
     
     @objc func menuButtonDidTap() {
-        let viewController = ChatRoomMenuViewController(chatRoomId: chatRoomId)
+        let viewController = ChatRoomMenuViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

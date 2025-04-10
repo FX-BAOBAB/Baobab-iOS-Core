@@ -13,6 +13,11 @@ import Foundation
 final class ChatRoomMenuViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Injected(\.chatRoomRepository) private var repository: ChatRoomRepositoryProtocol
+    private let chatRoomId: String
     var task: Task<Void, Never>?
     var alertMessage: String?
+    
+    init(chatRoomId: String) {
+        self.chatRoomId = chatRoomId
+    }
 }
