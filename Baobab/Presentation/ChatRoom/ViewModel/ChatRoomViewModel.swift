@@ -33,6 +33,7 @@ final class ChatRoomViewModel {
             switch results {
             case .success(let messages):
                 self.messages.accept(messages)
+                print(messages)
             case .failure(let error):
                 logger.error("ChatRoomViewModel.fetchMessages() error : \(error)")
             }
@@ -48,8 +49,11 @@ final class ChatRoomViewModel {
                 case .failure(let error):
                     print(error)
                 }
-            }, receiveValue: {
-                print($0)
+            }, receiveValue: { [weak self] in
+                guard let self else { return }
+                
+                let messages = self.messages.value
+                self.messages.accept(messages + [$0])
             })
             .store(in: &cancellables)
     }

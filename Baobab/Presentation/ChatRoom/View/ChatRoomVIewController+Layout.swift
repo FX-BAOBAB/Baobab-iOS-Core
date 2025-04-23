@@ -29,7 +29,9 @@ extension ChatRoomViewController {
         
         view.addSubview(messageTableView)
         messageTableView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+//            make.top.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(inputTextView.snp.top).offset(-10)
         }
     }

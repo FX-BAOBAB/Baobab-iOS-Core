@@ -80,7 +80,7 @@ final class ChatRoomViewController: UIViewController {
         adjustForKeyboard()
         setupNavigationBar()
         viewModel.fetchMessages()
-//        viewModel.connect()
+        viewModel.connect()
     }
     
 
