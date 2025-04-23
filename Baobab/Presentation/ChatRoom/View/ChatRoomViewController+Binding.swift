@@ -7,6 +7,7 @@
 
 import Foundation
 import RxCocoa
+import RxSwift
 
 extension ChatRoomViewController {
     func bind() {
@@ -35,6 +36,7 @@ extension ChatRoomViewController {
             .disposed(by: disposeBag)
         
         viewModel.messages
+            .observe(on: MainScheduler.instance)
             .bind(to: messageTableView.rx.items) { tableView, index, item in
                 if !item.isMine {
                     let cell = tableView.dequeueReusableCell(withIdentifier: LeftMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! LeftMessageTableCell
@@ -48,6 +50,15 @@ extension ChatRoomViewController {
                 
                 return cell
             }
+            .disposed(by: disposeBag)
+        
+        viewModel.messages
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {
+                if !$0.isEmpty {
+                    self.messageTableView.scrollToRow(at: IndexPath(row: $0.count - 1, section: 0), at: .bottom, animated: false)
+                }
+            })
             .disposed(by: disposeBag)
     }
 }
