@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxCocoa
 
 extension ChatRoomViewController {
     func bind() {
@@ -30,6 +31,22 @@ extension ChatRoomViewController {
                 
                 owner.inputTextView.isScrollEnabled = isMaxHeight
                 owner.inputTextView.setNeedsUpdateConstraints()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.messages
+            .bind(to: messageTableView.rx.items) { tableView, index, item in
+                if !item.isMine {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: LeftMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! LeftMessageTableCell
+                    cell.configure(item)
+                    
+                    return cell
+                }
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: RightMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! RightMessageTableCell
+                cell.configure(item)
+                
+                return cell
             }
             .disposed(by: disposeBag)
     }

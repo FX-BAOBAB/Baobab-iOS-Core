@@ -13,7 +13,11 @@ final class ChatRoomViewController: UIViewController {
     let messageTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .red
+        tableView.estimatedRowHeight = 100    //cell height가 설정되기 전 임시 크기
+        tableView.rowHeight = UITableView.automaticDimension    //동적 Height 설정
+        tableView.separatorStyle = .none
+        tableView.register(LeftMessageTableCell.self, forCellReuseIdentifier: LeftMessageTableCell.reuseIdentifier)
+        tableView.register(RightMessageTableCell.self, forCellReuseIdentifier: RightMessageTableCell.reuseIdentifier)
         
         return tableView
     }()
@@ -47,7 +51,7 @@ final class ChatRoomViewController: UIViewController {
     }()
     let disposeBag: DisposeBag = .init()
     private let placeholder: String = "메시지 입력"
-    private let viewModel: ChatRoomViewModel
+    let viewModel: ChatRoomViewModel
     let navigationTitle: String
     
     init(
@@ -75,7 +79,8 @@ final class ChatRoomViewController: UIViewController {
         bind()
         adjustForKeyboard()
         setupNavigationBar()
-        viewModel.connect()
+        viewModel.fetchMessages()
+//        viewModel.connect()
     }
     
 
