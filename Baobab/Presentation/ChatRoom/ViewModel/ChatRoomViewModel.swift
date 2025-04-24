@@ -33,7 +33,6 @@ final class ChatRoomViewModel {
             switch results {
             case .success(let messages):
                 self.messages.accept(messages)
-                print(messages)
             case .failure(let error):
                 logger.error("ChatRoomViewModel.fetchMessages() error : \(error)")
             }

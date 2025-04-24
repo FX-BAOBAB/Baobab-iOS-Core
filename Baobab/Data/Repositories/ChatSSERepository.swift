@@ -9,7 +9,7 @@ import Combine
 import Factory
 import Foundation
 
-final class ChatSSERepository: ChatSSERepositoryProtocol {
+final class ChatSSERepository: ChatSSERepositoryProtocol, DateAndTimeProvidable {
     @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDataSourceProtocol
     
     func startStreaming(from articleId: String) -> AnyPublisher<ChatMessage, any Error> {
@@ -30,7 +30,8 @@ final class ChatSSERepository: ChatSSERepositoryProtocol {
             id: dto.id,
             message: dto.message,
             messageType: MessageType(rawValue: dto.messageType),
-            sentAt: dto.sentAt,
+            sentDate: getDate(from: dto.sentAt),
+            sentTime: getTime(from: dto.sentAt),
             isRead: dto.isRead,
             chatRoomId: dto.chatRoomID,
             nickname: dto.nickname,

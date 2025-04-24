@@ -8,7 +8,7 @@
 import Factory
 import Foundation
 
-final class ChatMessagingRepository: ChatMessagingRepositoryProtocol {
+final class ChatMessagingRepository: ChatMessagingRepositoryProtocol, DateAndTimeProvidable {
     @Injected(\.remoteDataSource) private var dataSource: RemoteDataSourceProtocol
     
     func sendMessage(_ params: [String: Any]) async -> Result<Void, any Error> {
@@ -49,7 +49,8 @@ final class ChatMessagingRepository: ChatMessagingRepositoryProtocol {
                 id: $0.id,
                 message: $0.message,
                 messageType: MessageType(rawValue: $0.messageType),
-                sentAt: $0.sentAt,
+                sentDate: getDate(from: $0.sentAt),
+                sentTime: getTime(from: $0.sentAt),
                 isRead: $0.isRead,
                 chatRoomId: $0.chatRoomID,
                 nickname: $0.nickname,

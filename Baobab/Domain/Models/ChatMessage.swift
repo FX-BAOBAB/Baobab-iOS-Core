@@ -10,7 +10,8 @@ import Foundation
 struct ChatMessage {
     let id, message: String
     let messageType: MessageType?
-    let sentAt: String
+    let sentDate: String
+    let sentTime: String
     let isRead: Bool
     let chatRoomId, nickname, profileImageURL: String
     let isMine: Bool

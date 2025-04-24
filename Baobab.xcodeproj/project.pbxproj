@@ -121,6 +121,7 @@
 		8EECA9832D4B94A700E48757 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9822D4B94A700E48757 /* RxRelay */; };
 		8EECA9862D4B954800E48757 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9852D4B954800E48757 /* Kingfisher */; };
 		8EECA9892D4B968A00E48757 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9882D4B968A00E48757 /* Factory */; };
+		8EF136EE2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF136ED2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift */; };
 		8EF324162DA5F9E8007C24D7 /* ParentViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */; };
 		8EF324182DA62B5E007C24D7 /* ChatRoomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */; };
 		8EF3241A2DA63818007C24D7 /* ChatRoomMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */; };
@@ -256,6 +257,7 @@
 		8EECA92F2D4B760F00E48757 /* Baobab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baobab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA9452D4B761100E48757 /* BaobabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA94F2D4B761100E48757 /* BaobabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF136ED2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeProvidable.swift; sourceTree = "<group>"; };
 		8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewViewController.swift; sourceTree = "<group>"; };
 		8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenu.swift; sourceTree = "<group>"; };
 		8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenuViewController.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 				8E607B032D9D414E00FC0EF7 /* Dictionary+BaseParam.swift */,
 				8E1D54392DA02AB600F261B5 /* String+toDate.swift */,
 				8E1D543B2DA02AD000F261B5 /* Date+korFormattedString.swift */,
+				8EF136ED2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1072,6 +1075,7 @@
 				8E607AFA2D9D22A400FC0EF7 /* ChatMessagingRepository.swift in Sources */,
 				8ED083D62D93B1FE007D7A2F /* PHPicker.swift in Sources */,
 				8EC0104B2D6E9FE10059360D /* UIViewController+Preview.swift in Sources */,
+				8EF136EE2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift in Sources */,
 				8E607B062D9D431900FC0EF7 /* ChatSSERepositoryProtocol.swift in Sources */,
 				8E7742802D5EBB32003FE8E0 /* CarrierType.swift in Sources */,
 				8EC547A42D66AA3400191E3B /* SignupResponseDTO.swift in Sources */,

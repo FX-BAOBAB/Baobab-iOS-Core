@@ -18,7 +18,7 @@ final class LeftMessageTableCell: UITableViewCell {
         
         return label
     }()
-    private let dateLabel: UILabel = {
+    private let sentTimeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .gray
@@ -54,12 +54,19 @@ final class LeftMessageTableCell: UITableViewCell {
             make.top.equalToSuperview()
             make.bottom.equalToSuperview().inset(5)
             make.leading.equalToSuperview().inset(10)
+        }
+        
+        contentView.addSubview(sentTimeLabel)
+        sentTimeLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(5)
+            make.leading.equalTo(messageLabel.snp.trailing).offset(3)
             make.trailing.lessThanOrEqualToSuperview().inset(10)
         }
     }
     
     func configure(_ message: ChatMessage) {
         messageLabel.text = message.message
+        sentTimeLabel.text = message.sentTime
     }
 
 }
