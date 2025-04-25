@@ -26,22 +26,8 @@ final class ChatRoomViewModel {
         self.chatRoomId = chatRoomId
     }
     
-    func fetchMessages() {
-        task = Task {
-            let results = await usecase.fetchMessages(from: chatRoomId)
-            guard !Task.isCancelled else { return }
-            
-            switch results {
-            case .success(let messages):
-                self.messages.accept(messages)
-            case .failure(let error):
-                logger.error("ChatRoomViewModel.fetchMessages() error : \(error)")
-            }
-        }
-    }
-    
     func connect() {
-        usecase.connect(from: articleId)
+        usecase.connect(to: chatRoomId, with: articleId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
@@ -52,15 +38,12 @@ final class ChatRoomViewModel {
                     self?.connect()
                 }
             }, receiveValue: { [weak self] in
-                guard let self else { return }
-                
-                let messages = self.messages.value
-                self.messages.accept(messages + [$0])
+                self?.messages.accept($0)
             })
             .store(in: &cancellables)
     }
     
-    func disconnect() {
+    func exit() {
         Task {
             let result = await usecase.exit(chatRoomId: chatRoomId)
             switch result {

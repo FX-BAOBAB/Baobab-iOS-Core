@@ -80,13 +80,12 @@ final class ChatRoomViewController: UIViewController {
         bind()
         adjustForKeyboard()
         setupNavigationBar()
-        viewModel.fetchMessages()
         viewModel.connect()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        viewModel.disconnect()
+        viewModel.exit()
         viewModel.task?.cancel()
     }
     

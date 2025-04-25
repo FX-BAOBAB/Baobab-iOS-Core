@@ -14,6 +14,9 @@ protocol RemoteDataSourceProtocol: AnyObject {
     func get<T: Decodable>(to endpoint: String,
                            decoding type: T.Type) async throws -> T
     
+    func get<T: Decodable>(to endpoint: String,
+                           decoding type: T.Type) -> AnyPublisher<T, any Error>
+    
     func post<T: Decodable>(to endpoint: String,
                             params: Parameters,
                             token: String,
@@ -38,6 +41,16 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
         return try await session.request(endpoint, interceptor: TokenInterceptor.shared)
                             .serializingDecodable(type)
                             .value
+    }
+    
+    func get<T>(to endpoint: String, decoding type: T.Type) -> AnyPublisher<T, any Error> where T : Decodable {
+        return session.request(endpoint, interceptor: TokenInterceptor.shared)
+            .publishDecodable(type: T.self)
+            .value()
+            .mapError {
+                $0 as Error
+            }
+            .eraseToAnyPublisher()
     }
     
     /// refresh token으로 access token을 갱신할 때 interceptor 대신 header에 직접 토큰을 주입하는 메서드

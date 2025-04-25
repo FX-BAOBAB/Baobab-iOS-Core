@@ -5,6 +5,7 @@
 //  Created by 이정훈 on 4/2/25.
 //
 
+import Combine
 import Factory
 import Foundation
 
@@ -27,17 +28,17 @@ final class ChatMessagingRepository: ChatMessagingRepositoryProtocol, DateAndTim
         }
     }
     
-    func fetchMessages(from chatRoomId: String) async throws -> [ChatMessage] {
+    func fetchMessages(from chatRoomId: String) -> AnyPublisher<[ChatMessage], any Error> {
         guard let endPoint = Bundle.main.chatEndPoint else {
-            throw NetworkError.invalidEndpoint
+            return Fail(error: NetworkError.invalidEndpoint)
+                .eraseToAnyPublisher()
         }
         
-        let dto = try await dataSource.get(to: endPoint + "/messages?chatRoomId=\(chatRoomId)", decoding: ChatMessagesResponseDTO.self)
-        if dto.result.resultCode == 200 {
-            return createChatMessages(dto)
-        }
-        
-        throw NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage)
+        return dataSource.get(to: endPoint + "/messages?chatRoomId=\(chatRoomId)", decoding: ChatMessagesResponseDTO.self)
+            .compactMap { [weak self] dto in
+                self?.createChatMessages(dto)
+            }
+            .eraseToAnyPublisher()
     }
     
     private func createChatMessages(_ dto: ChatMessagesResponseDTO) -> [ChatMessage] {

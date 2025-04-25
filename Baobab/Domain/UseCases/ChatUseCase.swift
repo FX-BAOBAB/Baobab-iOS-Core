@@ -10,8 +10,7 @@ import Factory
 import Foundation
 
 protocol ChatUseCaseProtocol {
-    func connect(from url: String) -> AnyPublisher<ChatMessage, any Error>
-    func fetchMessages(from chatRoomId: String) async -> Result<[ChatMessage], any Error>
+    func connect(to chatRoomId: String, with articleId: String) -> AnyPublisher<[ChatMessage], any Error>
     func send(message: String, to chatRoomId: String) async -> Result<Void, any Error>
     func exit(chatRoomId: String) async -> Result<Void, any Error>
 }
@@ -21,32 +20,30 @@ final class ChatUseCase: ChatUseCaseProtocol {
     @Injected(\.chatSSERepository) private var chatSSERepository: ChatSSERepositoryProtocol
     @Injected(\.chatRoomRepository) private var chatRoomRepository: ChatRoomRepositoryProtocol
     
-    func connect(from articleId: String) -> AnyPublisher<ChatMessage, any Error> {
-        return chatSSERepository.startStreaming(from: articleId)
-    }
-    
-    func fetchMessages(from chatRoomId: String) async -> Result<[ChatMessage], any Error> {
-        do {
-            var messages = try await chatMessagingRepository.fetchMessages(from: chatRoomId)
-            var processedMessage = [ChatMessage]()
-            for i in messages.indices {
-                if let lastMessage = processedMessage.last {
-                    if lastMessage.nickname == messages[i].nickname {
-                        processedMessage.append(messages[i])
+    func connect(to chatRoomId: String, with articleId: String) -> AnyPublisher<[ChatMessage], any Error> {
+        return chatMessagingRepository.fetchMessages(from: chatRoomId)
+            .merge(with: chatSSERepository.startStreaming(from: articleId))
+            .scan([]) { (messages, newMessages) in
+                var newMessages = newMessages
+                var messages = messages
+                for i in newMessages.indices {
+                    if let lastMessage = messages.last {
+                        if lastMessage.nickname == newMessages[i].nickname {
+                            messages.append(newMessages[i])
+                        } else {
+                            newMessages[i].messageType = .textWithProfile
+                            messages.append(newMessages[i])
+                        }
                     } else {
-                        messages[i].messageType = .textWithProfile
-                        processedMessage.append(messages[i])
+                        newMessages[i].messageType = .textWithProfile
+                        messages.append(newMessages[i])
                     }
-                } else {
-                    messages[i].messageType = .textWithProfile
-                    processedMessage.append(messages[i])
                 }
+                
+                return messages
             }
-            
-            return .success(processedMessage)
-        } catch {
-            return .failure(error)
-        }
+            .eraseToAnyPublisher()
+        
     }
     
     func send(message: String, to chatRoomId: String) async -> Result<Void, any Error> {
