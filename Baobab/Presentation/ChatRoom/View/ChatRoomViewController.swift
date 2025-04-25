@@ -18,6 +18,7 @@ final class ChatRoomViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.register(LeftMessageTableCell.self, forCellReuseIdentifier: LeftMessageTableCell.reuseIdentifier)
         tableView.register(RightMessageTableCell.self, forCellReuseIdentifier: RightMessageTableCell.reuseIdentifier)
+        tableView.register(LeftProfileMessageTableCell.self, forCellReuseIdentifier: LeftProfileMessageTableCell.reuseIdentifier)
         
         return tableView
     }()
@@ -81,6 +82,12 @@ final class ChatRoomViewController: UIViewController {
         setupNavigationBar()
         viewModel.fetchMessages()
         viewModel.connect()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.disconnect()
+        viewModel.task?.cancel()
     }
     
 

@@ -39,10 +39,18 @@ extension ChatRoomViewController {
             .observe(on: MainScheduler.instance)
             .bind(to: messageTableView.rx.items) { tableView, index, item in
                 if !item.isMine {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: LeftMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! LeftMessageTableCell
-                    cell.configure(item)
-                    
-                    return cell
+                    switch item.messageType {
+                    case .textWithProfile:
+                        let cell = tableView.dequeueReusableCell(withIdentifier: LeftProfileMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! LeftProfileMessageTableCell
+                        cell.configure(item)
+                        
+                        return cell
+                    default:
+                        let cell = tableView.dequeueReusableCell(withIdentifier: LeftMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! LeftMessageTableCell
+                        cell.configure(item)
+                        
+                        return cell
+                    }
                 }
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: RightMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! RightMessageTableCell
@@ -54,9 +62,9 @@ extension ChatRoomViewController {
         
         viewModel.messages
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
                 if !$0.isEmpty {
-                    self.messageTableView.scrollToRow(at: IndexPath(row: $0.count - 1, section: 0), at: .bottom, animated: false)
+                    self?.messageTableView.scrollToRow(at: IndexPath(row: $0.count - 1, section: 0), at: .bottom, animated: false)
                 }
             })
             .disposed(by: disposeBag)
