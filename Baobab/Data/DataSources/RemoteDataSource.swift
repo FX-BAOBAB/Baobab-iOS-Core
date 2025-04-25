@@ -101,15 +101,19 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
                 
                 throw URLError(.badServerResponse)
             }
+            .filter {
+                $0 != "event:CHAT\ndata:"
+            }
             .compactMap { result in
-                result.split(separator: "data:")
+                return result.split(separator: "data:")
                     .last?
-                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                    .trimmingCharacters(in: .whitespaces)
             }
             .tryMap { jsonString in
                 guard let jsonData = jsonString.data(using: .utf8) else {
                     throw URLError(.badServerResponse)
                 }
+                
                 return try JSONDecoder().decode(T.self, from: jsonData)
             }
             .eraseToAnyPublisher()

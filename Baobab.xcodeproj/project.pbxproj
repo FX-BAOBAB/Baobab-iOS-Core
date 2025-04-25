@@ -122,6 +122,7 @@
 		8EECA9862D4B954800E48757 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9852D4B954800E48757 /* Kingfisher */; };
 		8EECA9892D4B968A00E48757 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 8EECA9882D4B968A00E48757 /* Factory */; };
 		8EF136EE2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF136ED2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift */; };
+		8EF136F02DB9CF09002B43F0 /* LeftProfileMessageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF136EF2DB9CF09002B43F0 /* LeftProfileMessageTableCell.swift */; };
 		8EF324162DA5F9E8007C24D7 /* ParentViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */; };
 		8EF324182DA62B5E007C24D7 /* ChatRoomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */; };
 		8EF3241A2DA63818007C24D7 /* ChatRoomMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */; };
@@ -258,6 +259,7 @@
 		8EECA9452D4B761100E48757 /* BaobabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EECA94F2D4B761100E48757 /* BaobabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaobabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EF136ED2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeProvidable.swift; sourceTree = "<group>"; };
+		8EF136EF2DB9CF09002B43F0 /* LeftProfileMessageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileMessageTableCell.swift; sourceTree = "<group>"; };
 		8EF324152DA5F9E8007C24D7 /* ParentViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewViewController.swift; sourceTree = "<group>"; };
 		8EF324172DA62B5E007C24D7 /* ChatRoomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenu.swift; sourceTree = "<group>"; };
 		8EF324192DA63818007C24D7 /* ChatRoomMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMenuViewController.swift; sourceTree = "<group>"; };
@@ -747,6 +749,7 @@
 				8ECC0ECC2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift */,
 				8ECC0ED02DA4B0B400F0A6F3 /* ChatRoomViewController+Binding.swift */,
 				8EE63E032DB5C6D0003B0D12 /* LeftMessageTableCell.swift */,
+				8EF136EF2DB9CF09002B43F0 /* LeftProfileMessageTableCell.swift */,
 				8EE63E052DB5C6DC003B0D12 /* RightMessageTableCell.swift */,
 				8E4C5A492DB85F6300FB34C8 /* PaddedLabel.swift */,
 			);
@@ -1029,6 +1032,7 @@
 				8EFF1C1A2D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
 				8E607B002D9D2E8200FC0EF7 /* ChatMessagesResponseDTO.swift in Sources */,
 				8EAE6C132DA74DA1002D349E /* ChatMessageResponseDTO.swift in Sources */,
+				8EF136F02DB9CF09002B43F0 /* LeftProfileMessageTableCell.swift in Sources */,
 				8E1D543C2DA02AD000F261B5 /* Date+korFormattedString.swift in Sources */,
 				8EADF3052D5D785E009EAC2B /* InputState.swift in Sources */,
 				8E74370C2D910C77000C6DF1 /* Int+DecimalFormat.swift in Sources */,

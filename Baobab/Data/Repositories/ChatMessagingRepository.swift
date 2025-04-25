@@ -27,20 +27,17 @@ final class ChatMessagingRepository: ChatMessagingRepositoryProtocol, DateAndTim
         }
     }
     
-    func fetchMessages(from chatRoomId: String) async -> Result<[ChatMessage], any Error> {
+    func fetchMessages(from chatRoomId: String) async throws -> [ChatMessage] {
         guard let endPoint = Bundle.main.chatEndPoint else {
-            return .failure(NetworkError.invalidEndpoint)
+            throw NetworkError.invalidEndpoint
         }
         
-        do {
-            let dto = try await dataSource.get(to: endPoint + "/messages?chatRoomId=\(chatRoomId)", decoding: ChatMessagesResponseDTO.self)
-            if dto.result.resultCode == 200 {
-                return .success(createChatMessages(dto))
-            }
-            return .failure(NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage))
-        } catch {
-            return .failure(error)
+        let dto = try await dataSource.get(to: endPoint + "/messages?chatRoomId=\(chatRoomId)", decoding: ChatMessagesResponseDTO.self)
+        if dto.result.resultCode == 200 {
+            return createChatMessages(dto)
         }
+        
+        throw NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage)
     }
     
     private func createChatMessages(_ dto: ChatMessagesResponseDTO) -> [ChatMessage] {

@@ -9,7 +9,7 @@ import Foundation
 
 struct ChatMessage {
     let id, message: String
-    let messageType: MessageType?
+    var messageType: MessageType?
     let sentDate: String
     let sentTime: String
     let isRead: Bool
@@ -19,4 +19,5 @@ struct ChatMessage {
 
 enum MessageType: String {
     case text = "TEXT"
+    case textWithProfile
 }

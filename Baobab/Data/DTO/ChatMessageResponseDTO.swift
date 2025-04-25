@@ -9,12 +9,12 @@ import Foundation
 
 // MARK: - ChatMessageResponseDTO
 struct ChatMessageResponseDTO: Decodable {
-    let id: String
-    let senderID: String
+    let id, senderID: String
     let receiverIDList: [String]
     let message, messageType, sentAt: String
     let isRead: Bool
-    let chatRoomID, nickname, profileImageURL: String
+    let chatRoomID, nickname: String
+    let profileImageURL: String
 
     enum CodingKeys: String, CodingKey {
         case id

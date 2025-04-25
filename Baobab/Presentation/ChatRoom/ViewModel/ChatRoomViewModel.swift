@@ -11,6 +11,7 @@ import Factory
 import Foundation
 import os
 
+@MainActor
 final class ChatRoomViewModel {
     @Injected(\.chatUseCase) private var usecase: ChatUseCaseProtocol
     let messages: BehaviorRelay<[ChatMessage]> = .init(value: [])
@@ -41,12 +42,14 @@ final class ChatRoomViewModel {
     
     func connect() {
         usecase.connect(from: articleId)
-            .sink(receiveCompletion: { completion in
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
-                    print("Stream Finished")
+                    self?.logger.info("ChatRoomViewModel.connect() Stream Finished")
                 case .failure(let error):
-                    print(error)
+                    self?.logger.error("ChatRoomViewModel.connect() error: \(error)")
+                    self?.connect()
                 }
             }, receiveValue: { [weak self] in
                 guard let self else { return }
@@ -55,5 +58,17 @@ final class ChatRoomViewModel {
                 self.messages.accept(messages + [$0])
             })
             .store(in: &cancellables)
+    }
+    
+    func disconnect() {
+        Task {
+            let result = await usecase.exit(chatRoomId: chatRoomId)
+            switch result {
+            case .success:
+                logger.info("ChatRoomViewModel.disconnect() success")
+            case .failure(let error):
+                logger.error("ChatRoomViewModel.discoonect() error: \(error)")
+            }
+        }
     }
 }
