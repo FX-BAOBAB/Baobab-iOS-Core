@@ -146,6 +146,7 @@ extension ChatRoomViewController {
     
     @objc private func didSendButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = .accent
+        inputTextView.text = ""
     }
 }
 

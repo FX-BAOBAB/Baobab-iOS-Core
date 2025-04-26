@@ -11,8 +11,15 @@ import Foundation
 
 protocol ChatUseCaseProtocol {
     func connect(to chatRoomId: String, with articleId: String) -> AnyPublisher<[ChatMessage], any Error>
+    func reconnect(with articleId: String, initialValue: [ChatMessage]) -> AnyPublisher<[ChatMessage], any Error>
     func send(message: String, to chatRoomId: String) async -> Result<Void, any Error>
     func exit(chatRoomId: String) async -> Result<Void, any Error>
+}
+
+extension ChatUseCaseProtocol {
+    func reconnect(with articleId: String, initialValue: [ChatMessage] = []) -> AnyPublisher<[ChatMessage], any Error> {
+        return reconnect(with: articleId, initialValue: initialValue)
+    }
 }
 
 final class ChatUseCase: ChatUseCaseProtocol {
@@ -23,27 +30,42 @@ final class ChatUseCase: ChatUseCaseProtocol {
     func connect(to chatRoomId: String, with articleId: String) -> AnyPublisher<[ChatMessage], any Error> {
         return chatMessagingRepository.fetchMessages(from: chatRoomId)
             .merge(with: chatSSERepository.startStreaming(from: articleId))
-            .scan([]) { (messages, newMessages) in
+            .scan([]) { [weak self] (messages, newMessages) in
                 var newMessages = newMessages
                 var messages = messages
-                for i in newMessages.indices {
-                    if let lastMessage = messages.last {
-                        if lastMessage.nickname == newMessages[i].nickname {
-                            messages.append(newMessages[i])
-                        } else {
-                            newMessages[i].messageType = .textWithProfile
-                            messages.append(newMessages[i])
-                        }
-                    } else {
-                        newMessages[i].messageType = .textWithProfile
-                        messages.append(newMessages[i])
-                    }
-                }
+                self?.attach(newMessages: &newMessages, to: &messages)
                 
                 return messages
             }
             .eraseToAnyPublisher()
-        
+    }
+    
+    func reconnect(with articleId: String, initialValue: [ChatMessage]) -> AnyPublisher<[ChatMessage], any Error> {
+        return chatSSERepository.startStreaming(from: articleId)
+            .scan(initialValue) { [weak self] (messages, newMessages) in
+                var newMessages = newMessages
+                var messages = messages
+                self?.attach(newMessages: &newMessages, to: &messages)
+                
+                return messages
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private func attach(newMessages: inout [ChatMessage], to messages: inout [ChatMessage]) {
+        for i in newMessages.indices {
+            if let lastMessage = messages.last {
+                if lastMessage.nickname == newMessages[i].nickname {
+                    messages.append(newMessages[i])
+                } else {
+                    newMessages[i].messageType = .textWithProfile
+                    messages.append(newMessages[i])
+                }
+            } else {
+                newMessages[i].messageType = .textWithProfile
+                messages.append(newMessages[i])
+            }
+        }
     }
     
     func send(message: String, to chatRoomId: String) async -> Result<Void, any Error> {

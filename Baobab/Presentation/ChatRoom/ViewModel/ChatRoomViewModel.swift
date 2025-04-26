@@ -35,7 +35,23 @@ final class ChatRoomViewModel {
                     self?.logger.info("ChatRoomViewModel.connect() Stream Finished")
                 case .failure(let error):
                     self?.logger.error("ChatRoomViewModel.connect() error: \(error)")
-                    self?.connect()
+                    self?.reconnect()
+                }
+            }, receiveValue: { [weak self] in
+                self?.messages.accept($0)
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func reconnect() {
+        usecase.reconnect(with: articleId, initialValue: messages.value)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.logger.info("ChatRoomViewModel.reconnect() Stream Finished")
+                case .failure(let error):
+                    self?.logger.error("ChatRoomViewModel.reconnect() error: \(error)")
+                    self?.reconnect()
                 }
             }, receiveValue: { [weak self] in
                 self?.messages.accept($0)
