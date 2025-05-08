@@ -12,13 +12,29 @@ import Foundation
 final class ChatSSERepository: ChatSSERepositoryProtocol, DateAndTimeProvidable {
     @Injected(\.remoteDataSource) private var remoteDataSource: RemoteDataSourceProtocol
     
-    func startStreaming(from articleId: String) -> AnyPublisher<[ChatMessage], any Error> {
+    func startStreaming(articleId: String) -> AnyPublisher<[ChatMessage], any Error> {
         guard let endPoint = Bundle.main.chatEndPoint else {
             return Fail(error: NetworkError.invalidEndpoint)
                 .eraseToAnyPublisher()
         }
         
-        return remoteDataSource.connectSSE(from: endPoint + "/chat-room/\(articleId)", decoding: ChatMessageResponseDTO.self)
+        return remoteDataSource.connectSSE(from: endPoint + "/chat-room?articleId=\(articleId)", decoding: ChatMessageResponseDTO.self)
+            .compactMap { [weak self] in
+                let message = self?.createChatMessage($0)
+                guard let message else { return nil }
+                
+                return [message]
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func startStreaming(chatRoomId: String) -> AnyPublisher<[ChatMessage], any Error> {
+        guard let endPoint = Bundle.main.chatEndPoint else {
+            return Fail(error: NetworkError.invalidEndpoint)
+                .eraseToAnyPublisher()
+        }
+        
+        return remoteDataSource.connectSSE(from: endPoint + "/chat-room?chatRoomId=\(chatRoomId)", decoding: ChatMessageResponseDTO.self)
             .compactMap { [weak self] in
                 let message = self?.createChatMessage($0)
                 guard let message else { return nil }

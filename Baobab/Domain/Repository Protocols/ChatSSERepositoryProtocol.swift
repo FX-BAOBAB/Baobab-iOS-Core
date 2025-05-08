@@ -9,5 +9,6 @@ import Combine
 import Foundation
 
 protocol ChatSSERepositoryProtocol {
-    func startStreaming(from articleId: String) -> AnyPublisher<[ChatMessage], any Error>
+    func startStreaming(articleId: String) -> AnyPublisher<[ChatMessage], any Error>
+    func startStreaming(chatRoomId: String) -> AnyPublisher<[ChatMessage], any Error>
 }

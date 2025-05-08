@@ -29,7 +29,7 @@ final class ChatUseCase: ChatUseCaseProtocol {
     
     func connect(to chatRoomId: String, with articleId: String) -> AnyPublisher<[ChatMessage], any Error> {
         return chatMessagingRepository.fetchMessages(from: chatRoomId)
-            .merge(with: chatSSERepository.startStreaming(from: articleId))
+            .merge(with: chatSSERepository.startStreaming(articleId: articleId))
             .scan([]) { [weak self] (messages, newMessages) in
                 var newMessages = newMessages
                 var messages = messages
@@ -41,7 +41,7 @@ final class ChatUseCase: ChatUseCaseProtocol {
     }
     
     func reconnect(with articleId: String, initialValue: [ChatMessage]) -> AnyPublisher<[ChatMessage], any Error> {
-        return chatSSERepository.startStreaming(from: articleId)
+        return chatSSERepository.startStreaming(articleId: articleId)
             .scan(initialValue) { [weak self] (messages, newMessages) in
                 var newMessages = newMessages
                 var messages = messages
