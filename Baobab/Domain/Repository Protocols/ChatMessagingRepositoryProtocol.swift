@@ -9,6 +9,6 @@ import Combine
 import Foundation
 
 protocol ChatMessagingRepositoryProtocol {
-    func sendMessage(_ params: [String: Any]) async -> Result<Void, any Error>
+    func sendMessage(_ params: [String: Any]) -> AnyPublisher<ChatMessage, any Error>
     func fetchMessages(from chatRoomId: String) -> AnyPublisher<[ChatMessage], any Error>
 }

@@ -73,9 +73,15 @@ extension Container {
         }
     }
     
-    var chatUseCase: Factory<ChatUseCaseProtocol> {
+    var connectChatRoomUseCase: Factory<ConnectChatRoomUseCaseProtocol> {
         Factory(self) {
-            ChatUseCase()
+            ConnectChatRoomUseCaseImpl()
+        }
+    }
+    
+    var sendMessageUseCase: Factory<SendMessageUseCaseProtocol> {
+        Factory(self) {
+            SendMessageUseCaseImpl()
         }
     }
 }

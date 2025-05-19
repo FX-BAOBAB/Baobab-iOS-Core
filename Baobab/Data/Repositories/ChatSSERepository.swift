@@ -55,7 +55,8 @@ final class ChatSSERepository: ChatSSERepositoryProtocol, DateAndTimeProvidable 
             chatRoomId: dto.chatRoomID,
             nickname: dto.nickname,
             profileImageURL: dto.profileImageURL,
-            isMine: false
+            isMine: false,
+            isLoading: false
         )
     }
 }

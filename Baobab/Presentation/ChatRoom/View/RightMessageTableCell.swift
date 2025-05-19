@@ -7,9 +7,11 @@
 
 import UIKit
 
-final class RightMessageTableCell: UITableViewCell {
-    static let reuseIdentifier = "RightMessageTableCell"
-    private let messageLabel: UILabel = {
+class RightMessageTableCell: UITableViewCell {
+    class var reuseIdentifier: String {
+        "RightMessageTableCell"
+    }
+    fileprivate let messageLabel: UILabel = {
         let label = PaddedLabel()
         label.layer.cornerRadius = 15
         label.backgroundColor = .gray1
@@ -47,7 +49,7 @@ final class RightMessageTableCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    private func setupLayout() {
+    fileprivate func setupLayout() {
         contentView.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(10)
@@ -68,4 +70,34 @@ final class RightMessageTableCell: UITableViewCell {
         sentTimeLabel.text = message.sentTime
     }
 
+}
+
+final class LoadingRightMessageTableViewCell: RightMessageTableCell {
+    override class var reuseIdentifier: String {
+        "LoadingRightMessageTableViewCell"
+    }
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        
+        return indicator
+    }()
+    
+    override func setupLayout() {
+        contentView.addSubview(messageLabel)
+        messageLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(10)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview().inset(5)
+        }
+        
+        contentView.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(5)
+            make.trailing.equalTo(messageLabel.snp.leading)
+        }
+    }
+    
+    override func configure(_ message: ChatMessage) {
+        messageLabel.text = message.message
+    }
 }

@@ -15,6 +15,7 @@ struct ChatMessage {
     let isRead: Bool
     let chatRoomId, nickname, profileImageURL: String
     let isMine: Bool
+    var isLoading: Bool
 }
 
 enum MessageType: String {

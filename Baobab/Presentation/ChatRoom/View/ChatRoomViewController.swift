@@ -19,6 +19,7 @@ final class ChatRoomViewController: UIViewController {
         tableView.register(LeftMessageTableCell.self, forCellReuseIdentifier: LeftMessageTableCell.reuseIdentifier)
         tableView.register(RightMessageTableCell.self, forCellReuseIdentifier: RightMessageTableCell.reuseIdentifier)
         tableView.register(LeftProfileMessageTableCell.self, forCellReuseIdentifier: LeftProfileMessageTableCell.reuseIdentifier)
+        tableView.register(LoadingRightMessageTableViewCell.self, forCellReuseIdentifier: LoadingRightMessageTableViewCell.reuseIdentifier)
         
         return tableView
     }()
@@ -146,6 +147,7 @@ extension ChatRoomViewController {
     
     @objc private func didSendButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = .accent
+        viewModel.send(message: inputTextView.text)
         inputTextView.text = ""
     }
 }

@@ -51,6 +51,12 @@ extension ChatRoomViewController {
                         
                         return cell
                     }
+                } else if item.isLoading {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: LoadingRightMessageTableViewCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! LoadingRightMessageTableViewCell
+                    cell.configure(item)
+                    cell.activityIndicator.startAnimating()
+                    
+                    return cell
                 }
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: RightMessageTableCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! RightMessageTableCell

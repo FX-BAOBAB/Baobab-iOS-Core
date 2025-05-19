@@ -69,9 +69,15 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
     }
     
     func post<T: Decodable>(to endpoint: String, params: Parameters, decoding type: T.Type) async throws -> T {
-        return try await session.request(endpoint, method: .post, parameters: params, encoding: JSONEncoding.default)
-                            .serializingDecodable(type)
-                            .value
+        return try await session.request(
+            endpoint,
+            method: .post,
+            parameters: params,
+            encoding: JSONEncoding.default,
+            interceptor: TokenInterceptor.shared
+        )
+        .serializingDecodable(type)
+        .value
     }
     
     func upload<T: Decodable>(to endpoint: String, params: Parameters, decoding type: T.Type) async throws -> T {
