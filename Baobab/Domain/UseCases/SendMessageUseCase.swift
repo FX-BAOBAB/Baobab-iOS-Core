@@ -14,7 +14,7 @@ protocol SendMessageUseCaseProtocol {
 }
 
 final class SendMessageUseCaseImpl: SendMessageUseCaseProtocol, ChatMessageCreatable {
-    @Injected(\.chatMessagingRepository) private var repository: ChatMessagingRepositoryProtocol
+    @Injected(\.chatMessageRepository) private var repository: ChatMessageRepositoryProtocol
     
     func execute(message: String, to chatRoomId: String) -> AnyPublisher<(String, ChatMessage), any Error> {
         let params = createParams(message: message, chatRoomId: chatRoomId)

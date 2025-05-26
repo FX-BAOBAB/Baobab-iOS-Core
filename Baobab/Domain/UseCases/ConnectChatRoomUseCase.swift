@@ -35,7 +35,7 @@ extension ConnectChatRoomUseCaseProtocol {
 }
 
 final class ConnectChatRoomUseCaseImpl: ConnectChatRoomUseCaseProtocol {
-    @Injected(\.chatMessagingRepository) private var chatMessagingRepository: ChatMessagingRepositoryProtocol
+    @Injected(\.chatMessageRepository) private var chatMessagingRepository: ChatMessageRepositoryProtocol
     @Injected(\.chatSSERepository) private var chatSSERepository: ChatSSERepositoryProtocol
     
     func execute(

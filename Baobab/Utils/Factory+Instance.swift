@@ -42,9 +42,9 @@ extension Container {
         }
     }
     
-    var chatMessagingRepository: Factory<ChatMessagingRepositoryProtocol> {
+    var chatMessageRepository: Factory<ChatMessageRepositoryProtocol> {
         Factory(self) {
-            ChatMessagingRepository()
+            ChatMessageRepository()
         }
     }
     

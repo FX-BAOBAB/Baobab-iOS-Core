@@ -74,5 +74,17 @@ extension ChatRoomViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        messageTableView.rx.willDisplayCell
+            .subscribe(on: MainScheduler.instance)
+            .bind(onNext: { [weak self] cell, indexPath in
+                guard let self else { return }
+                
+                if indexPath.row == 0 {
+                    let message = viewModel.messages.value[0]
+                    viewModel.fetchMessages(before: message.sentDate + "T" + message.sentTime)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }

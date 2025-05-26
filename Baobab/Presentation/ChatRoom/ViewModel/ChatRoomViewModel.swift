@@ -16,6 +16,7 @@ final class ChatRoomViewModel {
     @Injected(\.connectChatRoomUseCase) private var connectChatRoomUseCase
     @Injected(\.sendMessageUseCase) private var sendMessageUseCase
     @Injected(\.chatRoomRepository) private var chatRoomRepository
+    @Injected(\.chatMessageRepository) private var chatMessageRepository
     let messages: BehaviorRelay<[ChatMessage]> = .init(value: [])
     private var receivedMessages: [ChatMessage] = []
     private var pendingMessages: [ChatMessage] = []
@@ -143,5 +144,39 @@ fileprivate extension Array where Element == ChatMessage {
         }
         
         return false
+    }
+}
+
+extension ChatRoomViewModel {
+    func fetchMessages(before date: String) {
+        chatMessageRepository.fetchMessages(from: chatRoomId, before: date)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.logger.info("ChatRoomViewModel.fetchMessages(before:) completed successfully")
+                case .failure(let error):
+                    self?.logger.error("ChatRoomViewModel.fetchMessages(before:) failed: \(error)")
+                }
+            }, receiveValue: { [weak self] messages in
+                guard let self else { return }
+                
+                let newMessages = prepend(messages, before: self.messages.value)
+                self.messages.accept(newMessages)
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func prepend(_ message: [ChatMessage], before existingMessages: [ChatMessage]) -> [ChatMessage] {
+        var result = message + existingMessages
+        for i in result.indices where !result[i].isMine {
+            if i == 0 || result[i - 1].isMine {
+                result[i].messageType = .textWithProfile
+            } else {
+                result[i].messageType = .text
+            }
+        }
+        
+        return result
     }
 }

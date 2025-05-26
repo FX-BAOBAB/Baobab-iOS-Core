@@ -43,8 +43,8 @@
 		8E5AF1922D9FA510007A4E4D /* ChatRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AF1912D9FA510007A4E4D /* ChatRoomTableViewController.swift */; };
 		8E5AF1942D9FB9FF007A4E4D /* ChatRoomTableViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AF1932D9FB9FF007A4E4D /* ChatRoomTableViewController+Layout.swift */; };
 		8E5F28332D53319B00C05055 /* SignupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */; };
-		8E607AFA2D9D22A400FC0EF7 /* ChatMessagingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AF92D9D22A400FC0EF7 /* ChatMessagingRepository.swift */; };
-		8E607AFC2D9D22B200FC0EF7 /* ChatMessagingRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AFB2D9D22B200FC0EF7 /* ChatMessagingRepositoryProtocol.swift */; };
+		8E607AFA2D9D22A400FC0EF7 /* ChatMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AF92D9D22A400FC0EF7 /* ChatMessageRepository.swift */; };
+		8E607AFC2D9D22B200FC0EF7 /* ChatMessageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AFB2D9D22B200FC0EF7 /* ChatMessageRepositoryProtocol.swift */; };
 		8E607AFE2D9D23A500FC0EF7 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AFD2D9D23A500FC0EF7 /* ChatMessage.swift */; };
 		8E607B002D9D2E8200FC0EF7 /* ChatMessagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607AFF2D9D2E8200FC0EF7 /* ChatMessagesResponseDTO.swift */; };
 		8E607B042D9D414E00FC0EF7 /* Dictionary+BaseParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607B032D9D414E00FC0EF7 /* Dictionary+BaseParam.swift */; };
@@ -185,8 +185,8 @@
 		8E5AF1912D9FA510007A4E4D /* ChatRoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewController.swift; sourceTree = "<group>"; };
 		8E5AF1932D9FB9FF007A4E4D /* ChatRoomTableViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomTableViewController+Layout.swift"; sourceTree = "<group>"; };
 		8E5F28322D53319B00C05055 /* SignupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormViewModel.swift; sourceTree = "<group>"; };
-		8E607AF92D9D22A400FC0EF7 /* ChatMessagingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagingRepository.swift; sourceTree = "<group>"; };
-		8E607AFB2D9D22B200FC0EF7 /* ChatMessagingRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagingRepositoryProtocol.swift; sourceTree = "<group>"; };
+		8E607AF92D9D22A400FC0EF7 /* ChatMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageRepository.swift; sourceTree = "<group>"; };
+		8E607AFB2D9D22B200FC0EF7 /* ChatMessageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8E607AFD2D9D23A500FC0EF7 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		8E607AFF2D9D2E8200FC0EF7 /* ChatMessagesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagesResponseDTO.swift; sourceTree = "<group>"; };
 		8E607B032D9D414E00FC0EF7 /* Dictionary+BaseParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+BaseParam.swift"; sourceTree = "<group>"; };
@@ -703,7 +703,7 @@
 				8EC5479B2D66A7D700191E3B /* AuthRepositoryProtocol.swift */,
 				8EA956392D76719C000F894E /* TradeArticleRepositoryProtocol.swift */,
 				8E125BF62D8FD7D00009D14D /* FileDownloadRepositoryProtocol.swift */,
-				8E607AFB2D9D22B200FC0EF7 /* ChatMessagingRepositoryProtocol.swift */,
+				8E607AFB2D9D22B200FC0EF7 /* ChatMessageRepositoryProtocol.swift */,
 				8E607B052D9D431900FC0EF7 /* ChatSSERepositoryProtocol.swift */,
 				8E5AF17A2D9F9637007A4E4D /* ChatRoomRepositoryProtocol.swift */,
 			);
@@ -716,7 +716,7 @@
 				8EC5479E2D66A83400191E3B /* AuthRepository.swift */,
 				8EA9563B2D7671FB000F894E /* TradeArticleRepository.swift */,
 				8E125BF02D8FD3CD0009D14D /* FileDownloadRepository.swift */,
-				8E607AF92D9D22A400FC0EF7 /* ChatMessagingRepository.swift */,
+				8E607AF92D9D22A400FC0EF7 /* ChatMessageRepository.swift */,
 				8E607B072D9D434200FC0EF7 /* ChatSSERepository.swift */,
 				8E5AF1802D9F9743007A4E4D /* ChatRoomRepository.swift */,
 			);
@@ -1052,7 +1052,7 @@
 				8EA956402D7683E1000F894E /* TokenInterceptor.swift in Sources */,
 				8E607B042D9D414E00FC0EF7 /* Dictionary+BaseParam.swift in Sources */,
 				8E5AF17D2D9F96B8007A4E4D /* ChatRoomsResponseDTO.swift in Sources */,
-				8E607AFC2D9D22B200FC0EF7 /* ChatMessagingRepositoryProtocol.swift in Sources */,
+				8E607AFC2D9D22B200FC0EF7 /* ChatMessageRepositoryProtocol.swift in Sources */,
 				8E2029AD2D696CDE0037AF3F /* JWTTokenManager.swift in Sources */,
 				8EA956422D769DA1000F894E /* TokenReissueResponseDTO.swift in Sources */,
 				8EC010532D6EAE970059360D /* ItemCategory.swift in Sources */,
@@ -1083,7 +1083,7 @@
 				8E8DD0402D9508E1000EE726 /* TabBarViewController.swift in Sources */,
 				8EADF3012D5D65C8009EAC2B /* RegexValidatable.swift in Sources */,
 				8E7437112D912620000C6DF1 /* TradeArticleForm.swift in Sources */,
-				8E607AFA2D9D22A400FC0EF7 /* ChatMessagingRepository.swift in Sources */,
+				8E607AFA2D9D22A400FC0EF7 /* ChatMessageRepository.swift in Sources */,
 				8ED083D62D93B1FE007D7A2F /* PHPicker.swift in Sources */,
 				8EC0104B2D6E9FE10059360D /* UIViewController+Preview.swift in Sources */,
 				8EF136EE2DB9BEAE002B43F0 /* DateAndTimeProvidable.swift in Sources */,

@@ -9,7 +9,7 @@ import Combine
 import Factory
 import Foundation
 
-final class ChatMessagingRepository: ChatMessagingRepositoryProtocol, ChatMessageCreatable {
+final class ChatMessageRepository: ChatMessageRepositoryProtocol, ChatMessageCreatable {
     @Injected(\.remoteDataSource) private var dataSource: RemoteDataSourceProtocol
     
     func sendMessage(_ params: [String: Any]) -> AnyPublisher<ChatMessage, any Error> {
