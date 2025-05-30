@@ -67,10 +67,14 @@ extension ChatRoomViewController {
             .disposed(by: disposeBag)
         
         viewModel.messages
+            .skip(1)
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                if !$0.isEmpty {
+            .bind(onNext: { [weak self] in
+                if !$0.isEmpty && self?.viewModel.isFirstConnection == true {
                     self?.messageTableView.scrollToRow(at: IndexPath(row: $0.count - 1, section: 0), at: .bottom, animated: false)
+                    self?.viewModel.isFirstConnection = false
+                } else if $0.count > 20 {
+                    self?.messageTableView.scrollToRow(at: IndexPath(row: 21, section: 0), at: .top, animated: false)
                 }
             })
             .disposed(by: disposeBag)

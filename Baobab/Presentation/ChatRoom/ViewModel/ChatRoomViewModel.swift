@@ -25,6 +25,7 @@ final class ChatRoomViewModel {
     private let chatRoomId: String
     private let logger: Logger = Logger()
     private(set) var task: Task<Void, Never>?
+    var isFirstConnection: Bool = true
     
     init(articleId: String, chatRoomId: String) {
         self.articleId = articleId
