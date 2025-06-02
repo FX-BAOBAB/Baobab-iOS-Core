@@ -74,6 +74,12 @@
 		8E88CF842DCC6EA900BC99CC /* ConnectChatRoomUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88CF832DCC6EA900BC99CC /* ConnectChatRoomUseCase.swift */; };
 		8E88CF862DCC76AA00BC99CC /* SendMessageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88CF852DCC76AA00BC99CC /* SendMessageUseCase.swift */; };
 		8E8DD0402D9508E1000EE726 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8DD03F2D9508E1000EE726 /* TabBarViewController.swift */; };
+		8E9404B32DED5B8C004E1BD8 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9404B22DED5B8C004E1BD8 /* MoreView.swift */; };
+		8E9404B62DED5FC1004E1BD8 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9404B52DED5FC1004E1BD8 /* MoreViewModel.swift */; };
+		8E9404B82DED5FEB004E1BD8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9404B72DED5FEB004E1BD8 /* UserInfo.swift */; };
+		8E9404BA2DED6103004E1BD8 /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9404B92DED6103004E1BD8 /* UserRepositoryProtocol.swift */; };
+		8E9404BC2DED61CD004E1BD8 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9404BB2DED61CD004E1BD8 /* UserRepository.swift */; };
+		8E9404BE2DED6338004E1BD8 /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9404BD2DED6338004E1BD8 /* UserInfoDTO.swift */; };
 		8E9A40AB2D4BA43100824509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A32D4BA43100824509 /* AppDelegate.swift */; };
 		8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9A40A82D4BA43100824509 /* SceneDelegate.swift */; };
 		8E9A40AE2D4BA43100824509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9A40A42D4BA43100824509 /* Assets.xcassets */; };
@@ -215,6 +221,12 @@
 		8E88CF832DCC6EA900BC99CC /* ConnectChatRoomUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectChatRoomUseCase.swift; sourceTree = "<group>"; };
 		8E88CF852DCC76AA00BC99CC /* SendMessageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageUseCase.swift; sourceTree = "<group>"; };
 		8E8DD03F2D9508E1000EE726 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		8E9404B22DED5B8C004E1BD8 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		8E9404B52DED5FC1004E1BD8 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
+		8E9404B72DED5FEB004E1BD8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		8E9404B92DED6103004E1BD8 /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
+		8E9404BB2DED61CD004E1BD8 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		8E9404BD2DED6338004E1BD8 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
 		8E9A40A32D4BA43100824509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E9A40A42D4BA43100824509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E9A40A52D4BA43100824509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -511,6 +523,7 @@
 				8E75B45A2D7A723A009D710E /* SimpleUserInfo.swift */,
 				8E607AFD2D9D23A500FC0EF7 /* ChatMessage.swift */,
 				8E5AF17E2D9F96EF007A4E4D /* ChatRoom.swift */,
+				8E9404B72DED5FEB004E1BD8 /* UserInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -534,6 +547,31 @@
 			path = Address;
 			sourceTree = "<group>";
 		};
+		8E9404B02DED5AA8004E1BD8 /* MoreView */ = {
+			isa = PBXGroup;
+			children = (
+				8E9404B42DED5F94004E1BD8 /* ViewModel */,
+				8E9404B12DED5AB9004E1BD8 /* View */,
+			);
+			path = MoreView;
+			sourceTree = "<group>";
+		};
+		8E9404B12DED5AB9004E1BD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E9404B22DED5B8C004E1BD8 /* MoreView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E9404B42DED5F94004E1BD8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E9404B52DED5FC1004E1BD8 /* MoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		8E9A40AA2D4BA43100824509 /* Baobab */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +590,7 @@
 		8E9A40B12D4BA43600824509 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8E9404B02DED5AA8004E1BD8 /* MoreView */,
 				8EF3241D2DA64677007C24D7 /* ChatRoomMenu */,
 				8ECC0EC72DA49ECA00F0A6F3 /* ChatRoom */,
 				8E5AF18C2D9FA24B007A4E4D /* ChatRoomTableView */,
@@ -706,6 +745,7 @@
 				8E607AFB2D9D22B200FC0EF7 /* ChatMessageRepositoryProtocol.swift */,
 				8E607B052D9D431900FC0EF7 /* ChatSSERepositoryProtocol.swift */,
 				8E5AF17A2D9F9637007A4E4D /* ChatRoomRepositoryProtocol.swift */,
+				8E9404B92DED6103004E1BD8 /* UserRepositoryProtocol.swift */,
 			);
 			path = "Repository Protocols";
 			sourceTree = "<group>";
@@ -719,6 +759,7 @@
 				8E607AF92D9D22A400FC0EF7 /* ChatMessageRepository.swift */,
 				8E607B072D9D434200FC0EF7 /* ChatSSERepository.swift */,
 				8E5AF1802D9F9743007A4E4D /* ChatRoomRepository.swift */,
+				8E9404BB2DED61CD004E1BD8 /* UserRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -735,6 +776,7 @@
 				8E607AFF2D9D2E8200FC0EF7 /* ChatMessagesResponseDTO.swift */,
 				8EAE6C122DA74DA1002D349E /* ChatMessageResponseDTO.swift */,
 				8E5AF17C2D9F96B8007A4E4D /* ChatRoomsResponseDTO.swift */,
+				8E9404BD2DED6338004E1BD8 /* UserInfoDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1039,11 +1081,14 @@
 				8EFF1C1A2D8BB3EA00F48D32 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
 				8E607B002D9D2E8200FC0EF7 /* ChatMessagesResponseDTO.swift in Sources */,
 				8EAE6C132DA74DA1002D349E /* ChatMessageResponseDTO.swift in Sources */,
+				8E9404B32DED5B8C004E1BD8 /* MoreView.swift in Sources */,
 				8EF136F02DB9CF09002B43F0 /* LeftProfileMessageTableCell.swift in Sources */,
 				8E1D543C2DA02AD000F261B5 /* Date+korFormattedString.swift in Sources */,
 				8EADF3052D5D785E009EAC2B /* InputState.swift in Sources */,
 				8E74370C2D910C77000C6DF1 /* Int+DecimalFormat.swift in Sources */,
+				8E9404B82DED5FEB004E1BD8 /* UserInfo.swift in Sources */,
 				8E9D8BED2D680CA100510B4F /* AlertType.swift in Sources */,
+				8E9404B62DED5FC1004E1BD8 /* MoreViewModel.swift in Sources */,
 				8E1D54362D9FBE3B00F261B5 /* ChatRoomTableViewController+Binding.swift in Sources */,
 				8E125BF32D8FD3EC0009D14D /* FileDownloadUseCase.swift in Sources */,
 				8E5AF1922D9FA510007A4E4D /* ChatRoomTableViewController.swift in Sources */,
@@ -1079,6 +1124,7 @@
 				8EC0102F2D6E8E190059360D /* SpinningIndicator.swift in Sources */,
 				8ECD91482D58CA0900D6F315 /* View+Fork.swift in Sources */,
 				8E82B28E2D5C1D36002A6BB2 /* SignupFormViewModel+InputFormat.swift in Sources */,
+				8E9404BE2DED6338004E1BD8 /* UserInfoDTO.swift in Sources */,
 				8EC010512D6EAE510059360D /* TradeArticle.swift in Sources */,
 				8E8DD0402D9508E1000EE726 /* TabBarViewController.swift in Sources */,
 				8EADF3012D5D65C8009EAC2B /* RegexValidatable.swift in Sources */,
@@ -1097,6 +1143,7 @@
 				8ED083D82D93B356007D7A2F /* UIImage+Edit.swift in Sources */,
 				8E9A40AC2D4BA43100824509 /* SceneDelegate.swift in Sources */,
 				8E84FCE12D825C41002186F3 /* TradeArticleTableViewController+Binding.swift in Sources */,
+				8E9404BC2DED61CD004E1BD8 /* UserRepository.swift in Sources */,
 				8EB62C122DA75C2B00D48562 /* ChatRoomViewModel.swift in Sources */,
 				8E9A40B82D4BA71700824509 /* LoginForm.swift in Sources */,
 				8EA9563E2D7673C4000F894E /* TradeArticlesResponseDTO.swift in Sources */,
@@ -1107,6 +1154,7 @@
 				8E607B082D9D434200FC0EF7 /* ChatSSERepository.swift in Sources */,
 				8ECC0ECD2DA4A48100F0A6F3 /* ChatRoomVIewController+Layout.swift in Sources */,
 				8E505DB82D77D780007CC7E8 /* Notification+Name.swift in Sources */,
+				8E9404BA2DED6103004E1BD8 /* UserRepositoryProtocol.swift in Sources */,
 				8EE63E062DB5C6DC003B0D12 /* RightMessageTableCell.swift in Sources */,
 				8E7742852D5ECAEA003FE8E0 /* Errors.swift in Sources */,
 				8E125BEF2D8F9CB60009D14D /* TradeArticleContentViewModel.swift in Sources */,

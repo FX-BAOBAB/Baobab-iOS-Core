@@ -60,6 +60,12 @@ extension Container {
         }
     }
     
+    var userRepository: Factory<UserRepositoryProtocol> {
+        Factory(self) {
+            UserRepository()
+        }
+    }
+    
     //MARK: - UseCase
     var loginUseCase: Factory<LoginUseCaseProtocol> {
         Factory(self) {

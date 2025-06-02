@@ -13,6 +13,9 @@ final class TabBarViewController: UITabBarController {
         viewModel: TradeArticleTableViewModel()
     )
     private let chatRoomTableViewController: ChatRoomTableViewController = .init(viewModel: ChatRoomTableViewModel())
+    private let myPageViewController: UIViewController = UIHostingController(
+        rootView: MoreView(viewModel: MoreViewModel())
+    )
     private lazy var plusButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +43,7 @@ final class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setViewControllers([tradeArticleTableViewController, chatRoomTableViewController], animated: true)
+        setViewControllers([tradeArticleTableViewController, chatRoomTableViewController, myPageViewController], animated: true)
         setupTabBar()
         setupLayout()
     }
@@ -59,6 +62,10 @@ final class TabBarViewController: UITabBarController {
         chatRoomTableViewController.tabBarItem.image = UIImage(systemName: "message.fill")
         chatRoomTableViewController.tabBarItem.title = "채팅"
         chatRoomTableViewController.tabBarItem.tag = 1
+        
+        myPageViewController.tabBarItem.image = UIImage(systemName: "ellipsis")
+        myPageViewController.tabBarItem.title = "더보기"
+        myPageViewController.tabBarItem.tag = 2
         
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()

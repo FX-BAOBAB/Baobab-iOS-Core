@@ -11,27 +11,49 @@ import Factory
 import Foundation
 
 protocol RemoteDataSourceProtocol: AnyObject {
-    func get<T: Decodable>(to endpoint: String,
-                           decoding type: T.Type) async throws -> T
+    func get<T: Decodable>(
+        to endpoint: String,
+        decoding type: T.Type) async throws -> T
     
-    func get<T: Decodable>(to endpoint: String,
-                           decoding type: T.Type) -> AnyPublisher<T, any Error>
+    func get<T: Decodable>(
+        to endpoint: String,
+        decoding type: T.Type) -> AnyPublisher<T, any Error>
     
-    func post<T: Decodable>(to endpoint: String,
-                            params: Parameters,
-                            token: String,
-                            decoding type: T.Type) async throws -> T
+    func post<T: Decodable>(
+        to endpoint: String,
+        params: Parameters,
+        token: String,
+        decoding type: T.Type) async throws -> T
     
-    func post<T: Decodable>(to endpoint: String,
-                            params: Parameters,
-                            decoding type: T.Type) async throws -> T
+    func post<T: Decodable>(
+        to endpoint: String,
+        params: Parameters,
+        decoding type: T.Type,
+        interceptorAvailable: Bool) async throws -> T
     
-    func upload<T: Decodable>(to endpoint: String,
-                              params: Parameters,
-                              decoding type: T.Type) async throws -> T
+    func upload<T: Decodable>(
+        to endpoint: String,
+        params: Parameters,
+        decoding type: T.Type) async throws -> T
     
     func connectSSE<T: Decodable>(from url: String,
                                   decoding type: T.Type) -> AnyPublisher<T, any Error>
+}
+
+extension RemoteDataSourceProtocol {
+    func post<T: Decodable>(
+        to endpoint: String,
+        params: Parameters,
+        decoding type: T.Type,
+        interceptorAvailable: Bool = true
+    ) async throws -> T {
+        return try await post(
+            to: endpoint,
+            params: params,
+            decoding: type,
+            interceptorAvailable: interceptorAvailable
+        )
+    }
 }
 
 final class RemoteDataSource: RemoteDataSourceProtocol {
@@ -68,13 +90,18 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
                             .value
     }
     
-    func post<T: Decodable>(to endpoint: String, params: Parameters, decoding type: T.Type) async throws -> T {
+    func post<T: Decodable>(
+        to endpoint: String,
+        params: Parameters,
+        decoding type: T.Type,
+        interceptorAvailable: Bool = true
+    ) async throws -> T {
         return try await session.request(
             endpoint,
             method: .post,
             parameters: params,
             encoding: JSONEncoding.default,
-            interceptor: TokenInterceptor.shared
+            interceptor: interceptorAvailable ? TokenInterceptor.shared : nil
         )
         .serializingDecodable(type)
         .value

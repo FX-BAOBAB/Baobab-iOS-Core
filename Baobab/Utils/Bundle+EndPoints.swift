@@ -56,4 +56,12 @@ extension Bundle {
         
         return url
     }
+    
+    var userEndPoint: String? {
+        guard let resource, let url = resource["User_URL"] as? String else {
+            return nil
+        }
+        
+        return url
+    }
 }

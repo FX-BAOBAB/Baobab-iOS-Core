@@ -38,7 +38,7 @@ final class AuthRepository: AuthRepositoryProtocol {
             throw NetworkError.invalidEndpoint
         }
         
-        let dto = try await remoteDataSource.post(to: endpoint, params: params, decoding: LoginResponseDTO.self)
+        let dto = try await remoteDataSource.post(to: endpoint, params: params, decoding: LoginResponseDTO.self, interceptorAvailable: false)
         guard let body = dto.body, dto.result.resultCode == 200 else {
             throw NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage)
         }
