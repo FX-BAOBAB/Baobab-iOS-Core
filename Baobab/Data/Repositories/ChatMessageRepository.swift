@@ -52,7 +52,7 @@ final class ChatMessageRepository: ChatMessageRepositoryProtocol, ChatMessageCre
             endPoint += "&sentAt=\(date)"
         }
         
-        return dataSource.get(to: endPoint, decoding: ChatMessagesResponseDTO.self)
+        return dataSource.send(endPoint, method: .get, decoding: ChatMessagesResponseDTO.self)
             .compactMap { [weak self] dto in
                 dto.body.compactMap {
                     self?.createChatMessage($0)

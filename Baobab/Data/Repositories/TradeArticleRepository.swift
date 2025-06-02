@@ -18,7 +18,7 @@ final class TradeArticleRepository: TradeArticleRepositoryProtocol {
         
         do {
             endPoint += "/list?page=\(page)&size=\(size)&sort=registeredAt,desc"
-            let dto = try await remoteDataSource.get(to: endPoint, decoding: TradeArticlesResponseDTO.self)
+            let dto = try await remoteDataSource.send(endPoint, method: .get, decoding: TradeArticlesResponseDTO.self)
             return .success(createArticles(from: dto))
         } catch {
             return .failure(error)

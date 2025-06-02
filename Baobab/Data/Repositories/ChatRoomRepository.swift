@@ -17,7 +17,7 @@ final class ChatRoomRepository: ChatRoomRepositoryProtocol {
         }
         
         do {
-            let dto = try await remoteDataSource.get(to: endpoint + "/rooms", decoding: ChatRoomsResponseDTO.self)
+            let dto = try await remoteDataSource.send(endpoint + "/rooms", method: .get, decoding: ChatRoomsResponseDTO.self)
             if dto.result.resultCode == 200 {
                 let chatRooms = createChatRooms(from: dto)
                 return .success(chatRooms)
@@ -47,7 +47,7 @@ final class ChatRoomRepository: ChatRoomRepositoryProtocol {
         }
         
         do {
-            let dto = try await remoteDataSource.get(to: endpoint + "/exit/\(chatRoomId)", decoding: PostResponseDTO.self)
+            let dto = try await remoteDataSource.send(endpoint + "/exit/\(chatRoomId)", method: .get, decoding: PostResponseDTO.self)
             if dto.result.resultCode == 200 {
                 return .success(())
             }

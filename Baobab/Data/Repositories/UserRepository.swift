@@ -17,7 +17,7 @@ final class UserRepository: UserRepositoryProtocol {
         }
         
         do {
-            let dto = try await dataSource.get(to: endPoint + "/info", decoding: UserInfoDTO.self)
+            let dto = try await dataSource.send(endPoint + "/info", method: .get, decoding: UserInfoDTO.self)
             let userInfo = UserInfo(
                 id: dto.body.userID,
                 email: dto.body.email,
