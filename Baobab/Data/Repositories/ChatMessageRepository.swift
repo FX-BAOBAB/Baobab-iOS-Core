@@ -26,7 +26,7 @@ final class ChatMessageRepository: ChatMessageRepositoryProtocol, ChatMessageCre
             
             Task {
                 do {
-                    let dto = try await self.dataSource.post(to: endPoint + "/message", params: params, decoding: SentMessageResponseDTO.self)
+                    let dto = try await self.dataSource.send(endPoint + "/message", method: .post, parameters: params, decoding: SentMessageResponseDTO.self)
                     if dto.result.resultCode == 200 {
                         promise(.success(self.createChatMessage(dto.body)))
                     }

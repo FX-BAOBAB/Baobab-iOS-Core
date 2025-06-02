@@ -17,7 +17,7 @@ final class AuthRepository: AuthRepositoryProtocol {
         }
 
         do {
-            let dto = try await remoteDataSource.post(to: endpoint, params: params, decoding: SignupResponseDTO.self)
+            let dto = try await remoteDataSource.send(endpoint, method: .post, parameters: params, decoding: SignupResponseDTO.self)
             guard dto.result.resultCode == 200 else {
                 return .failure(
                     NetworkError.serverError(
@@ -38,7 +38,7 @@ final class AuthRepository: AuthRepositoryProtocol {
             throw NetworkError.invalidEndpoint
         }
         
-        let dto = try await remoteDataSource.post(to: endpoint, params: params, decoding: LoginResponseDTO.self, interceptorAvailable: false)
+        let dto = try await remoteDataSource.send(endpoint, method: .post, parameters: params, decoding: LoginResponseDTO.self, interceptorAvailable: false)
         guard let body = dto.body, dto.result.resultCode == 200 else {
             throw NetworkError.serverError(code: dto.result.resultCode, message: dto.result.resultMessage)
         }
