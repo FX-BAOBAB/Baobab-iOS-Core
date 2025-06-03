@@ -16,11 +16,8 @@ struct MoreView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            NavigationBar(nickName: Binding(
-                get: {
-                    viewModel.userInfo?.nickName ?? "Unkown"
-                }, set: { _ in })
-            )
+            NavigationBar()
+                .environmentObject(viewModel)
             
             List {
                 
@@ -33,14 +30,15 @@ struct MoreView: View {
 }
 
 fileprivate struct NavigationBar: View {
-    @Binding var nickName: String
+    @EnvironmentObject private var viewModel: MoreViewModel
+    @State private var isShowingUserInfo: Bool = false
     
     var body: some View {
         HStack {
-            NavigationLink {
-                
+            Button {
+                isShowingUserInfo.toggle()
             } label: {
-                Text(nickName)
+                Text(viewModel.userInfo?.nickName ?? "Unkown")
                     .bold()
                     .font(.title3)
                     .foregroundStyle(.black)
@@ -60,6 +58,13 @@ fileprivate struct NavigationBar: View {
         }
         .frame(height: 44)
         .padding([.leading, .trailing], 16)
+        .fullScreenCover(isPresented: $isShowingUserInfo) {
+            if let userInfo = viewModel.userInfo {
+                NavigationStack {
+                    UserInfoView(userInfo: userInfo)
+                }
+            }
+        }
     }
 }
 
