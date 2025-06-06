@@ -10,6 +10,7 @@ import SwiftUI
 
 struct UserInfoView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var isShowingEditForm: Bool = false
     let userInfo: UserInfo
     
     var body: some View {
@@ -34,7 +35,7 @@ struct UserInfoView: View {
             Divider()
             
             Button {
-                
+                isShowingEditForm.toggle()
             } label: {
                 Text("수정하기")
                     .foregroundStyle(.black)
@@ -60,6 +61,9 @@ struct UserInfoView: View {
                         .foregroundStyle(.black)
                 }
             }
+        }
+        .navigationDestination(isPresented: $isShowingEditForm) {
+            UserInfoEditForm(viewModel: UserInfoEditViewModel(userInfo: userInfo))
         }
     }
 }
